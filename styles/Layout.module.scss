@@ -1,65 +1,7 @@
 
 // https://youtu.be/2t6y-bDIe0Y?t=454
 
-.layout {
-  header {
-    /* background: linear-gradient(to right, rgb(88, 254, 88), rgb(128, 255, 253)); */
-    background-color: white;
-    border-bottom: 1px solid black;
-
-    .navContainer {
-      max-width: 800px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      padding: 0;
-
-      .navBarLogoWrapper {
-        display: inline-block;
-        width: 89px;
-      }
-      nav {      
-        div {
-          position: relative;
-          display: inline-block;
-        }
-        .active a {
-          background-color: #ffca05;
-          color: white;
-        }
-        a {
-          color: black;
-          padding: 20px 40px;
-          margin: 0;
-          text-decoration: none;
-          font-weight: bold;
-          display: block;
-        }
-        :hover {
-          color: white;
-          background-color: #ffd333;
-        }
-
-
-      }
-
-    }
-
-  }
-
   .allButFooter {
     min-height: calc(100vh - 60px);
   }
-
-  footer {
-    height: 60px;
-    background-color: rgb(182, 182, 182);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-}
-
-}
 
