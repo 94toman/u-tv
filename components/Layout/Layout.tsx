@@ -25,6 +25,7 @@ const Layout = ({ children, title = 'UTV - regionální televize Ústeckého kra
     <div className={styles.allButFooter}>
       <Navbar/>
       {children}
+      
     </div>
     <Footer />
   </div>

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 const IndexPage = () => (
-  <div>
+  <>
     <Head>
       <title>Home | UTV</title>
     </Head>
@@ -12,7 +12,7 @@ const IndexPage = () => (
         <a>About</a>
       </Link>
     </p>
-  </div>
+  </>
 )
 
 export default IndexPage

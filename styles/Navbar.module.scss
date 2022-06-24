@@ -22,21 +22,15 @@
         cursor: pointer;
       }
       nav {      
-        div {
+        // active - set in globals.scss
+        a {
           position: relative;
           display: inline-block;
-        }
-        .active a {
-          background-color: #ffca05;
-          color: white;
-        }
-        a {
           color: black;
           padding: 20px 40px;
           margin: 0;
           text-decoration: none;
           font-weight: bold;
-          display: block;
         }
         :hover {
           color: white;

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import logo from './utv_logo.png';
 import styles from '../../styles/Navbar.module.scss';
+import { NavLink } from '../NavLink';
 
 const Navbar = () => {
 
@@ -18,26 +19,18 @@ const Navbar = () => {
                   </Link>
               </div>
               <nav>
-                <div className={router.pathname == "/" ? styles.active : ""}>
-                  <Link href="/" >
-                    <a>Home</a>
-                  </Link>
-                </div>
-                <div className={router.pathname == "/porady" ? styles.active : ""}>
-                  <Link href="/porady" >
-                    <a>Pořady</a>
-                  </Link>
-                </div>
-                <div className={router.pathname == "/kontakt" ? styles.active : ""}>
-                  <Link href="/kontakt" >
-                    <a>Kontakt</a>
-                  </Link>
-                </div>
-                <div className={router.pathname == "/naladit" ? styles.active : ""}>
-                  <Link href="/naladit" >
-                    <a>Jak naladit</a>
-                  </Link>
-                </div>
+                  <NavLink exact href="/" >
+                    Home
+                  </NavLink>
+                  <NavLink exact href="/porady">
+                    Pořady
+                  </NavLink>
+                  <NavLink exact href="/kontakt" >
+                    Kontakt
+                  </NavLink>            
+                  <NavLink exact href="/naladit" >
+                    Jak naladit
+                  </NavLink>
               </nav>
             </div>
           </header>

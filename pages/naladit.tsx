@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 const NaladitPage = () => (
-  <div>
+  <>
     <Head>
         <title>Jak naladit | UTV</title>
     </Head>
@@ -13,7 +13,7 @@ const NaladitPage = () => (
         <a>Go home</a>
       </Link>
     </p>
-  </div>  
+  </>  
 )
 
 export default NaladitPage

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 
 const KontaktPage = () => (
-  <div>
+  <>
     <Head>
         <title>Kontakt | UTV</title>
     </Head>
@@ -14,7 +14,7 @@ const KontaktPage = () => (
           <a>Go home</a>
         </Link>
       </p>
-  </div>
+  </>
 
 )
 
