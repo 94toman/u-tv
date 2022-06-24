@@ -2,15 +2,15 @@ import React from 'react'
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import Image from 'next/image';
-import styles from '../styles/Card.module.scss';
-import { Porad } from '../interfaces/index';
-import { useSSE } from "use-sse";
+import styles from '../styles/Porad.module.scss';
+import { IPorad } from '../interfaces/index';
 
 const Card = ({porad}) => {
 
 
     return (
       <>
+      <Link href={`porady/${porad.id}`}>
         <div className={styles.card}>
           <div>
             <div className={styles.card_img}>
@@ -22,6 +22,7 @@ const Card = ({porad}) => {
             </div>
           </div>      
         </div>
+        </Link>
       </>
     )
 

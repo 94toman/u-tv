@@ -3,14 +3,12 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import Image from 'next/image'
-import Card from '../../components/Card'
-import { Porad } from '../../interfaces'
+import Porad from '../../components/Porad'
+import { IPorad } from '../../interfaces'
 import { useState } from "react";
-import styles from '../../styles/Card.module.scss';
+import styles from '../../styles/Porad.module.scss';
 
 const Porady = ( { porad }) => {
-  const [poradDb, setPoradDb] = useState();
-
     return (
         <div>
             <Head>
@@ -22,9 +20,9 @@ const Porady = ( { porad }) => {
               porad.map((porad, i) => {
                 if (porad.logo) {
                   return (
-                      <Link href={`porady/${porad.id}`}>
-                        <Card porad={porad}/>
-                      </Link>            
+                      
+                        <Porad porad={porad}/>
+                          
                   )
                 }
               })

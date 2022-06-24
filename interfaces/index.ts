@@ -4,12 +4,12 @@
 //
 // import { User } from 'path/to/interfaces';
 
-export type User = {
+export type IUser = {
   id: number
   name: string
 }
 
-export type Porad = {
+export type IPorad = {
   porad: {
   map(arg0: (porad: any, i: any) => JSX.Element): import("react").ReactNode
   description: string
@@ -22,7 +22,7 @@ export type Porad = {
 }
 }
 
-export type Porady = {
+export type IPorady = {
   porady: [
       {
         description: string
