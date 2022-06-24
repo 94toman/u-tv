@@ -1,34 +1,28 @@
 import React from 'react'
 import { useRouter } from "next/router";
 import Link from 'next/link'
+import Image from 'next/image';
 import styles from '../styles/Card.module.scss';
 import { Porad } from '../interfaces/index';
 import { useSSE } from "use-sse";
 
-const Card = (mojeData, id) => {
+const Card = ({porad}) => {
 
-    const [data, error] = useSSE(() => {
-      return fetch("https://data.zaktv.cz/programmes.json").then((res) => res.json());
-    }, []);
-    console.log('data: ' + data)
-    
-    console.log('card2: ' + id)
 
     return (
-      
+      <>
         <div className={styles.card}>
-        
-             <div>
-              <div className={styles.card_img}>
-              
-              </div>
-              <div className={styles.card_text}>
-                <h2>{`proměnná: ${mojeData.mojeData}, ${id.id}`}</h2>
-                <p>Text</p>
-              </div>
-            </div>      
-       </div>
-
+          <div>
+            <div className={styles.card_img}>
+              <Image src={`${porad.logo}`} layout="intrinsic" width={450} height={253}/>
+            </div>  
+            <div className={styles.card_text}>
+              <h2>{porad.title}</h2>
+              <p>{porad.lead}</p>
+            </div>
+          </div>      
+        </div>
+      </>
     )
 
 }
