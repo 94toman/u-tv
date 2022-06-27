@@ -57,31 +57,23 @@ const Epizoda = ({epizoda, porad}) => {
                         Go BACK 
                     </button>
                   </p>
-                  <p>ID: {epizoda.video.id}</p>
-                  <p>Durazion: {epizoda.video.duration}</p>
-                  <Image src={epizoda.video.poster} layout='fixed' width={450} height={250}/>
-
-                  <div className={styles.player}>
-                    <Player />
-                  </div>
-
-                  
+ 
 
                   {
                       (epizoda.video.duration)
                       ? <div>
-                          <div>{htmlToFormattedText(epizoda.description)}</div><br/>                          
+                          <div>{htmlToFormattedText(epizoda.description)}</div><br/>              
 
-                      </div>
-                      : <h2 className='errortitle'>{epizoda.description}</h2>
+                          <div className={styles.player}>
+                            <Player poster={epizoda.video.poster} videoUrl={epizoda.video.url}/>
+                          </div>
+
+                          <p>ID: {epizoda.video.id}</p>
+                          <p>Duration: {epizoda.video.duration}</p>            
+
+                        </div>
+                      : <h2 className='errortitle'>Epizoda nenalezena</h2>
                   }                      
-
-
-
-
-
-
-
 
        
               </>              
