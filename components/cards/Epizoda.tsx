@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Link from 'next/link'
 import Image from 'next/image';
 import styles from '../../styles/EpizodaCard.module.scss';
+import htmlToFormattedText from 'html-to-formatted-text';
 
 
 const Epizoda = ({epizoda}) => {
@@ -18,7 +19,7 @@ const Epizoda = ({epizoda}) => {
               </div>  
               <div className={styles.card_text}>
                 <h3>{epizoda.title}</h3>
-                <p>{epizoda.description}</p>
+                <p>{htmlToFormattedText(epizoda.description)}</p>
               </div>
             </div>      
           </div>

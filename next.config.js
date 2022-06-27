@@ -3,12 +3,22 @@ module.exports = {
     images: {
       domains: ['www.zaktv.cz', 'vysilani.zaktv.cz'],
     },
-    /*async rewrites() {
+    async rewrites() {
+      return {
+        beforeFiles: [
+          { 
+            source: "/vysilani.jihoceskatelevize.cz/jtv/:path*", 
+            destination: "https://vysilani.zaktv.cz/zak/:path*" 
+          },
+        ],
+    }
+  },
+   /* async rewrites() {
       return [
         {
-          source: '/api/:path*',
-          destination: 'https://api.example.com/:path*',
+          source: '/vysilani.jihoceskatelevize.cz/jtv/:path*',
+          destination: 'https://vysilani.zaktv.cz/zak/:path*',
         },
       ]
-    }, */
+    }*/
   }

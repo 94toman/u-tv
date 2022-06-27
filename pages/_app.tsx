@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Router from 'next/router'
 import React from 'react'
 import Layout from '../components/Layout/Layout'
-import Loading from '../components/Loading'
+import Loading from '../components/Loading/Loading'
 
 function MyApp({ Component, pageProps }) {
 

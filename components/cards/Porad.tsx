@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from 'next/link'
 import Image from 'next/image';
 import styles from '../../styles/PoradCard.module.scss';
-import { IPorad } from '../../interfaces/index';
+import htmlToFormattedText from 'html-to-formatted-text';
 
 const Porad = ({porad}) => {
 
@@ -18,7 +18,7 @@ const Porad = ({porad}) => {
             </div>  
             <div className={styles.card_text}>
               <h3>{porad.title}</h3>
-              <p>{porad.lead}</p>
+              <p>{htmlToFormattedText(porad.lead)}</p>
             </div>
           </div>      
         </div>

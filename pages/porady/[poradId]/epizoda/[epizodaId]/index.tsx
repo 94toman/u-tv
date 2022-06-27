@@ -22,19 +22,20 @@ type IEpizoda = {
   programmetitle: string // "30 let Městské policie Plzeň"
   status: string // "visible"
   title: string // "4. díl"
-  url: string // "https://vysilani.jihoceskatelevize.cz/jtv/6724/video.m3u8"
+  url: string // "https://vysilani.zaktv.cz/zak/6702/video.m3u8"
 }
 
 
 const Epizoda = ({epizoda, porad}) => {
   const router = useRouter()
 
+  const video: IEpizoda = epizoda.video;
+
     return (
         <div>
             <Head>
                 <title>Episoda | UTV</title>
             </Head>
-            <h2>Epizoda</h2>
             <h2>Pořad: {porad.programme.title}</h2>
             {
               (epizoda.result === 'error')
@@ -49,32 +50,22 @@ const Epizoda = ({epizoda, porad}) => {
                 </>
               // Displaying content
               : <>
-                  <h3>{epizoda.video.title}</h3>
-                  <p>This is the Episoda page</p>           
+                  <h3>{video.title}</h3>
+                  <p>{htmlToFormattedText(epizoda.video.description)}</p>
                   <p>
                     <button 
                         onClick={() => router.back()}> 
                         Go BACK 
                     </button>
                   </p>
- 
 
-                  {
-                      (epizoda.video.duration)
-                      ? <div>
-                          <div>{htmlToFormattedText(epizoda.description)}</div><br/>              
+                  <div className={styles.player}>
+                    <Player video={video}/>
+                  </div>
 
-                          <div className={styles.player}>
-                            <Player poster={epizoda.video.poster} videoUrl={epizoda.video.url}/>
-                          </div>
-
-                          <p>ID: {epizoda.video.id}</p>
-                          <p>Duration: {epizoda.video.duration}</p>            
-
-                        </div>
-                      : <h2 className='errortitle'>Epizoda nenalezena</h2>
-                  }                      
-
+                  <p>ID: {video.id}</p>
+                  <p>Duration: {video.duration}</p>
+                  
        
               </>              
             }
