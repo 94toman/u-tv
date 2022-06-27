@@ -1,7 +1,7 @@
 // next.config.js
 module.exports = {
     images: {
-      domains: ['www.zaktv.cz', 'vysilani.jihoceskatelevize.cz'],
+      domains: ['www.zaktv.cz', 'vysilani.zaktv.cz'],
     },
     /*async rewrites() {
       return [

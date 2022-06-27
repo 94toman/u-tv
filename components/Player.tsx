@@ -5,7 +5,7 @@ const Player = () => (
   <VimePlayer theme="dark">
     <Hls crossOrigin='' poster="https://www.zaktv.cz/epizody/4578.jpg">
       <source
-        data-src="https://vysilani.jihoceskatelevize.cz/jtv/4578/video.m3u8"
+        data-src="https://vysilani.zaktv.cz/zak/6702/video.m3u8"
         type="application/x-mpegURL"
       />
     </Hls>
