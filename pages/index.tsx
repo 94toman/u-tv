@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-const IndexPage = () => (
+const IndexPage = ({porady}) => (
   <>
     <Head>
       <title>Home | UTV</title>

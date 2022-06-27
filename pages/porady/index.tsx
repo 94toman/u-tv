@@ -3,25 +3,25 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import Image from 'next/image'
-import Porad from '../../components/Porad'
+import Porad from '../../components/cards/Porad'
 import { IPorad } from '../../interfaces'
 import { useState } from "react";
 import styles from '../../styles/Porad.module.scss';
 
-const Porady = ( { porad }) => {
+const Porady = ({porady}) => {
     return (
         <div>
             <Head>
                 <title>Pořady | UTV</title>
             </Head>
-            <h1>Pořady</h1>
+            <h2>Pořady</h2>
             <p>This is the Pořady page</p>
             {
-              porad.map((porad, i) => {
+              porady.map((porad, i) => {
                 if (porad.logo) {
                   return (
                       
-                        <Porad porad={porad}/>
+                        <Porad key={i} porad={porad}/>
                           
                   )
                 }
@@ -51,6 +51,6 @@ export async function getServerSideProps() {
       }
 
     return {
-      props: { porad: data.programmes}, // will be passed to the page component as props
+      props: {porady: data.programmes}, // will be passed to the page component as props
     }
   }

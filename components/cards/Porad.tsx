@@ -2,10 +2,10 @@ import React from 'react'
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import Image from 'next/image';
-import styles from '../styles/Porad.module.scss';
-import { IPorad } from '../interfaces/index';
+import styles from '../../styles/PoradCard.module.scss';
+import { IPorad } from '../../interfaces/index';
 
-const Card = ({porad}) => {
+const Porad = ({porad}) => {
 
 
     return (
@@ -17,7 +17,7 @@ const Card = ({porad}) => {
               <Image src={`${porad.logo}`} layout="intrinsic" width={450} height={253}/>
             </div>  
             <div className={styles.card_text}>
-              <h2>{porad.title}</h2>
+              <h3>{porad.title}</h3>
               <p>{porad.lead}</p>
             </div>
           </div>      
@@ -28,5 +28,5 @@ const Card = ({porad}) => {
 
 }
 
-export default Card
+export default Porad
 
