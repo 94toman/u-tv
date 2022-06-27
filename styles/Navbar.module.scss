@@ -29,16 +29,44 @@
           padding: 20px 40px;
           margin: 0;
           text-decoration: none;
+          text-transform: uppercase;
           font-weight: bold;
         }
         :hover {
           color: white;
           background-color: #ffd333;
         }
-
-
       }
+    }
+  }
 
+
+  // Mobile nav: https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
+  .mobileNav {
+    display: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    .mobileNav {
+      display: block;
+      margin-left: auto;
+
+
+      button {
+        margin-right: 20px;
+        z-index: 10;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+      }
     }
 
+    .header .navContainer {
+      margin: 0;
+      nav {
+        a {
+          display: block;
+        }
+      }
+    }
   }

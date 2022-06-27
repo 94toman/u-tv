@@ -5,7 +5,6 @@ import Image from 'next/image';
 import styles from '../../styles/EpizodaCard.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
 
-
 const Epizoda = ({epizoda}) => {
     const router = useRouter()
     const {poradId} = router.query;
@@ -15,7 +14,11 @@ const Epizoda = ({epizoda}) => {
           <div className={styles.card}>
             <div>
               <div className={styles.card_img}>
-                <Image src={`${epizoda.postermini}`} layout="intrinsic" width={450} height={253}/>
+                <Image 
+                  src={`${epizoda.postermini}`} 
+                  layout="intrinsic" 
+                  width={450} 
+                  height={253}/>
               </div>  
               <div className={styles.card_text}>
                 <h3>{epizoda.title}</h3>

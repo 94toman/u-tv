@@ -6,10 +6,10 @@ const IndexPage = ({porady}) => (
     <Head>
       <title>Home | UTV</title>
     </Head>
-    <h1>Hello Next.js 👋</h1>
+    <h1>Vítejne na UTV 👋</h1>
     <p>
-      <Link href="/about">
-        <a>About</a>
+      <Link href="/porady">
+        <a>Pořady</a>
       </Link>
     </p>
   </>
