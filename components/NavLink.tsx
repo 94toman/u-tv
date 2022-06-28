@@ -18,14 +18,14 @@ NavLink.defaultProps = {
 
 function NavLink({ href, exact, children, ...props }) {
     const { pathname } = useRouter();
-    const isActive = exact ? pathname === href : pathname.startsWith(href);
+    const isActive = exact ? pathname === href : pathname.includes(href);
 
     if (isActive) {
-        props.className += ` ${styles.active}`;
+        props.className = 'active';
     }
 
     return (
-        <Link href={href} >
+        <Link href={href}>
             <a {...props}>
                 {children}
             </a>

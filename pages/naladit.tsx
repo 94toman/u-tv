@@ -36,32 +36,34 @@ const NaladitPage = () => {
           <title>Jak nás naladit | UTV</title>
       </Head>
       <h2>Jak nás naladit</h2>
-      <p>ZVOLTE, JAK PŘIJÍMÁTE TELEVIZI</p>
-  
+
+      {/* Přepínání karet */}
       <div className={styles.wrapper}>
         <div className={`${styles.tab} ${(prijem === 'pozemni' || prijem === undefined) ? (styles.active) : ''}`}
           onClick={() => tabClick('pozemni')}>
           <Image src='https://www.zaktv.cz/obrazky/naladit11.png' width={71} height={69} />
-          <p>Pozemní vysílání</p>
+          <span className={styles.tabText}>Pozemní vysílání</span>
         </div>
         <div className={`${styles.tab} ${prijem === 'kabelove' ? (styles.active) : ''}`}
           onClick={() => tabClick('kabelove')}>
           <Image src='https://www.zaktv.cz/obrazky/naladit12.png' width={71} height={69} />
-          <p>Kabelové vysílání</p>
+          <span className={styles.tabText}>Kabelové vysílání</span>
         </div>
         <div className={`${styles.tab} ${prijem === 'satelitni' ? (styles.active) : ''}`}
           onClick={() => tabClick('satelitni')}>
           <Image src='https://www.zaktv.cz/obrazky/naladit13.png' width={71} height={69} />
-          <p>Satelitní vysílání</p>
+          <span className={styles.tabText}>Satelitní vysílání</span>
         </div>
         <div className={`${styles.tab} ${prijem === 'internetove' ? (styles.active) : ''}`}
           onClick={() => tabClick('internetove')}>
           <Image src='https://www.zaktv.cz/obrazky/naladit13.png' width={71} height={69} />
-          <p>Internetové vysílání</p>
+          <span className={styles.tabText}>Internetové vysílání</span>
         </div>
       </div>
-
-      <div className={styles.content}>{ prijemContent() }</div>
+      <div className={styles.contentWrapper}>
+        <div className={styles.content}>{ prijemContent() }</div>
+      </div>
+      
    
   
       <p>

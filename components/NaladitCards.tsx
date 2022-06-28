@@ -2,7 +2,6 @@ import Link from 'next/link'
 
 export const Pozemni = () => {
     return <>
-        <h2>Pozemní vysílání</h2>
         <p>Naše vysílání mohou sledovat všichni obyvatelé Ústeckého kraje, kteří přijímají signál z běžné televizní antény.
         Terestrické pokrytí nám zajišťuje společnost Digital Broadcasting. V roce 2020 v ČR změna vysílacího standardu na DVB-T2.</p>
         <p>V případě, že jste obyvatelem domu, kde je společná anténa, je potřeba zjistit, zdali vám již byl naladěn multiplex 24. To zjistíte tak, že přijímáte např. kanály NOVA, NOVA FUN, NOVA GOLD, RELAX, apod. V případě že ano, můžete si na vašem přijímači naladit vysílání i TV ZAK (viz návod níže). V případě, že výše uvedené kanály nechytáte přes společnou anténu, je potřeba vyhledat pomoc správce vaší antény a požádat ho o naladění multiplexu 24.</p>
@@ -21,8 +20,8 @@ export const Pozemni = () => {
 
 export const Kabelove = () => {
     return <>
-        <h2>Kabelové vysílání</h2>
-        <p>TV ZAK je dostupné u vybraných poskytovatelů kabelov&eacute;ho&nbsp;sign&aacute;lu nejen v z&aacute;padn&iacute;ch Čech&aacute;ch, ale v cel&eacute; ČR.</p>
+        
+        <p>UTV je dostupné u vybraných poskytovatelů kabelov&eacute;ho&nbsp;sign&aacute;lu nejen v z&aacute;padn&iacute;ch Čech&aacute;ch, ale v cel&eacute; ČR.</p>
         <p>Vysíláme např. u poskytovatelů:</p>
         <ul>
             <li>Sledovani.tv</li>
@@ -41,14 +40,12 @@ export const Kabelove = () => {
 
 export const Satelitni = () => {
     return <>
-        <h2>Satelitní vysílání</h2>
         <p>TV ZAK v současné době není dostupná v satelitním vysílání. Diváci, kteří využívají satelitní vysílání, si mohou vysílání pustit přes online vysílání nebo v archivu.</p>
     </> 
 }
 
 export const Internetove = () => {
     return <>
-        <h2>Internetové vysílání</h2>
         <p>UTV má propracovaný video archiv, ve kterém je možné si pustit všechny naše pořady zpětně. Stačí zadat hledaný pořad, uvést ve vyhledávači hosta či jiné klíčové slovo a systém vám nabídne nalezené pořady.</p>
         <p>Celé naše aktuální vysílání je možné si zpětně pustit v odkazu <Link href='/porady'>Online vysílání.</Link></p>
     </>

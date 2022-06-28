@@ -17,12 +17,19 @@ a {
   }
 }
 
+.bold {
+  font-weight: bold;
+}
+
 h1 {
   font-size: 80px;
 }
 h2 {
-  font-size: 50px;
+  text-align: left;
+  font-size: 40px;
   margin: 20px 0 10px 0;
+  color: #ffca05;
+  text-transform:uppercase;
 }
 
 h3 {
@@ -32,6 +39,11 @@ h3 {
 
 * {
   box-sizing: border-box;
+}
+
+.active {
+  background-color: #ffca05;
+  color: white !important;
 }
 
 input {

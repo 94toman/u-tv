@@ -8,8 +8,13 @@ const IndexPage = ({porady}) => (
     </Head>
     <h1>Vítejne na UTV 👋</h1>
     <p>
+    Regionální televize Ústeckého kraje. Každý den pro vás máme aktuální zprávy a zajímavé pořady z našeho kraje.
+    </p>
+
+
+    <p>
       <Link href="/porady">
-        <a>Pořady</a>
+        <a className='bold'>Zobrazit pořady</a>
       </Link>
     </p>
   </>

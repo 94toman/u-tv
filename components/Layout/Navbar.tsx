@@ -24,34 +24,7 @@ const Navbar = () => {
 
     return (
       <>
-        <style jsx>{`
-        
-          /* sidebar Nav */
-
-          @media screen and (max-width: 800px) {
-            .menuNav {
-              overflow-y: scroll;
-              list-style: none;
-              position: fixed;
-              top: 62px;
-              background: rgb(255, 255, 255);
-              border-left: solid black 1px;
-              right: -1px;
-              bottom: 0;
-              height: 100vh;
-              width: 0;
-              overflow: hidden;
-              max-width: 250px;
-              z-index: 8;
-            }  
-            .showMobileMenu {
-              width: 100%;
-            }
-          }
-
-        `}</style>
-
-      
+     
         <header className={styles.header}>
             <div className={styles.navContainer}>
               <div className={styles.navBarLogoWrapper}>
@@ -60,21 +33,21 @@ const Navbar = () => {
                   </Link>
               </div>
               {/* Displaying and hiding mobile menu */}
-              <nav className={`menuNav `}>
+              <nav className={`${styles.menuNav} ${navbarOpen ? (styles.showMobileMenu) : ""}`}
+                onClick={() => closeMenu()} >
                 {/* Rest of the menu is the same for PC and mobile*/}
                   <NavLink exact href="/" onClick={() => closeMenu()}>
                     Home
                   </NavLink>
-                  <NavLink exact href="/porady" onClick={() => closeMenu()}>
+                  <NavLink exact={false} href="/porady"  onClick={() => closeMenu()}>
                     Pořady
                   </NavLink>
-                  <NavLink exact href="/naladit" onClick={() => closeMenu()}>
+                  <NavLink exact href="/naladit"  onClick={() => closeMenu()}>
                     Jak naladit
                   </NavLink>
                   <NavLink exact href="/kontakt" onClick={() => closeMenu()}>
                     Kontakt
-                  </NavLink>            
-
+                  </NavLink>         
               </nav>
             </div>
 
@@ -86,14 +59,19 @@ const Navbar = () => {
                   ) : (
                   <FiMenu style={{ color: "#222", width: "40px", height: "40px" }} />
                   )}
-              </button>
+              </button>              
             </div>
+
+            <div 
+              className={`${styles.coverAll} ${navbarOpen ? (styles.showCoverAll) : ""}`}
+              onClick={() => closeMenu()} 
+            />  
+
           </header>
       </>
     )
 
 }
-
-   
+      
 
 export default Navbar
