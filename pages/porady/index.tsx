@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Porad from '../../components/cards/Porad'
 import { IPorad } from '../../interfaces'
 import { useState } from "react";
-import styles from '../../styles/Porad.module.scss';
+import styles from '../../styles/Porady.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
 import SearchBox from '../../components/SearchBox'
 

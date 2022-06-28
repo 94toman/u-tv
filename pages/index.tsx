@@ -12,6 +12,10 @@ const IndexPage = ({porady}) => (
     Regionální televize Ústeckého kraje. Každý den pro vás máme aktuální zprávy a zajímavé pořady z našeho kraje.
     </p>
 
+    <p>Nejnovější epizody</p>
+
+    <p>Tip týdne</p>
+
 
     <p>
       <Link href="/porady">
