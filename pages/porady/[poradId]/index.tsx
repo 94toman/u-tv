@@ -10,7 +10,7 @@ import { useState } from "react";
 import htmlToFormattedText from 'html-to-formatted-text';
 import Epizoda from '../../../components/cards/Epizoda';
 import SearchBox from '../../../components/SearchBox';
-import styles from '../../../styles/epizody.module.scss'
+import styles from '../../../styles/Epizody.module.scss'
 
 type IEpizoda = {
   datetime: number
