@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 const IndexPage = ({porady}) => (
+  // https://www.figma.com/file/Gyf7KGAHIjsoz16cQxpDBG/UTV-draft?node-id=0%3A1
   <>
     <Head>
       <title>Home | UTV</title>
