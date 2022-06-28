@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image';
 import styles from '../../styles/PoradCard.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
+import {truncateString} from '../functions';
 
 const Porad = ({porad}) => {
 
@@ -18,7 +19,7 @@ const Porad = ({porad}) => {
             </div>  
             <div className={styles.card_text}>
               <h3>{porad.title}</h3>
-              <p>{htmlToFormattedText(porad.lead)}</p>
+              <p>{htmlToFormattedText(truncateString(porad.lead, 380))}</p>
             </div>
           </div>      
         </div>

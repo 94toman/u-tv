@@ -7,8 +7,10 @@ import { useRouter } from 'next/router'
 import Porad from '../../../components/cards/Porad'
 import { IPorad } from '../../../interfaces'
 import { useState } from "react";
+import htmlToFormattedText from 'html-to-formatted-text';
 import Epizoda from '../../../components/cards/Epizoda';
-
+import SearchBox from '../../../components/SearchBox';
+import styles from '../../../styles/Epizody.module.scss'
 
 type IEpizoda = {
   datetime: number
@@ -26,7 +28,22 @@ type IEpizoda = {
 }
 
 
-const Epizody = ({epizody}) => {
+const Epizody = ({epizody, porad}) => {
+  const [search, setSearch] = useState('');
+  const filteredEpizody = ((epizody.videos) ?
+      epizody.videos.filter(epizoda => {
+        return (epizoda.title.toLowerCase().includes(search.toLowerCase()) || 
+        htmlToFormattedText(epizoda.description).toLowerCase().includes(search.toLowerCase()))
+      }
+  )
+  : 'Error'  // Error probably in fetching data
+  )
+  
+    
+  const searchChange = (event) => {
+    setSearch(event.target.value)
+  }
+
   const router = useRouter()
 
     return (
@@ -35,28 +52,20 @@ const Epizody = ({epizody}) => {
                 <title>Episody | UTV</title>
             </Head>
             <h2>Episody</h2>
-            {
-              (epizody.result === 'error')
-              ? <>                  
-                  <h3>Epizody nenalezeny</h3>
-                  <button 
-                      onClick={() => router.back()}> 
-                      Go BACK 
-                  </button>
-            
-                </>
+            <SearchBox searchChange={searchChange} placeholder='epizodu' />
 
+            {
+              (filteredEpizody === 'Error')
+              ? <h3>Epizody nenalezeny</h3>
               : <>
-                  <h3>{epizody.videos[0].programmetitle}</h3>
-                  <p>This is the Episody page</p>           
-                  <p>
-                    <button 
-                        onClick={() => router.back()}> 
-                        Go BACK 
-                    </button>
-                  </p>
+                  <h3>{porad.title}</h3>
+                  <div className={styles.leadWrapper}>
+                    <p className={styles.lead}>{porad.lead}</p>      
+                  </div>
+                       
+
                   { 
-                    epizody.videos.map((epizoda, i) => {
+                    filteredEpizody.map((epizoda, i) => {
                       if (epizoda.postermini) {
                         return (
                           <Epizoda key={i} epizoda={epizoda}/>
@@ -66,6 +75,13 @@ const Epizody = ({epizody}) => {
                   }                    
               </>              
             }
+
+            <p>
+              <button 
+                  onClick={() => router.back()}> 
+                  Go BACK 
+              </button>
+            </p>
            
             <p>
                 <Link href="/">
@@ -85,7 +101,13 @@ export async function getServerSideProps(context) {
     const res = await fetch(`https://data.zaktv.cz//videos.json?programme=${poradId}`);
     const data = await res.json();
 
+    const poradRes = await fetch(`https://data.zaktv.cz/programmes/${poradId}.json`);
+    const poradData = await poradRes.json();
+
   return {
-      props: {epizody: data} // will be passed to the page component as props
+      props: {
+        epizody: data,
+        porad: poradData.programme
+      } // will be passed to the page component as props
     }
   }

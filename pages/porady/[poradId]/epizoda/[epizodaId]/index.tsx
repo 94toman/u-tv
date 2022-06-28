@@ -89,13 +89,13 @@ export async function getServerSideProps(context) {
     const data = await res.json();
 
     //const resPorad = await fetch(`https://data.zaktv.cz/videos.json?programme=${poradId}`);
-    const resPorad = await fetch(`https://data.zaktv.cz/programmes/${poradId}.json`);
-    const dataPorad = await resPorad.json();
+    const poradRes = await fetch(`https://data.zaktv.cz/programmes/${poradId}.json`);
+    const poradData = await poradRes.json();
 
   return {
       props: {
         epizoda: data,
-        porad: dataPorad
+        porad: poradData
       } // will be passed to the page component as props
     }
   }

@@ -30,9 +30,12 @@
             font-size: 1.5rem;
         }
         p {
-            display: none;
+            //display: none;
             padding: 0 10px;
-            max-height: 96px;
+            max-height: 160px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
         }        
     }
     :hover * + .card_text p {

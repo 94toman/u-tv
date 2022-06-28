@@ -44,29 +44,6 @@ h3 {
 
 
 
-/* sidebar Nav */
-
-@media screen and (max-width: 800px) {
-  .menuNav {
-    overflow-y: scroll;
-    list-style: none;
-    position: fixed;
-    top: 62px;
-    background: rgb(255, 255, 255);
-    border-left: solid black 1px;
-    right: -1px;
-    bottom: 0;
-    height: 100vh;
-    width: 0;
-    overflow: hidden;
-    max-width: 250px;
-    z-index: 8;
-  }  
-  .showMobileMenu {
-    width: 100%;
-  }
-}
-
 
 
   

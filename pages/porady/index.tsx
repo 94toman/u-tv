@@ -7,17 +7,31 @@ import Porad from '../../components/cards/Porad'
 import { IPorad } from '../../interfaces'
 import { useState } from "react";
 import styles from '../../styles/Porad.module.scss';
+import htmlToFormattedText from 'html-to-formatted-text';
+import SearchBox from '../../components/SearchBox'
 
 const Porady = ({porady}) => {
+    const [search, setSearch] = useState('');
+    const filteredPorady = porady.filter(porad => {
+      return (porad.title.toLowerCase().includes(search.toLowerCase()) || 
+      htmlToFormattedText(porad.lead).toLowerCase().includes(search.toLowerCase()))
+    })
+    
+    const searchChange = (event) => {
+      setSearch(event.target.value)
+    }
+
     return (
         <div>
             <Head>
                 <title>Pořady | UTV</title>
             </Head>
             <h2>Pořady</h2>
+            <SearchBox searchChange={searchChange} placeholder='pořad' />
+
             <p>This is the Pořady page</p>
             {
-              porady.map((porad, i) => {
+              filteredPorady.map((porad, i) => {
                 if (porad.logo) {
                   return (
                       
