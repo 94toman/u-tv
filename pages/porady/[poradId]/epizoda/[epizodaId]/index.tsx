@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import htmlToFormattedText from "html-to-formatted-text";
-import styles from '../../../../../styles/Epizoda.module.scss'
+import styles from '../../../../../styles/epizoda.module.scss'
 import dynamic from 'next/dynamic'
 const Player = dynamic(() => import('../../../../../components/Player'), {
   ssr: false,

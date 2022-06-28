@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link'
 import logo from './utv_logo.png';
-import styles from '../../styles/Navbar.module.scss';
+import styles from '../../styles/components/Layout/Navbar.module.scss';
 import { NavLink } from '../NavLink';
 
 import { MdClose } from "react-icons/md"
@@ -60,7 +60,7 @@ const Navbar = () => {
                   </Link>
               </div>
               {/* Displaying and hiding mobile menu */}
-              <nav className={`menuNav ${navbarOpen ? " showMobileMenu" : ""}`}>
+              <nav className={`menuNav `}>
                 {/* Rest of the menu is the same for PC and mobile*/}
                   <NavLink exact href="/" onClick={() => closeMenu()}>
                     Home
@@ -68,12 +68,13 @@ const Navbar = () => {
                   <NavLink exact href="/porady" onClick={() => closeMenu()}>
                     Pořady
                   </NavLink>
-                  <NavLink exact href="/kontakt" onClick={() => closeMenu()}>
-                    Kontakt
-                  </NavLink>            
                   <NavLink exact href="/naladit" onClick={() => closeMenu()}>
                     Jak naladit
                   </NavLink>
+                  <NavLink exact href="/kontakt" onClick={() => closeMenu()}>
+                    Kontakt
+                  </NavLink>            
+
               </nav>
             </div>
 

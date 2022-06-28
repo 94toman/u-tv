@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import styles from '../styles/components/NavLink.module.scss'
 
 // https://jasonwatmore.com/post/2021/06/01/next-js-navlink-component-example-with-active-css-class
 
@@ -20,7 +21,7 @@ function NavLink({ href, exact, children, ...props }) {
     const isActive = exact ? pathname === href : pathname.startsWith(href);
 
     if (isActive) {
-        props.className += ' active';
+        props.className += ` ${styles.active}`;
     }
 
     return (

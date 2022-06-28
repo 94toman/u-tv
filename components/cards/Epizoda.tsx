@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import Image from 'next/image';
-import styles from '../../styles/EpizodaCard.module.scss';
+import styles from '../../styles/components/cards/card.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
 
 const Epizoda = ({epizoda}) => {

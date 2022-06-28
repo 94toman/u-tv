@@ -1,6 +1,6 @@
 import loading from './loading.gif';
 import Image from 'next/image'
-import styles from '../../styles/Loading.module.scss'
+import styles from '../../styles/components/Loading.module.scss'
 
 const PageLoader = () => {
     return (

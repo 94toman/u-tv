@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import Image from 'next/image';
-import styles from '../../styles/PoradCard.module.scss';
+import styles from '../../styles/components/cards/card.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
 import {truncateString} from '../functions';
 

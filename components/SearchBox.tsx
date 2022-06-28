@@ -1,13 +1,15 @@
 import React from "react";
+import styles from '../styles/components/SearchBox.module.scss'
 
 const SearchBox = ({searchChange, placeholder}) => {
     return (
-        <div>
+        <div className={styles.wrapper}>
             <input 
                 type="search" 
                 placeholder={`Vyhledat ${placeholder}`} 
-                className="ba b--green br2 bw1 pa2 mb2"
-                onChange={searchChange}/>
+                onChange={searchChange}
+                title="Vyhledávání podle názvu a popisku"
+                />
         </div>
     );
 }

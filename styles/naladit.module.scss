@@ -1,0 +1,30 @@
+.wrapper {
+    padding: 20px 100px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+    .tab {
+        background-color: rgb(206, 206, 206);
+        padding: 40px;
+        margin: 0 1px;
+        cursor: pointer;
+    }
+    .active {
+        margin-top: -10px;
+        background-color: rgb(243, 243, 243);
+    }
+
+
+}
+
+.content {
+    
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    min-height: 300px;
+
+    p, li {
+        text-align: left;
+    }
+}

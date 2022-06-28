@@ -27,23 +27,17 @@ h2 {
 
 h3 {
   font-size: 40px;
+  margin: 20px 0 10px 0;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.active {
-  background-color: #ffca05;
-  color: white !important;
+input {
+  padding: 0.5rem;
+  border-width: 0.125rem;
+  border-radius: 0.25rem;
+  border-color: #ffca05;
+  border-style: solid;
 }
-
-
-
-
-
-
-
-
-
-  
