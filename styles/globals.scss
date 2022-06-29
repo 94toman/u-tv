@@ -1,55 +1,55 @@
 html,
 body {
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    text-align: center;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+		Helvetica Neue, sans-serif;
+	text-align: center;
 }
 
 $hover-color: red;
 a {
-  color: inherit;
-  text-decoration: none;
-  &:hover {
-    color: $hover-color;
-  }
+	color: inherit;
+	text-decoration: none;
+	&:hover {
+		color: $hover-color;
+	}
 }
 
 .bold {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 h1 {
-  font-size: 80px;
+	font-size: 80px;
 }
 h2 {
-  text-align: left;
-  font-size: 40px;
-  margin: 20px 0 10px 0;
-  color: #ffca05;
-  text-transform:uppercase;
+	text-align: left;
+	font-size: 40px;
+	margin: 20px 0 10px 0;
+	color: #ffca05;
+	text-transform: uppercase;
 }
 
 h3 {
-  font-size: 40px;
-  margin: 20px 0 10px 0;
+	font-size: 40px;
+	margin: 20px 0 10px 0;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .active {
-  background-color: #ffca05;
-  color: white !important;
+	background-color: #ffca05;
+	color: white !important;
 }
 
 input {
-  padding: 0.5rem;
-  border-width: 0.125rem;
-  border-radius: 0.25rem;
-  border-color: #ffca05;
-  border-style: solid;
+	padding: 0.5rem;
+	border-width: 0.125rem;
+	border-radius: 0.25rem;
+	border-color: #ffca05;
+	border-style: solid;
 }

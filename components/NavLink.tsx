@@ -1,34 +1,32 @@
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import styles from '../styles/components/NavLink.module.scss'
+import { useRouter } from "next/router";
+import Link from "next/link";
+import PropTypes from "prop-types";
+import styles from "../styles/components/NavLink.module.scss";
 
 // https://jasonwatmore.com/post/2021/06/01/next-js-navlink-component-example-with-active-css-class
 
 export { NavLink };
 
 NavLink.propTypes = {
-    href: PropTypes.string.isRequired,
-    exact: PropTypes.bool
+	href: PropTypes.string.isRequired,
+	exact: PropTypes.bool,
 };
 
 NavLink.defaultProps = {
-    exact: false
+	exact: false,
 };
 
 function NavLink({ href, exact, children, ...props }) {
-    const { pathname } = useRouter();
-    const isActive = exact ? pathname === href : pathname.includes(href);
+	const { pathname } = useRouter();
+	const isActive = exact ? pathname === href : pathname.includes(href);
 
-    if (isActive) {
-        props.className = 'active';
-    }
+	if (isActive) {
+		props.className = "active";
+	}
 
-    return (
-        <Link href={href}>
-            <a {...props}>
-                {children}
-            </a>
-        </Link>
-    );
+	return (
+		<Link href={href}>
+			<a {...props}>{children}</a>
+		</Link>
+	);
 }

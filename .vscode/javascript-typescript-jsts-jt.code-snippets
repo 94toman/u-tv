@@ -1,0 +1,1004 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1')",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "console.log text": {
+    "prefix": "clt",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["console.log(`$1`$2)"],
+    "description": "Logs text to the console"
+  },
+  "console.log blank": {
+    "prefix": "clb",
+    "body": ["console.log${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "console.warn": {
+    "prefix": "clw",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["console.warn(`$1`$2)"],
+    "description": "Logs warning text to the console"
+  },
+  "react function component": {
+    "prefix": "rfc",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": [
+      "import React from \"react\";",
+      "import { createStyles, makeStyles, Theme } from \"@material-ui/core\";",
+      "",
+      "const use${1:${TM_FILENAME/.[^.]+$//}}Styles = makeStyles((theme: Theme) => createStyles({",
+      "",
+      "}))",
+      "",
+      "interface ${1:${TM_FILENAME/.[^.]+$//}}Props {",
+      "${2:}",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME/.[^.]+$//}}: React.FunctionComponent<${1:${TM_FILENAME/.[^.]+$//}}Props> = (",
+      "  props: ${1:${TM_FILENAME/.[^.]+$//}}Props",
+      ") => {",
+      "  const classes = use${1:${TM_FILENAME/.[^.]+$//}}Styles();",
+      "  ${0:}",
+      "  return <h1>this is ${TM_FILENAME} speaking</h1>;",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME/.[^.]+$//}}"
+    ]
+  },
+  "react function component no props": {
+    "prefix": "rfcnp",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": [
+      "import React from \"react\";",
+      "import { makeStyles, createStyles } from \"@material-ui/core\";",
+      "",
+      "const use${1:${TM_FILENAME/.[^.]+$//}}Styles = makeStyles((theme) => createStyles({",
+      "",
+      "}))",
+      "",
+      "const ${1:${TM_FILENAME/.[^.]+$//}}: React.FunctionComponent = (",
+      ") => {",
+      "  const classes = use${1:${TM_FILENAME/.[^.]+$//}}Styles();",
+      "  ${0:}",
+      "  return <h1>this is ${TM_FILENAME} speaking</h1>;",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME/.[^.]+$//}}"
+    ]
+  },
+  "react function component styles": {
+    "prefix": "rfcs",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": [
+      "import { makeStyles, createStyles } from \"@material-ui/core\";",
+      "",
+      "export const use${1:${TM_FILENAME/.[^.]+$//}}Styles = makeStyles((theme) => createStyles({",
+      "",
+      "}))",
+      "",
+      "const classes = use${1:${TM_FILENAME/.[^.]+$//}}Styles()"
+    ]
+  },
+  "className styles snippet": {
+    "prefix": "clas",
+    "body": ["className={styles.$0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "className styles snippet2": {
+    "prefix": "cla",
+    "body": ["className={styles.$0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "theme spacing": {
+    "prefix": "tsp",
+    "body": ["theme.spacing($0)"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "export": {
+    "prefix": "ex",
+    "body": ["export"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "material media query": {
+    "prefix": "mmq",
+    "body": ["[theme.breakpoints.${1:down}('${2:sm}')]: {", "${0}", "},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "export default": {
+    "prefix": "exd",
+    "body": ["export default "],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "setState": {
+    "prefix": "ss",
+    "body": ["this.setState({ ...this.state, ${1:} });"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "export default function": {
+    "prefix": "edf",
+    "body": ["export default function"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react class component": {
+    "prefix": "rcc",
+    "body": [
+      "interface ${1:MyComp}State {}",
+      "",
+      "class ${1:MyComp} extends React.Component<{}, ${1:MyComp}State> {",
+      "  constructor(props) {",
+      "    super(props);",
+      "    this.state = {};",
+      "  }",
+      "",
+      "  render() {",
+      "    return (",
+      "      ${0}",
+      "    );",
+      "  }",
+      "}"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "Object.keys": {
+    "prefix": "oks",
+    "body": ["Object.keys(${1})${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "document query selector": {
+    "prefix": "dqs",
+    "body": ["document.querySelector(${1:})${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "jsx style tag": {
+    "prefix": "jscss",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["<style jsx>{`", "  $0", "`}</style>"],
+    "description": "Style tag to use in jsx"
+  },
+  "php test": {
+    "prefix": "phpt",
+    "scope": "php",
+    "body": ["echo(\"woof\")"],
+    "description": "Logs text to the console"
+  },
+  "console.error": {
+    "prefix": "cle",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["console.error(`$0`)"],
+    "description": "Logs an error to the console"
+  },
+  "load dotenv safe": {
+    "prefix": "dot",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["require('dotenv-safe').config();"],
+    "description": "Loads dotenv config"
+  },
+  "typescript ignore": {
+    "prefix": "tsi",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["// @ts-ignore"],
+    "description": "Ignores the following line in typescript"
+  },
+  "eslint disable line": {
+    "prefix": "edl",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["// eslint-disable-line"],
+    "description": "Ignore errors in the preceding line"
+  },
+  "eslint disable": {
+    "prefix": "eda",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["/* eslint-disable */"],
+    "description": "Disables eslint completely until an enable comment is set"
+  },
+  "eslint enable": {
+    "prefix": "eea",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["/* eslint-enable */"],
+    "description": "Enables eslint completely after disabling it."
+  },
+  "eslint disable next line": {
+    "prefix": "ednl",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["// eslint-disable-next-line"],
+    "description": "Ignore errors in the next line"
+  },
+  "@typescript-eslint/": {
+    "prefix": "tses",
+    "body": ["@typescript-eslint/"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "console.log variable": {
+    "prefix": "clv",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["console.log($0);"],
+    "description": "Logs variable to the console"
+  },
+  "why is node running": {
+    "prefix": "why",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["import whyIsNodeRunning = require('why-is-node-running');"],
+    "description": "Import why-is-node-running package"
+  },
+  "typescript koa middleware": {
+    "prefix": "kmw",
+    "scope": "typescript,typescriptreact",
+    "body": [
+      "import { IMiddleware } from 'koa-router';",
+      "",
+      "const ${1:functionName}: IMiddleware = async (ctx, next) => {",
+      "  ${0}",
+      "  await next();",
+      "}",
+      "",
+      "export default ${1:functionName};",
+      ""
+    ],
+    "description": "Middleware function to be used by koa app.use"
+  },
+  "type Promise": {
+    "prefix": "prm",
+    "scope": "typescript,typescriptreact",
+    "body": ["Promise<${1:void}>"]
+  },
+  "New line in template string": {
+    "prefix": "tsn",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["` +\n`"],
+    "description": "Creates a new line for a JavaScript template string"
+  },
+  "Quoted variable in template string": {
+    "prefix": "tsv",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["'${${1:varname}}'"],
+    "description": "Quoted variable inside a JavaScript template string"
+  },
+  "JS Doc block": {
+    "prefix": "jsd",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["/**", " * ${0}", " */"],
+    "description": "Inserts a blank js comment block"
+  },
+  "JS Doc block – param": {
+    "prefix": "jsdp",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["@param {${1:string}} ${2:} ${3:whatever the param does}"],
+    "description": "Inserts a js param comment"
+  },
+  "JS Doc block – return": {
+    "prefix": "jsdr",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["@return {${1:string}} ${2:whatever the param does}"],
+    "description": "Inserts a js reuturn comment"
+  },
+  "arrow function": {
+    "prefix": "af",
+    "body": ["${1:()} => {\n  $0\n}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "arrow function assignment": {
+    "prefix": "afa",
+    "body": ["const ${1:leName} = (${2:}): ${0:} => "],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "async arrow function": {
+    "prefix": "aaf",
+    "body": ["async ${1:()} => {\n  $0\n}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "async arrow function assignment": {
+    "prefix": "aafa",
+    "body": ["const ${1:myFunction} = async (${3}): Promise<${4}> => $0"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "common logger": {
+    "prefix": "cml",
+    "body": ["commonLogger.${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "common logger debug": {
+    "prefix": "cmld",
+    "body": ["commonLogger.debug(${0})"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "log info": {
+    "prefix": "li",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["logger.info({$1}, `$2`)$0"],
+    "description": "logs an info"
+  },
+  "log warning": {
+    "prefix": "lw",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["logger.warn({$1}, `$2`)$0"],
+    "description": "logs a warning"
+  },
+  "log success": {
+    "prefix": "ls",
+    "body": ["logger.success(`$1`$2)$0"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "log error": {
+    "prefix": "le",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["logger.error($1, `$2`)$0"],
+    "description": "Logs an error"
+  },
+  "Async javascript function": {
+    "prefix": "asf",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["async function ${1:myFunc}($2) {\n$0\n}"],
+    "description": "Creates an async function using traditional syntax"
+  },
+  "Foreach callback with arrow function": {
+    "prefix": "afe",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["forEach( ${1:element} => {\n$0\n})"]
+  },
+  "Function, classical notation": {
+    "prefix": "fun",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["function ${1:myFunction}($2)$3 {\n$0\n}"]
+  },
+  "Throw (new) Error": {
+    "prefix": "tne",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["throw Error(`$1`)$0"]
+  },
+  "It – mocha test case": {
+    "prefix": "itt",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["it('${1:should do something}', async () => {\n  $0\n});"]
+  },
+  "Promise.all()": {
+    "prefix": "pra",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["Promise.all($0)"]
+  },
+  "Mocha test file": {
+    "prefix": "testf",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": [
+      "import { assert } from 'chai';",
+      "",
+      "declare const describe: Mocha.SuiteFunction;",
+      "declare const it: Mocha.TestFunction;",
+      "",
+      "describe('${1:test description}', () => {",
+      "  ${0:}",
+      "});",
+      "",
+      "export default false;",
+      ""
+    ]
+  },
+  "logger.debug": {
+    "prefix": "ld",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["logger.debug({$1}, `$2`)$0"]
+  },
+  "debugger": {
+    "prefix": "dbg",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["debugger;"]
+  },
+  "require a library": {
+    "prefix": "rec",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["const ${1:varname} = require('${2:path/}${3:varname}')$0"]
+  },
+  "full module import": {
+    "prefix": "fuli",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["import ${1:*} as ${2:varname} from '${3:module}'"]
+  },
+  "return": {
+    "prefix": "rt",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["return"]
+  },
+  "return new promise": {
+    "prefix": "rnp",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": ["return new Promise((resolve, reject) => {", "${1:}", "});"]
+  },
+  "process.exit": {
+    "prefix": "pe",
+    "body": ["process.exit(${1:1});${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "import assert": {
+    "prefix": "impa",
+    "body": ["import { assert } from 'chai';"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "import axios": {
+    "prefix": "impax",
+    "body": ["import Axios from 'axios';${0:}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "querySelectorAll": {
+    "prefix": "qsa",
+    "body": ["document.querySelectorAll(${1:})${0:}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "querySelector Single": {
+    "prefix": "qss",
+    "body": ["document.querySelector(${1:})${0:}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "interface": {
+    "prefix": "itf",
+    "body": ["interface ${1:MyInterface} {", "${0}", "}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "Type array": {
+    "prefix": "ta",
+    "body": ["Array<${1:string}>${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "function module sync": {
+    "prefix": "fms",
+    "body": [
+      "export function ${TM_FILENAME/.[^.]+$//}(${1:}): ${2:void} {",
+      "  ${0:}",
+      "}",
+      ""
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "function module async": {
+    "prefix": "fma",
+    "body": [
+      "export async function ${TM_FILENAME/.[^.]+$//}(${1:}): Promise<${2:void}> {",
+      "  ${0:}",
+      "}",
+      ""
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "tclog": {
+    "prefix": "tcl",
+    "body": ["tclog(`${1:}`);${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react useState": {
+    "prefix": "rus",
+    "body": [
+      "const [${1:}, ${1/(.*)/set${1:/capitalize}/}] = useState<${2:}>(${3:});${0}"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react useTranslation": {
+    "prefix": "rut",
+    "body": ["const { t } = useTranslation();"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react use boolean": {
+    "prefix": "rub",
+    "body": [
+      "const { state: ${1:state}, on: ${1/(.*)/set${1:/capitalize}/}True, off: ${1/(.*)/set${1:/capitalize}/}False, toggle: ${1/(.*)/toggle${1:/capitalize}/}, set: ${1/(.*)/set${1:/capitalize}/} } = useBooleanState(${6:false});",
+      "${0}"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react use spring": {
+    "prefix": "rusp",
+    "body": [
+      "import { animated, config, useSpring } from 'react-spring';",
+      "const styles = useSpring({",
+      "config: { ...config.gentle },",
+      "from: {",
+      "opacity: 0,",
+      "},",
+      "to: {",
+      "opacity: isShowing ? 1 : 0,",
+      "},",
+      "});",
+      "<animated.div style={styles}></animated.div>"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react useEffect": {
+    "prefix": "rue",
+    "body": ["useEffect(() => {${0}}, []);"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "[m]ake[S]tyles – with [t]heme": {
+    "prefix": "mst",
+    "body": [
+      "const use${1:}Styles = makeStyles((theme: Theme) => createStyles({",
+      "  ${2:}",
+      "}));${0:}"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "[m]ake[S]tyles – [p]lain": {
+    "prefix": "msp",
+    "body": ["const useStyles = makeStyles({", "  ${1:}", "});${0:}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "useStyles": {
+    "prefix": "uss",
+    "body": ["const classes = useStyles(${1:});${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "enum column": {
+    "prefix": "enm",
+    "body": ["${1/(.)/${1:/upcase}/} = \"${1:}\",", "${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "flex center": {
+    "prefix": "flxc",
+    "body": [
+      "display: 'flex',",
+      "flexDirection: '${1:row}',",
+      "justifyContent: 'center',",
+      "alignItems: 'center',"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "padding right": {
+    "prefix": "pr",
+    "body": ["paddingRight: '${1:}',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "padding 0": {
+    "prefix": "p0",
+    "body": ["padding: 0,${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "margin 0": {
+    "prefix": "m0",
+    "body": ["margin: 0,${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui grid container": {
+    "prefix": "mugc",
+    "body": ["<Grid container>${0}</Grid>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui grid item": {
+    "prefix": "mugi",
+    "body": ["<Grid item>${0}</Grid>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui grid": {
+    "prefix": "mug",
+    "body": ["<Grid>${0}</Grid>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "padding left": {
+    "prefix": "pl",
+    "body": ["paddingLeft: '${1:}',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "padding bottom": {
+    "prefix": "pb",
+    "body": ["paddingBottom: '${1:}',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "padding top": {
+    "prefix": "pt",
+    "body": ["paddingTop: '${1:}',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "borderRight": {
+    "prefix": "br",
+    "body": ["borderRight: '${1:}',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "marginTop": {
+    "prefix": "mt",
+    "body": ["marginTop: ${0:},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "marginLeft": {
+    "prefix": "ml",
+    "body": ["marginLeft: ${0:},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "marginRight": {
+    "prefix": "mr",
+    "body": ["marginRight: ${0:},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "marginBottom": {
+    "prefix": "mb",
+    "body": ["marginBottom: ${0:},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "width100": {
+    "prefix": "w100",
+    "body": ["width: '100%',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "height100": {
+    "prefix": "h100",
+    "body": ["height: '100%',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "width": {
+    "prefix": "wd",
+    "body": ["width: '${1:100%}',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "flexDirection": {
+    "prefix": "fd",
+    "body": ["flexDirection: '${1:column}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "display block": {
+    "prefix": "db",
+    "body": ["display: '${1:block}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "position relatvie": {
+    "prefix": "psor",
+    "body": ["position: 'relative',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "display none": {
+    "prefix": "dn",
+    "body": ["display: 'none',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "backgroundColor": {
+    "prefix": "bgc",
+    "body": ["backgroundColor: '${1:}',${0:}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "position absolute": {
+    "prefix": "posa",
+    "body": ["position: 'absolute',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "position relative": {
+    "prefix": "posr",
+    "body": ["position: 'relative',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "position fixed": {
+    "prefix": "posf",
+    "body": ["position: 'fixed',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "textAlign left": {
+    "prefix": "tal",
+    "body": ["textAlign: 'left',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "textAlign Right": {
+    "prefix": "tar",
+    "body": ["textAlign: 'right',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "flex": {
+    "prefix": "flx",
+    "body": [
+      "display: 'flex',",
+      "flexDirection: '${1:column}',",
+      "justifyContent: '${2:flex-start}',",
+      "alignItems: '${3:center}',"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "textAlign center": {
+    "prefix": "tac",
+    "body": ["textAlign: 'center',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "fontWeight: bold": {
+    "prefix": "fwb",
+    "body": ["fontWeight: 'bold',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "display: inline-block": {
+    "prefix": "dib",
+    "body": ["display: 'inline-block',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "fontWeight normal": {
+    "prefix": "fwn",
+    "body": ["fontWeight: 'normal',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui-typography": {
+    "prefix": "typo",
+    "body": ["<Typography variant='${1:body1}'>${0:}</Typography>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui-box": {
+    "prefix": "mubx",
+    "body": ["<Box ${1}>${0:}</Box>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "fontStyle normal": {
+    "prefix": "fsn",
+    "body": ["fontStyle: 'normal',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "fontStyle italic": {
+    "prefix": "fsi",
+    "body": ["fontStyle: 'italic',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "fontStyle bold": {
+    "prefix": "fsb",
+    "body": ["fontStyle: 'bold',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "textDecoration none": {
+    "prefix": "tdn",
+    "body": ["textDecoration: 'none',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "opacity": {
+    "prefix": "opa",
+    "body": ["opacity: ${1:},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "fragment": {
+    "prefix": "fgm",
+    "body": ["<Fragment>${0}</Fragment>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "isMobile": {
+    "prefix": "ism",
+    "body": [
+      "const isMobile = useMediaQuery(theme.breakpoints.${1:down}('${2:sm}'));${0}"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react useRef": {
+    "prefix": "rur",
+    "body": ["useRef(${0}).current;"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "useTheme": {
+    "prefix": "ust",
+    "body": ["const theme = useTheme();${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "maxWidth": {
+    "prefix": "mw",
+    "body": ["maxWidth: '${1:100%}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "maxHeight": {
+    "prefix": "mh",
+    "body": ["maxHeight: '${1:100%}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "justifyContent": {
+    "prefix": "jc",
+    "body": ["justifyContent: '${1:flex-start}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "alignItems": {
+    "prefix": "ai",
+    "body": ["alignItems: '${1:center}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "all zero": {
+    "prefix": "all0",
+    "body": ["top: 0,", "bottom: 0,", "right: 0,", "left: 0,"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "zIndex": {
+    "prefix": "zi",
+    "body": ["zIndex: ${0:},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "transition plain": {
+    "prefix": "trsp",
+    "body": ["transition: '${1:all} ${2:0.2}s ${3:ease-in-out}',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "listStyle none": {
+    "prefix": "lsn",
+    "body": ["listStyle: 'none',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui button": {
+    "prefix": "mub",
+    "body": [
+      "import Button from '@mui/material/Button';",
+      "<Button variant='${1:outlined}' onClick={${2:test}}>${3:click}</Button>"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "ava test": {
+    "prefix": "avat",
+    "body": [
+      "import test from 'ava';",
+      "",
+      "{",
+      "  const name = '${1:The nice test}';",
+      "",
+      "  test(name, async (t) => {",
+      "    t.fail(`\\${name} not implemented yet.`);${0:}",
+      "  });",
+      "}",
+      ""
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "flexGrow": {
+    "prefix": "fg",
+    "body": ["flexGrow: ${1:1},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "cursor pointer": {
+    "prefix": "cup",
+    "body": ["cursor: 'pointer',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "arrow function export": {
+    "prefix": "arfe",
+    "body": [
+      "export const ${1:${TM_FILENAME/.[^.]+$//}} = (${3:params}): ${0:ReturnType} => "
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "const export": {
+    "prefix": "cste",
+    "body": ["export const ${1:${TM_FILENAME/.[^.]+$//}}: ${0:ReturnType} = "],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "async arrow function export": {
+    "prefix": "aarfe",
+    "body": [
+      "export const ${1:${TM_FILENAME/.[^.]+$//}} = async (${3:params}): Promise<${0:}> => "
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react useCallback": {
+    "prefix": "ruc",
+    "body": ["useCallback((${1:paramsForTheCallback}) => {${0:}}, []);"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react useMemo": {
+    "prefix": "rum",
+    "body": ["useMemo(() => ${2:}, [${3:}]);"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "react fragment": {
+    "prefix": "frg",
+    "body": ["<>", "$0", "</>"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "json stringify": {
+    "prefix": "jss",
+    "body": ["JSON.stringify(${0})"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "json parse": {
+    "prefix": "jsp",
+    "body": ["JSON.parse(${0})"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "map object entries": {
+    "prefix": "moe",
+    "body": ["Object.entries(${1:}).map(([${2:key}, ${3:value}]) => {${0:}})"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "const": {
+    "prefix": "ct",
+    "body": ["const "],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "textTransform: uppercase": {
+    "prefix": "ttu",
+    "body": ["textTransform: 'uppercase',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "JSX.Element": {
+    "prefix": "jxe",
+    "body": ["JSX.Element"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "mui transition": {
+    "prefix": "trs",
+    "body": [
+      "transition: theme.transitions.create([\"${1:background}\"], {",
+      "duration: theme.transitions.duration.${2:standard},",
+      "easing: theme.transitions.easing.${3:easeInOut},",
+      "}),"
+    ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "font size": {
+    "prefix": "fz",
+    "body": ["fontSize: ${1:theme.typography.}${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "Array.from": {
+    "prefix": "afro",
+    "body": ["Array.from({ length: ${1:10} }).${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "then catch finally": {
+    "prefix": "tcf",
+    "body": [".then(res => {}).catch(err => {}).finally(() => {})"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "export interface": {
+    "prefix": "exi",
+    "body": ["export interface ${1:InterfaceName} {", "${0}", "}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "named import": {
+    "prefix": "ni",
+    "body": ["import { ${1} } from '${0}'"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "default import": {
+    "prefix": "di",
+    "body": ["import ${1} from '${0}'"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "import react": {
+    "prefix": "impr",
+    "body": ["import React from 'react';"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "text decoration": {
+    "prefix": "td",
+    "body": ["textDecoration: ${0},"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "try catch": {
+    "prefix": "trc",
+    "body": ["try {", "  $1", "} catch (${2:err}: unknown) {", "$0", "}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "catch-rethrow": {
+    "prefix": "car",
+    "body": [".catch(rethrow)"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "translated text": {
+    "prefix": "tt",
+    "body": ["{t('${1}')}${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "text-decoration underline": {
+    "prefix": "tdu",
+    "body": ["textDecoration: 'underline',"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "export enum": {
+    "prefix": "een",
+    "body": ["export enum ${1:} {", "${0}", "}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "overflow hidden": {
+    "prefix": "oh",
+    "body": ["overflow: 'hidden',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "pointer-events: none": {
+    "prefix": "pen",
+    "body": ["pointerEvents: 'none',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "pointer-events: all": {
+    "prefix": "pea",
+    "body": ["pointerEvents: 'all',${0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  }
+}
