@@ -49,17 +49,14 @@ const Porady = ({ porady }) => {
 
 export default Porady;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	const res = await fetch(`https://data.zaktv.cz/programmes.json`);
 	const data = await res.json();
 
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
-
 	return {
-		props: { porady: data.programmes }, // will be passed to the page component as props
+		props: {
+			porady: data.programmes,
+		}, // will be passed to the page component as props
+		revalidate: 3600,
 	};
 }
