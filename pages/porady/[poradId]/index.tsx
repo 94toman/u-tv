@@ -106,8 +106,6 @@ const Epizody = ({ epizody, porad }) => {
 	);
 };
 
-export default Epizody;
-
 export async function getStaticPaths() {
 	const res = await fetch('https://data.zaktv.cz/programmes.json');
 	const data = await res.json();
@@ -133,3 +131,5 @@ export async function getStaticProps({ params }) {
 		}, // will be passed to the page component as props
 	};
 }
+
+export default Epizody;
