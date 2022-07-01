@@ -15,6 +15,29 @@
   // 	],
   // 	"description": "Log output to console"
   // }
+
+  "Image with properties": {
+    "prefix": "<Ima",
+    "body": [
+      "<Image ",
+      "  src={`${porad.$0}`}",
+      "  layout='intrinsic'",
+      "  width={}",
+      "  height={}/>",
+      "  alt={`${}`}",
+  ],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "className styles snippet": {
+    "prefix": "clas",
+    "body": ["className={styles.$0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
+  "className styles snippet2": {
+    "prefix": "cla",
+    "body": ["className={styles.$0}"],
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  },
   "console.log text": {
     "prefix": "clt",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
@@ -91,16 +114,6 @@
       "",
       "const classes = use${1:${TM_FILENAME/.[^.]+$//}}Styles()"
     ]
-  },
-  "className styles snippet": {
-    "prefix": "clas",
-    "body": ["className={styles.$0}"],
-    "scope": "javascript,typescript,javascriptreact,typescriptreact"
-  },
-  "className styles snippet2": {
-    "prefix": "cla",
-    "body": ["className={styles.$0}"],
-    "scope": "javascript,typescript,javascriptreact,typescriptreact"
   },
   "theme spacing": {
     "prefix": "tsp",

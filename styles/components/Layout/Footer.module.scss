@@ -1,5 +1,7 @@
+@use '../../abstracts' as *;
+
 .footer {
-	background-color: black;
+	background-color: $blackish;
 	background-image: url('./footer-background.png');
 	background-repeat: no-repeat;
 	background-position: right;

@@ -1,109 +1,105 @@
-
 // https://youtu.be/2t6y-bDIe0Y?t=454
 
+@use '../../abstracts' as *;
 
-  .header {
-    background-color: white;
-    border-bottom: 1px solid black;
-    display: flex;
-    align-items: center;
+.header {
+	background-color: white;
+	border-bottom: 1px solid black;
+	display: flex;
+	align-items: center;
 
-    .navContainer {
-      max-width: 800px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      padding: 0;
+	.navContainer {
+		max-width: 800px;
+		margin: auto;
+		display: flex;
+		align-items: center;
+		padding: 0;
 
-      .navBarLogoWrapper {
-        display: inline-block;
-        width: 89px;
-        cursor: pointer;
-      }
-      nav {      
-        // active - set in globals.scss
-        a {
-          position: relative;
-          display: inline-block;
-          color: black;
-          padding: 20px 40px;
-          margin: 0;
-          text-decoration: none;
-          text-transform: uppercase;
-          font-weight: bold;
-        }
-        :hover {
-          color: white;
-          background-color: #ffd333;
-        }
-      }
-    }
-  }
+		.navBarLogoWrapper {
+			display: inline-block;
+			width: 89px;
+			cursor: pointer;
+		}
+		nav {
+			// active - set in globals.scss
+			a {
+				position: relative;
+				display: inline-block;
+				color: black;
+				padding: 20px 40px;
+				margin: 0;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+			:hover {
+				color: white;
+				background-color: #ffd333;
+			}
+		}
+	}
+}
 
+// Mobile nav: https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
+.mobileNav {
+	display: none;
+}
 
-  // Mobile nav: https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
-  .mobileNav {
-    display: none;
-  }
+@media screen and (max-width: 800px) {
+	.mobileNav {
+		display: block;
+		margin-left: auto;
+		z-index: 10;
 
-  @media screen and (max-width: 800px) {
-    
+		button {
+			margin-right: 20px;
+			z-index: 10;
+			cursor: pointer;
+			background: transparent;
+			border: none;
+		}
+	}
 
-    .mobileNav {
-      display: block;
-      margin-left: auto;
-      z-index: 10;
+	.menuNav {
+		overflow-y: scroll;
+		list-style: none;
+		position: fixed;
+		top: 62px;
+		background: white;
+		border-left: solid black 1px;
+		right: -1px;
+		bottom: 0;
+		height: 100vh;
+		width: 0;
+		overflow: hidden;
+		max-width: 250px;
+		z-index: 8;
+	}
+	.showMobileMenu {
+		width: 100%;
+	}
 
+	.coverAll {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100vh;
+		z-index: 7 !important; //pouze Mobile menu je nad
+		&:hover {
+			background-color: rgba(0, 0, 0, 0) !important;
+		}
+	}
+	.showCoverAll {
+		width: 100vw;
+	}
 
-      button {
-        margin-right: 20px;
-        z-index: 10;
-        cursor: pointer;
-        background: transparent;
-        border: none;
-      }
-    }
-
-    .menuNav {
-      overflow-y: scroll;
-      list-style: none;
-      position: fixed;
-      top: 62px;
-      background: rgb(255, 255, 255);
-      border-left: solid black 1px;
-      right: -1px;
-      bottom: 0;
-      height: 100vh;
-      width: 0;
-      overflow: hidden;
-      max-width: 250px;
-      z-index: 8;
-    }  
-    .showMobileMenu {
-      width: 100%;
-    }
-
-    .coverAll {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100vh;
-      z-index: 7 !important; //pouze Mobile menu je nad
-      &:hover {
-        background-color: rgba(0, 0, 0, 0) !important;
-      }
-    }
-    .showCoverAll {
-      width: 100vw;
-    }
-
-    .header .navContainer {
-      margin: 0;
-      nav {
-        a {
-          display: block;
-        }
-      }
-    }
-  }
+	.header .navContainer {
+		margin: 0;
+		nav {
+			a {
+				display: block;
+			}
+		}
+	}
+}

@@ -1,4 +1,6 @@
+@use '../abstracts' as *;
+
 .active {
-    background-color: #ffca05;
-    color: white !important;
-  }
+	background-color: $primary;
+	color: white !important;
+}

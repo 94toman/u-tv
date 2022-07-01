@@ -1,0 +1,13 @@
+// colors
+$primary: #ffca05;
+$hover: red;
+$blackish: #231f20;
+
+// breakpoints
+$phone: 768px;
+$container: 1200px;
+
+@mixin bla {
+	height: 300px;
+	width: 600px;
+}

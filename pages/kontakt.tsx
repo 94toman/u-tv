@@ -1,5 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
+import react, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
+import styles from '../styles/kontakt.module.scss';
 
 const KontaktPage = () => (
 	<>
@@ -7,6 +11,9 @@ const KontaktPage = () => (
 			<title>Kontakt | UTV</title>
 		</Head>
 		<h2>Kontakt</h2>
+		<div className={styles.row}>
+			<div className={styles.column}></div>
+		</div>
 		<p>This is the Kontakt page</p>
 
 		<p>

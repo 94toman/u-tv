@@ -1,14 +1,14 @@
+@use '../../abstracts' as *;
 
 // https://youtu.be/2t6y-bDIe0Y?t=454
 
-  .allButFooter {
-    min-height: calc(100vh - 60px);
-  }
+.allButFooter {
+	min-height: calc(100vh - 60px);
+}
 
-  .container {
-    margin: auto;
-    max-width: 1400px;
-    text-align:center;
-    padding: 0 5px;
-  }
-
+.container {
+	margin: auto;
+	max-width: $container;
+	text-align: center;
+	padding: 0 5px;
+}

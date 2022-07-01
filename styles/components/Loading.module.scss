@@ -1,8 +1,10 @@
-.center {
-    padding-top:20vh;
+@use '../abstracts' as *;
 
-    h2 {
-        text-align: center;
-        color: black;
-    }
+.center {
+	padding-top: 20vh;
+
+	h2 {
+		text-align: center;
+		color: black;
+	}
 }

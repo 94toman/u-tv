@@ -1,5 +1,46 @@
-.leadWrapper {
+@use './abstracts' as *;
+
+$heading-height: 400px;
+
+.heading {
+	position: relative;
+	.image {
+		display: block;
+		width: 60%;
+		height: $heading-height;
+		overflow: hidden;
+		z-index: 2;
+	}
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: $heading-height;
+		margin-top: -$heading-height;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0), 35%, $blackish 60%);
+		z-index: 8;
+		color: white;
+		text-align: right;
+		padding: 50px 50px 0 0;
+		.leadWrapper {
+			max-width: 400px;
+			margin: 0 0 0 auto;
+		}
+	}
+}
+
+/*.leadWrapper {
 	margin: auto;
 	max-width: 800px;
 	text-align: center;
+}*/
+
+/*@media (max-width: $phone) {
+	h2 {
+		text-align: left;
+		font-size: 40px;
+		margin: 20px 0 10px 0;
+		color: #ff0505;
+		text-transform: uppercase;
+	}
 }
+*/

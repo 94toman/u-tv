@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.wrapper {
+	margin: 5px 0 0 5px;
+	padding: 0 20px;
+	position: absolute;
+	font-weight: bold;
+	cursor: pointer;
+	z-index: 10;
+	background-color: rgba(88, 88, 88, 0.5);
+	border-radius: 1rem;
+	overflow: hidden;
+
+	.content p {
+		display: flex;
+		align-items: center;
+		color: white;
+		svg {
+			color: $primary;
+		}
+	}
+}

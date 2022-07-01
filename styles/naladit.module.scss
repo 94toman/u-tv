@@ -1,3 +1,5 @@
+@use './abstracts' as *;
+
 .wrapper {
 	padding: 20px 0 0;
 	display: grid;
@@ -12,7 +14,7 @@
 		border-top: $borderStyle;
 		border-right: $borderStyle;
 		border-left: $borderStyle;
-		border-bottom: solid 3px #ffca05;
+		border-bottom: solid 3px $primary;
 
 		.tabText {
 			text-transform: uppercase;
@@ -28,7 +30,7 @@
 	.active {
 		margin-top: -10px;
 		padding-top: 18px;
-		background-color: #ffca05;
+		background-color: $primary;
 		border: 0;
 		z-index: 5;
 	}
