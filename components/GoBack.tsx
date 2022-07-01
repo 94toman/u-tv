@@ -10,7 +10,7 @@ const GoBack = () => {
 			<div className={styles.wrapper} onClick={() => router.push('/porady') /*.back()*/}>
 				<div className={styles.content}>
 					<p>
-						<MdArrowBackIosNew font-size="1.8em" /> Zpět
+						<MdArrowBackIosNew fontSize="1.8em" /> Zpět
 					</p>
 				</div>
 			</div>
