@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './card.module.scss';
-import htmlToFormattedText from 'html-to-formatted-text';
 import { truncateString } from '../functions';
 
 const Epizoda = ({ epizoda }) => {

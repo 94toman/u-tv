@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/naladit.module.scss';
+import styles from './naladit.module.scss';
 import { Pozemni, Kabelove, Satelitni, Internetove } from '../components/NaladitCards';
 
 const NaladitPage = () => {

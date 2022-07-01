@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/kontakt.module.scss';
+import styles from './kontakt.module.scss';
 
 const KontaktPage = () => (
 	<>

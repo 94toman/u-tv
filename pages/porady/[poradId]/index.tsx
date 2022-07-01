@@ -4,13 +4,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Porad from '../../../components/cards/Porad';
-import GoBack from '../../../components/GoBack';
+import Porad from '../../../components/_Cards/Porad';
+import GoBack from '../../../components/_GoBack/GoBack';
 import { useState } from 'react';
 import htmlToFormattedText from 'html-to-formatted-text';
-import Epizoda from '../../../components/cards/Epizoda';
-import SearchBox from '../../../components/SearchBox';
-import styles from '../../../styles/Epizody.module.scss';
+import Epizoda from '../../../components/_Cards/Epizoda';
+import SearchBox from '../../../components/_SearchBox/SearchBox';
+import styles from './Epizody.module.scss';
 
 type IEpizoda = {
 	datetime: number;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import htmlToFormattedText from 'html-to-formatted-text';
-import styles from '../../../../../styles/Epizoda.module.scss';
+import styles from './Epizoda.module.scss';
 import dynamic from 'next/dynamic';
 const Player = dynamic(() => import('../../../../../components/Player'), {
 	ssr: false,
@@ -70,8 +70,6 @@ const Epizoda = ({ epizoda, porad }) => {
 	);
 };
 
-export default Epizoda;
-
 export async function getServerSideProps(context) {
 	const { poradId, epizodaId } = context.query;
 	const res = await fetch(`https://data.zaktv.cz/videos/${epizodaId}.json`);
@@ -88,3 +86,5 @@ export async function getServerSideProps(context) {
 		}, // will be passed to the page component as props
 	};
 }
+
+export default Epizoda;

@@ -3,13 +3,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import Porad from '../../components/cards/Porad';
+import Porad from '../../components/_Cards/Porad';
 import { IPorad } from '../../interfaces';
 import { useState } from 'react';
-import styles from '../../styles/Porady.module.scss';
+import styles from './Porady.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
-import SearchBox from '../../components/SearchBox';
-import GoBack from '../../components/GoBack';
+import SearchBox from '../../components/_SearchBox/SearchBox';
+import GoBack from '../../components/_GoBack/GoBack';
 
 const Porady = ({ porady }) => {
 	const [search, setSearch] = useState('');
@@ -47,8 +47,6 @@ const Porady = ({ porady }) => {
 	);
 };
 
-export default Porady;
-
 export async function getStaticProps() {
 	const res = await fetch(`https://data.zaktv.cz/programmes.json`);
 	const data = await res.json();
@@ -60,3 +58,5 @@ export async function getStaticProps() {
 		revalidate: 3600,
 	};
 }
+
+export default Porady;
