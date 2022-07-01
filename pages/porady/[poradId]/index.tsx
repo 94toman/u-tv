@@ -108,12 +108,22 @@ const Epizody = ({ epizody, porad }) => {
 
 export default Epizody;
 
-export async function getServerSideProps(context) {
-	const { poradId } = context.query;
-	const res = await fetch(`https://data.zaktv.cz//videos.json?programme=${poradId}`);
+export async function getStaticPaths() {
+	const res = await fetch('https://data.zaktv.cz/programmes.json');
 	const data = await res.json();
 
-	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${poradId}.json`);
+	const paths = data.programmes.map((porad) => ({
+		params: { poradId: porad.id.toString() },
+	}));
+
+	return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+	const res = await fetch(`https://data.zaktv.cz//videos.json?programme=${params.poradId}`);
+	const data = await res.json();
+
+	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${params.poradId}.json`);
 	const poradData = await poradRes.json();
 
 	return {

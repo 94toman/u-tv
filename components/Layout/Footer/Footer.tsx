@@ -5,7 +5,7 @@ import logo from './utv_logo-white.png';
 import socialFb from './socialIcons/fb.png';
 import socialIg from './socialIcons/ig.png';
 import socialMail from './socialIcons/mail.png';
-import styles from '../../styles/components/Layout/Footer.module.scss';
+import styles from './Footer.module.scss';
 import Image from 'next/image';
 
 const Footer = () => {

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styles from '../../styles/components/NavLink.module.scss';
+import styles from './NavLink.module.scss';
 
 // https://jasonwatmore.com/post/2021/06/01/next-js-navlink-component-example-with-active-css-class
 

@@ -1,4 +1,4 @@
-import styles from '../styles/components/GoBack.module.scss';
+import styles from './GoBack.module.scss';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { useRouter } from 'next/router';
 

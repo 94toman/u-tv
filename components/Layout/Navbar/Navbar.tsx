@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from './utv_logo.png';
-import styles from '../../styles/components/Layout/Navbar.module.scss';
+import logo from '../../../images/utv_logo.png';
+import styles from './Navbar.module.scss';
 import { NavLink } from './NavLink';
 
 import { MdClose } from 'react-icons/md';
