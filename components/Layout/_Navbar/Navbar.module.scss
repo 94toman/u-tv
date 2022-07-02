@@ -2,14 +2,24 @@
 
 @use '../../../styles/abstracts' as *;
 
+$navContainerWidth: 800px;
+
 .header {
 	background-color: white;
 	border-bottom: 1px solid black;
 	display: flex;
 	align-items: center;
 
+	.blackLine {
+		width: calc(50vw - $navContainerWidth/2 + 80px);
+		height: 61px;
+		background-color: black;
+		//overflow: hidden;
+		position: absolute;
+	}
+
 	.navContainer {
-		max-width: 800px;
+		max-width: $navContainerWidth;
 		margin: auto;
 		display: flex;
 		align-items: center;

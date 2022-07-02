@@ -22,6 +22,7 @@ const Navbar = () => {
 	return (
 		<>
 			<header className={styles.header}>
+				<div className={styles.blackLine}></div>
 				<div className={styles.navContainer}>
 					<div className={styles.navBarLogoWrapper}>
 						<Link href="/">
