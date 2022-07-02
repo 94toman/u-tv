@@ -70,13 +70,26 @@ const Epizoda = ({ epizoda, porad }) => {
 	);
 };
 
-export async function getServerSideProps(context) {
-	const { poradId, epizodaId } = context.query;
-	const res = await fetch(`https://data.zaktv.cz/videos/${epizodaId}.json`);
+export async function getStaticPaths() {
+	const res = await fetch('https://data.zaktv.cz/videos.json');
+	const data = await res.json();
+
+	const paths = data.videos.map((video) => ({
+		params: {
+			epizodaId: video.id.toString(),
+			poradId: video.programme.toString(),
+		},
+	}));
+
+	return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+	const res = await fetch(`https://data.zaktv.cz/videos/${params.epizodaId}.json`);
 	const data = await res.json();
 
 	//const resPorad = await fetch(`https://data.zaktv.cz/videos.json?programme=${poradId}`);
-	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${poradId}.json`);
+	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${params.poradId}.json`);
 	const poradData = await poradRes.json();
 
 	return {
@@ -84,6 +97,7 @@ export async function getServerSideProps(context) {
 			epizoda: data,
 			porad: poradData,
 		}, // will be passed to the page component as props
+		revalidate: 3600,
 	};
 }
 
