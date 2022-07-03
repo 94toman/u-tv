@@ -11,3 +11,15 @@ $container: 1200px;
 	height: 300px;
 	width: 600px;
 }
+
+@mixin on-mobile {
+	@media (max-width: $phone) {
+		@content;
+	}
+}
+
+@mixin hide-on-mobile {
+	@include on-mobile {
+		display: none;
+	}
+}

@@ -40,15 +40,20 @@
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+
+			@include hide-on-mobile;
 		}
+
 		.kategorie {
 			//background-color: green;
+			@include hide-on-mobile;
 		}
 		.oTelevizi {
 			// background-color: yellow;
 			p {
 				cursor: pointer;
 			}
+			@include hide-on-mobile;
 		}
 		.social {
 			//background-color: aqua;

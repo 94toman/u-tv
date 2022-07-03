@@ -88,7 +88,6 @@ export async function getStaticProps({ params }) {
 	const res = await fetch(`https://data.zaktv.cz/videos/${params.epizodaId}.json`);
 	const data = await res.json();
 
-	//const resPorad = await fetch(`https://data.zaktv.cz/videos.json?programme=${poradId}`);
 	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${params.poradId}.json`);
 	const poradData = await poradRes.json();
 
@@ -119,36 +118,3 @@ export default Epizoda;
 // 		}, // will be passed to the page component as props
 // 	};
 // }
-
-// Zkoušel jsem vytvářel pole ajdýček
-/*
-export async function getEpisodesOfProgramme(id) {
-	const epizodyIdArray = [];
-	const epizodyRes = await fetch(`https://data.zaktv.cz//videos.json?programme=${id}`);
-	const epizodyData = await epizodyRes.json();
-	console.log(epizodyData);
-	await epizodyData.map((epizoda) => {
-		epizodyIdArray.push(epizoda.id);
-	});
-	return epizodyIdArray;
-}
-export async function getStaticPaths() {
-	const videosIds = [];
-
-	const progs = await fetch('https://data.zaktv.cz/programmes.json');
-	const progsData = await progs.json();
-	await progsData.programmes.map((porad) => {
-		videosIds.push(getEpisodesOfProgramme(porad.id));
-		console.log(videosIds);
-	});
-
-	const paths = videosIds.map((video) => ({
-		params: {
-			epizodaId: video.id.toString(),
-			poradId: video.programme.toString(),
-		},
-	}));
-
-	return { paths, fallback: false };
-}
-*/

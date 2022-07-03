@@ -1,0 +1,12 @@
+.row {
+	table,
+	th,
+	td {
+		border: 1px solid black;
+		tr {
+			width: 100%;
+			border: 1px solid red;
+			border-collapse: collapse;
+		}
+	}
+}

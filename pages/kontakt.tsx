@@ -12,8 +12,18 @@ const KontaktPage = () => (
 		</Head>
 		<h2>Kontakt</h2>
 		<div className={styles.row}>
-			<div className={styles.column}></div>
+			<div className={styles.col}>
+				<table>
+					<tr>info@utv.cz</tr>
+					<tr>+420 371 650 138</tr>
+				</table>
+			</div>
+			<div className={styles.col}>Test2</div>
 		</div>
+		<tr>
+			<th>Test</th>
+			<th>Test2</th>
+		</tr>
 		<p>This is the Kontakt page</p>
 
 		<p>
