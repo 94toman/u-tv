@@ -12,18 +12,23 @@ const KontaktPage = () => (
 		</Head>
 		<h2>Kontakt</h2>
 		<div className={styles.row}>
-			<div className={styles.col}>
-				<table>
-					<tr>info@utv.cz</tr>
-					<tr>+420 371 650 138</tr>
-				</table>
+			<div className={styles.left}>
+				<div className={styles.table}>info@utv.cz</div>
+				<div className={styles.table}>
+					+420 371 650 138
+					<br />
+					<span className={styles.volejte}>(VOLEJTE V ČASE 8:00 - 16:30)</span>
+				</div>
 			</div>
-			<div className={styles.col}>Test2</div>
+			<div className={styles.right}>
+				ZAK TV s.r.o. <br />
+				Prokopova 26 <br />
+				301 00 Plzeň <br />
+				<br />
+				IČ: 64835669 <br />
+				DIČ: CZ64835669
+			</div>
 		</div>
-		<tr>
-			<th>Test</th>
-			<th>Test2</th>
-		</tr>
 		<p>This is the Kontakt page</p>
 
 		<p>
@@ -35,3 +40,10 @@ const KontaktPage = () => (
 );
 
 export default KontaktPage;
+
+/*
+				<table>
+					<tr>info@utv.cz</tr>
+					<tr>+420 371 650 138</tr>
+				</table>
+*/
