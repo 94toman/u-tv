@@ -1,27 +1,100 @@
+@use '../styles/abstracts' as *;
+
 .row {
-	.left {
+	padding-bottom: 80px;
+	.tabulka {
 		display: inline-block;
 		width: 60%;
-		border: 1px solid rgb(204, 204, 204);
 
 		.table {
-			border: 2px solid grey;
-			padding: 20px;
-			width: 400px;
+			border: 2px solid $greyish;
+			padding: 20px 0 20px 40px;
+			max-width: 400px;
 			margin: 0 auto;
 			font-size: 2em;
 			font-weight: bold;
+			text-align: left;
 
+			.cislo {
+				margin: 0;
+				margin-bottom: -20px;
+			}
 			.volejte {
-				font-size: 0.8rem;
+				font-size: 0.9rem;
 				font-weight: normal;
 			}
 		}
 	}
-	.right {
+	.adresa {
 		display: inline-block;
 		width: 40%;
-		border: 1px solid rgb(204, 204, 204);
 		text-align: left;
+		padding-left: 10px;
+	}
+}
+
+// přepínání karet
+.wrapper {
+	padding: 20px 0 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+
+	.tab {
+		padding: 5px 0;
+		margin-left: -3px;
+		cursor: pointer;
+		font-weight: bold;
+		$borderStyle: solid 3px white;
+		background-color: $greyish;
+		border-top: $borderStyle;
+		border-right: $borderStyle;
+		border-left: $borderStyle;
+		// zluta cara:   border-bottom: solid 3px $primary;
+
+		.tabText {
+			text-transform: uppercase;
+			line-height: 2.5rem;
+		}
+	}
+	.active {
+		margin-top: -10px;
+		padding-top: 18px;
+		background-color: $primary;
+		border: 0;
+		z-index: 5;
+	}
+}
+
+.contentWrapper {
+	margin: auto;
+	max-width: 1200px;
+	text-align: center;
+	padding: 0 5px;
+
+	.content {
+		//margin-left: -3px;
+		//background-color: rgb(243, 243, 243);
+		padding: 20px;
+		min-height: 300px;
+
+		p,
+		li {
+			text-align: left;
+		}
+	}
+}
+
+.detaily {
+	.solidDivider {
+		border-top: 3px solid $greyish;
+		max-width: calc($container - 200px);
+	}
+	.text {
+		text-align: left;
+		font-size: 0.8rem;
+		margin: 80px 0;
+		@include on-mobile {
+			margin: 30px 0;
+		}
 	}
 }

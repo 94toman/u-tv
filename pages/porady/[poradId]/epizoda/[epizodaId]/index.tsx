@@ -3,10 +3,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { getDate } from '../../../../../components/functions';
 import htmlToFormattedText from 'html-to-formatted-text';
 import styles from './Epizoda.module.scss';
 import dynamic from 'next/dynamic';
-const Player = dynamic(() => import('../../../../../components/Player'), {
+
+const Player = dynamic(() => import('../../../../../components/_Player/Player'), {
 	ssr: false,
 });
 
@@ -25,10 +27,21 @@ type IEpizoda = {
 	url: string; // "https://vysilani.zaktv.cz/zak/6702/video.m3u8"
 };
 
+type IPorad = {
+	id: number;
+	lastchange: number;
+	status: string;
+	title: string;
+	lead: string;
+	description: string;
+	logo: string;
+};
+
 const Epizoda = ({ epizoda, porad }) => {
 	const router = useRouter();
 
 	const video: IEpizoda = epizoda.video;
+	const programme: IPorad = porad.programme;
 
 	return (
 		<div>
@@ -39,33 +52,58 @@ const Epizoda = ({ epizoda, porad }) => {
 			{epizoda.result === 'error' ? (
 				// Error handling
 				<>
-					<h2>Pořad: {porad.programme.title}</h2>
+					<h2>Pořad: {programme.title}</h2>
 					<h3>Epizoda nenalezena</h3>
 					<button onClick={() => router.back()}>Go BACK</button>
 				</>
 			) : (
 				// Displaying content
 				<>
-					<div className={styles.player}>
-						<Player video={video} />
-					</div>
-					<h2>Pořad: {porad.programme.title}</h2>
-					<h3>{video.title}</h3>
-					<p>{htmlToFormattedText(epizoda.video.description)}</p>
-					<p>
-						<button onClick={() => router.back()}>Go BACK</button>
-					</p>
+					<div className={styles.mainBar}>
+						<div className={styles.player}>
+							<Player video={video} />
+						</div>
+						<div className={styles.podVideem}>
+							<h2>{video.title}</h2>
+							<p className={styles.date}>{getDate(video.datetime)}</p>
 
-					<p>ID: {video.id}</p>
-					<p>Duration: {video.duration}</p>
+							<p>{htmlToFormattedText(epizoda.video.description)}</p>
+
+							<hr className={styles.solidDivider} />
+
+							<div className={styles.nazevPoradu}>
+								<div className={styles.roundImage}>
+									<div className={styles.centerImage}>
+										<Link href={`/porady/${video.programme}`}>
+											<Image
+												src={programme.logo}
+												objectFit="cover"
+												layout="fixed"
+												width={355.55}
+												height={200}
+											/>
+										</Link>
+									</div>
+								</div>
+								<div className={styles.nazev}>
+									<h3>
+										Název pořadu:
+										<br />
+										{programme.title}
+									</h3>
+								</div>
+							</div>
+
+							<div className={styles.prostorReklama}>
+								<div className={styles.reklama}>
+									<span>PROSTOR PRO REKLAMU</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className={styles.sideBar}>Sidebar</div>
 				</>
 			)}
-
-			<p>
-				<Link href="/">
-					<a>Go home</a>
-				</Link>
-			</p>
 		</div>
 	);
 };

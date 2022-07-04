@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import logo from './utv_logo-white.png';
+import logo from '../../../images/utv_logo-white.png';
 import socialFb from './socialIcons/fb.png';
 import socialIg from './socialIcons/ig.png';
 import socialMail from './socialIcons/mail.png';

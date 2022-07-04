@@ -16,7 +16,7 @@ const Porad = ({ porad }) => {
 						</div>
 						<div className={styles.card_text}>
 							<h3>{porad.title}</h3>
-							<p>{truncateString(porad.lead, 280)}</p>
+							<p>{truncateString(porad.lead, 220)}</p>
 						</div>
 					</div>
 				</div>

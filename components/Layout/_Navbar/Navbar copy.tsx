@@ -10,7 +10,6 @@ import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 
 const Navbar = () => {
-	// Functions to control mobile menu
 	const [navbarOpen, setNavbarOpen] = useState(false);
 
 	const handleToggle = () => {
@@ -24,16 +23,13 @@ const Navbar = () => {
 	return (
 		<>
 			<header className={styles.header}>
-				{/* Black space left from menu */}
-				<div className={styles.blackBar}>
+				<div className={styles.blackLine}></div>
+				<div className={styles.navContainer}>
 					<div className={styles.navBarLogoWrapper}>
 						<Link href="/">
 							<Image alt="UTV_logo" src={logo} layout="intrinsic" width={64} height={56} />
 						</Link>
 					</div>
-				</div>
-
-				<div className={styles.navContainer}>
 					{/* Displaying and hiding mobile menu */}
 					<nav
 						className={`${styles.menuNav} ${navbarOpen ? styles.showMobileMenu : ''}`}
@@ -55,7 +51,7 @@ const Navbar = () => {
 					</nav>
 				</div>
 
-				{/* Hamburger menu -> Visible only on mobile*/}
+				{/* Visible only on mobile*/}
 				<div className={styles.mobileNav}>
 					<button onClick={handleToggle}>
 						{navbarOpen ? (
@@ -66,7 +62,6 @@ const Navbar = () => {
 					</button>
 				</div>
 
-				{/* Div covering whole page to close mobile menu on click away*/}
 				<div
 					className={`${styles.coverAll} ${navbarOpen ? styles.showCoverAll : ''}`}
 					onClick={() => closeMenu()}

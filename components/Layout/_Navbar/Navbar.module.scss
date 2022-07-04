@@ -10,26 +10,31 @@ $navContainerWidth: 800px;
 	display: flex;
 	align-items: center;
 
-	.blackLine {
-		width: calc(50vw - $navContainerWidth/2 + 80px);
-		height: 61px;
+	position: sticky;
+	top: 0;
+	z-index: 6;
+
+	.blackBar {
+		width: calc(50vw - $navContainerWidth/2 + 100px);
+		min-width: 110px;
 		background-color: black;
-		//overflow: hidden;
-		position: absolute;
+		height: 65px;
+
+		.navBarLogoWrapper {
+			float: right;
+			padding: 4px 20px 0 0;
+			width: 89px;
+			cursor: pointer;
+		}
 	}
 
 	.navContainer {
 		max-width: $navContainerWidth;
-		margin: auto;
-		display: flex;
-		align-items: center;
+		// margin: auto;
+		// display: flex;
+		// align-items: center;
 		padding: 0;
 
-		.navBarLogoWrapper {
-			display: inline-block;
-			width: 89px;
-			cursor: pointer;
-		}
 		nav {
 			// active - set in globals.scss
 			a {
@@ -74,7 +79,7 @@ $navContainerWidth: 800px;
 		overflow-y: scroll;
 		list-style: none;
 		position: fixed;
-		top: 62px;
+		top: 66px;
 		background: white;
 		border-left: solid black 1px;
 		right: -1px;

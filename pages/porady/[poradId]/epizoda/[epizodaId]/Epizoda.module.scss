@@ -1,6 +1,81 @@
 @use '../../../../../styles/abstracts/' as *;
 
-.player {
-	margin: 0 auto;
-	max-width: 900px;
+.mainBar {
+	display: inline-block;
+	width: 80%;
+
+	.player {
+		margin: 0 auto;
+		z-index: 4;
+	}
+
+	.podVideem {
+		background-color: $greyish;
+		padding: 0 60px 30px;
+		margin-top: 3px;
+		text-align: left;
+
+		h2 {
+			color: $blackish;
+		}
+
+		h3 {
+			margin-top: 0;
+			color: $blackish;
+		}
+
+		.date {
+			color: $darkgrey;
+		}
+
+		.solidDivider {
+			margin: 40px 0;
+			border-top: 3px solid $primary;
+		}
+
+		.nazevPoradu {
+			display: flex;
+			margin-bottom: 80px;
+			.roundImage {
+				display: inline-block;
+				//display: block;
+				width: 200px;
+				height: 200px;
+				background-color: $darkgrey;
+				border-radius: 50%;
+				overflow: hidden;
+				object-fit: cover;
+				object-position: center;
+				cursor: pointer;
+
+				.centerImage {
+					position: relative;
+					left: -77px;
+				}
+			}
+			.nazev {
+				display: inline-block;
+
+				padding: 30px 0 0 30px;
+				h3 {
+					font-size: 2em;
+				}
+			}
+		}
+
+		.prostorReklama {
+			background-color: $darkgrey;
+			width: 500px;
+
+			margin: 0 auto;
+			text-align: center;
+			padding: 100px 0;
+		}
+	}
+}
+
+.sideBar {
+	display: inline-block;
+	width: 20%;
+	height: 100%;
 }
