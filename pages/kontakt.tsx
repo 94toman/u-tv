@@ -55,9 +55,12 @@ const KontaktPage = () => {
 					</div>
 				</div>
 				<div className={styles.adresa}>
-					ZAK TV s.r.o. <br />
-					Prokopova 26 <br />
-					301 00 Plzeň <br />
+					<b>
+						ZAK TV s.r.o. <br />
+						Prokopova 26 <br />
+						301 00 Plzeň{' '}
+					</b>
+					<br />
 					<br />
 					IČ: 64835669 <br />
 					DIČ: CZ64835669
