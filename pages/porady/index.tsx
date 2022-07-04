@@ -29,10 +29,12 @@ const Porady = ({ porady }) => {
 			<Head>
 				<title>Pořady | UTV</title>
 			</Head>
-			<h2>Pořady</h2>
-			<SearchBox searchChange={searchChange} placeholder="pořad" />
 
-			<p>This is the Pořady page</p>
+			<h2>Pořady</h2>
+			<div className={styles.search}>
+				<SearchBox searchChange={searchChange} placeholder="pořad" />
+			</div>
+
 			{filteredPorady.map((porad, i) => {
 				if (porad.logo) {
 					return <Porad key={i} porad={porad} />;

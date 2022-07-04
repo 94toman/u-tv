@@ -69,7 +69,7 @@ const Epizoda = ({ epizoda, porad }) => {
 
 							<p>{htmlToFormattedText(epizoda.video.description)}</p>
 
-							<hr className={styles.solidDivider} />
+							<hr className="yellowDivider" />
 
 							<div className={styles.nazevPoradu}>
 								<div className={styles.roundImage}>
@@ -101,7 +101,14 @@ const Epizoda = ({ epizoda, porad }) => {
 							</div>
 						</div>
 					</div>
-					<div className={styles.sideBar}>Sidebar</div>
+
+					<div className={styles.sideBar}>
+						<div>Epizoda 1</div>
+						<div>Epizoda 2</div>
+						<div>Epizoda 3</div>
+						<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
+						<div>Epizoda 4</div>
+					</div>
 				</>
 			)}
 		</div>

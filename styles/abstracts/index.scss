@@ -9,6 +9,9 @@ $darkgrey: #7b7b7b;
 $phone: 768px;
 $container: 1200px;
 
+$porady-heading-height: 400px;
+$main-heading-height: 400px;
+
 @mixin bla {
 	height: 300px;
 	width: 600px;
@@ -16,6 +19,12 @@ $container: 1200px;
 
 @mixin on-mobile {
 	@media (max-width: $phone) {
+		@content;
+	}
+}
+
+@mixin content-width {
+	@media (max-width: $container) {
 		@content;
 	}
 }

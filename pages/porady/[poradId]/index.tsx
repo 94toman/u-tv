@@ -9,8 +9,10 @@ import GoBack from '../../../components/_GoBack/GoBack';
 import { useState } from 'react';
 import htmlToFormattedText from 'html-to-formatted-text';
 import Epizoda from '../../../components/_Cards/Epizoda';
-import SearchBox from '../../../components/_SearchBox/SearchBox';
+import Heading from '../../../components/_Epizody/Heading';
+
 import styles from './Epizody.module.scss';
+import { truncateString } from '../../../components/functions';
 
 type IEpizoda = {
 	datetime: number;
@@ -35,6 +37,7 @@ type IPorad = {
 	lead: string;
 	description: string;
 	logo: string;
+	hosts?: any;
 };
 
 const Epizody = ({ epizody, porad }) => {
@@ -57,51 +60,43 @@ const Epizody = ({ epizody, porad }) => {
 	return (
 		<div>
 			<Head>
-				<title>Episody | UTV</title>
+				<title>Epizody | UTV</title>
 			</Head>
 			<GoBack />
 
+			{/* In case epizodes are not returned */}
 			{filteredEpizody === 'Error' ? (
-				<h3>Epizody nenalezeny</h3>
+				<div className={styles.error}>
+					<h3>Epizody nenalezeny</h3>
+				</div>
 			) : (
 				<>
-					<div className={styles.heading}>
-						<div className={styles.image}>
-							<Image
-								src={`${porad.logo}`}
-								layout="responsive"
-								objectFit="contain"
-								width={800}
-								height={450}
-								alt="porad-logo"
-							/>
-						</div>
-						<div className={styles.overlay}>
-							<h3>{porad.title}</h3>
-							<div className={styles.leadWrapper}>
-								<p className={styles.lead}>{porad.lead}</p>
-							</div>
-							<SearchBox searchChange={searchChange} placeholder="epizodu" />
-						</div>
-					</div>
+					<Heading porad={porad} searchChange={searchChange} />
+
+					<h3>Všechny epizody</h3>
 
 					{filteredEpizody.map((epizoda: IEpizoda, i: number) => {
 						if (epizoda.postermini) {
 							return <Epizoda key={i} epizoda={epizoda} />;
 						}
 					})}
+
+					{/* Displays Autoři only if it is returned from server */}
+					{porad.hosts ? (
+						<>
+							<hr className="yellowDivider" />
+							<div className={styles.autori}>
+								<h3>Autoři</h3>
+								{porad.hosts.map((autor, i) => {
+									return <p>{autor.fullname}</p>;
+								})}
+							</div>
+						</>
+					) : (
+						<></>
+					)}
 				</>
 			)}
-
-			<p>
-				<button onClick={() => router.back()}>Go BACK</button>
-			</p>
-
-			<p>
-				<Link href="/">
-					<a>Go home</a>
-				</Link>
-			</p>
 		</div>
 	);
 };

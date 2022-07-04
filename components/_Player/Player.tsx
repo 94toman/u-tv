@@ -1,5 +1,15 @@
-import { Player as VimePlayer, Hls, DefaultUi } from '@vime/react';
+import {
+	Player as VimePlayer,
+	Hls,
+	DefaultUi,
+	Scrim,
+	Icon,
+	DefaultControls,
+	PlaybackControl,
+	Controls,
+} from '@vime/react';
 import '@vime/core/themes/default.css';
+import styles from './Player.module.scss';
 
 const Player = ({ video }) => {
 	return (
@@ -12,10 +22,24 @@ const Player = ({ video }) => {
 					/>
 				</Hls>
 
-				<DefaultUi />
+				<DefaultUi noControls>
+					<DefaultControls hideOnMouseLeave activeDuration={2000} />
+				</DefaultUi>
 			</VimePlayer>
 		</>
 	);
 };
 
 export default Player;
+
+/*
+<Icon src="./playIcon.svg" label="Play" name="Play" />
+		<Controls pin="center">
+						<PlaybackControl
+							playIcon="Play"
+							className={styles.arrow}
+							hideTooltip
+							style={{ '--vm-control-scale': 1.7 }}
+						/>
+					</Controls>
+					*/

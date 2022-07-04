@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './card.module.scss';
-import { truncateString } from '../functions';
+import { truncateString, getDate } from '../functions';
 
 const Epizoda = ({ epizoda }) => {
 	const router = useRouter();
@@ -18,7 +18,8 @@ const Epizoda = ({ epizoda }) => {
 						</div>
 						<div className={styles.card_text}>
 							<h3>{epizoda.title}</h3>
-							<p>{truncateString(epizoda.description, 280)}</p>
+							<p>{getDate(epizoda.datetime)}</p>
+							<p>{truncateString(epizoda.description, 250)}</p>
 						</div>
 					</div>
 				</div>
