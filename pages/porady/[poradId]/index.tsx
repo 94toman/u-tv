@@ -62,7 +62,7 @@ const Epizody = ({ epizody, porad }) => {
 			<Head>
 				<title>Epizody | UTV</title>
 			</Head>
-			<GoBack />
+			<GoBack path="/porady" />
 
 			{/* In case epizodes are not returned */}
 			{filteredEpizody === 'Error' ? (

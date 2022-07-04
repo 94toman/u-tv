@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getDate } from '../../../../../components/functions';
 import htmlToFormattedText from 'html-to-formatted-text';
+import GoBack from '../../../../../components/_GoBack/GoBack';
 import styles from './Epizoda.module.scss';
 import dynamic from 'next/dynamic';
 
@@ -48,6 +49,7 @@ const Epizoda = ({ epizoda, porad }) => {
 			<Head>
 				<title>Episoda | UTV</title>
 			</Head>
+			<GoBack path={`/porady/${programme.id}`} />
 
 			{epizoda.result === 'error' ? (
 				// Error handling
