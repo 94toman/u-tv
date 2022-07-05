@@ -1,6 +1,6 @@
-import styles from './GoBack.module.scss';
-import { MdArrowBackIosNew } from 'react-icons/md';
 import { useRouter } from 'next/router';
+import { MdArrowBackIosNew } from 'react-icons/md';
+import styles from './GoBack.module.scss';
 
 const GoBack = ({ path }) => {
 	const router = useRouter();

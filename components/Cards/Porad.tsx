@@ -1,11 +1,21 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/image';
-import styles from './card.module.scss';
+import Link from 'next/link';
 import { truncateString } from '../functions';
+import styles from './card.module.scss';
 
-const Porad = ({ porad }) => {
+export interface IPorad {
+	porad: {
+		id: number;
+		lastchange: number;
+		status: string;
+		title: string;
+		lead: string;
+		description: string;
+		logo: string;
+	};
+}
+
+const Porad: React.FC<IPorad> = ({ porad }) => {
 	return (
 		<>
 			<Link href={`porady/${porad.id}`}>

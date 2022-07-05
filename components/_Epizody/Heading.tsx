@@ -1,7 +1,7 @@
-import SearchBox from '../_SearchBox/SearchBox';
-import styles from './Heading.module.scss';
 import Image from 'next/image';
 import { truncateString } from '../functions';
+import SearchBox from '../Navigation/_SearchBox/SearchBox';
+import styles from './Heading.module.scss';
 
 const Heading = ({ porad, searchChange }) => {
 	return (

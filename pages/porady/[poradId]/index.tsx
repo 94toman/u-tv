@@ -1,18 +1,14 @@
 // porady/index
 
-import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import Porad from '../../../components/_Cards/Porad';
-import GoBack from '../../../components/_GoBack/GoBack';
-import { useState } from 'react';
 import htmlToFormattedText from 'html-to-formatted-text';
-import Epizoda from '../../../components/_Cards/Epizoda';
-import Heading from '../../../components/_Epizody/Heading';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Epizoda from '../../../components/Cards/Epizoda';
 import { rcast } from '../../../components/functions';
+import GoBack from '../../../components/Navigation/_GoBack/GoBack';
+import Heading from '../../../components/_Epizody/Heading';
 import styles from './Epizody.module.scss';
-import { truncateString } from '../../../components/functions';
 
 type IEpizoda = {
 	datetime: number;

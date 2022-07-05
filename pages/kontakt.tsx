@@ -1,10 +1,6 @@
-import react, { useState } from 'react';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 import styles from './kontakt.module.scss';
-import { Pozemni, Kabelove, Satelitni, Internetove } from '../components/NaladitCards';
 
 const KontaktPage = () => {
 	const router = useRouter();

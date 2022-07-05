@@ -1,9 +1,9 @@
-import '../styles/globals.scss';
 import Head from 'next/head';
 import Router from 'next/router';
 import React from 'react';
 import Layout from '../components/Layout/Layout';
-import Loading from '../components/_Loading/Loading';
+import Loading from '../components/Layout/_Loading/Loading';
+import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }) {
 	const [loading, setLoading] = React.useState<boolean>(false);

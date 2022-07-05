@@ -1,16 +1,13 @@
 // porady/index
 
+import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
-import Porad from '../../components/_Cards/Porad';
-import { IPorad } from '../../interfaces';
 import { useState } from 'react';
-import styles from './Porady.module.scss';
-import htmlToFormattedText from 'html-to-formatted-text';
-import SearchBox from '../../components/_SearchBox/SearchBox';
-import GoBack from '../../components/_GoBack/GoBack';
+import Porad from '../../components/Cards/Porad';
 import { rcast } from '../../components/functions';
+import SearchBox from '../../components/Navigation/_SearchBox/SearchBox';
+import styles from './Porady.module.scss';
 
 const Porady = ({ porady }) => {
 	const [search, setSearch] = useState('');
