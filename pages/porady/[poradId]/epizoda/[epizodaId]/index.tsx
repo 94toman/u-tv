@@ -8,6 +8,7 @@ import htmlToFormattedText from 'html-to-formatted-text';
 import GoBack from '../../../../../components/_GoBack/GoBack';
 import styles from './Epizoda.module.scss';
 import dynamic from 'next/dynamic';
+import { rcast } from '../../../../../components/functions';
 
 const Player = dynamic(() => import('../../../../../components/_Player/Player'), {
 	ssr: false,
@@ -118,7 +119,7 @@ const Epizoda = ({ epizoda, porad }) => {
 };
 
 export async function getStaticPaths() {
-	const res = await fetch('https://data.zaktv.cz/videos.json?limit=999999');
+	const res = await fetch(`${rcast}/videos.json?limit=999999`);
 	const data = await res.json();
 
 	const paths = data.videos.map((video) => ({
@@ -128,14 +129,14 @@ export async function getStaticPaths() {
 		},
 	}));
 
-	return { paths, fallback: false };
+	return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
-	const res = await fetch(`https://data.zaktv.cz/videos/${params.epizodaId}.json`);
+	const res = await fetch(`${rcast}/videos/${params.epizodaId}.json`);
 	const data = await res.json();
 
-	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${params.poradId}.json`);
+	const poradRes = await fetch(`${rcast}/programmes/${params.poradId}.json`);
 	const poradData = await poradRes.json();
 
 	return {
@@ -143,25 +144,8 @@ export async function getStaticProps({ params }) {
 			epizoda: data,
 			porad: poradData,
 		}, // will be passed to the page component as props
-		revalidate: 3600,
+		revalidate: 86400,
 	};
 }
 
 export default Epizoda;
-
-// export async function getServerSideProps(context) {
-// 	const { poradId, epizodaId } = context.query;
-// 	const res = await fetch(`https://data.zaktv.cz/videos/${epizodaId}.json`);
-// 	const data = await res.json();
-
-// 	//const resPorad = await fetch(`https://data.zaktv.cz/videos.json?programme=${poradId}`);
-// 	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${poradId}.json`);
-// 	const poradData = await poradRes.json();
-
-// 	return {
-// 		props: {
-// 			epizoda: data,
-// 			porad: poradData,
-// 		}, // will be passed to the page component as props
-// 	};
-// }

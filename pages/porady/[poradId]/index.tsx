@@ -10,7 +10,7 @@ import { useState } from 'react';
 import htmlToFormattedText from 'html-to-formatted-text';
 import Epizoda from '../../../components/_Cards/Epizoda';
 import Heading from '../../../components/_Epizody/Heading';
-
+import { rcast } from '../../../components/functions';
 import styles from './Epizody.module.scss';
 import { truncateString } from '../../../components/functions';
 
@@ -102,21 +102,21 @@ const Epizody = ({ epizody, porad }) => {
 };
 
 export async function getStaticPaths() {
-	const res = await fetch('https://data.zaktv.cz/programmes.json');
+	const res = await fetch(`${rcast}/programmes.json`);
 	const data = await res.json();
 
 	const paths = data.programmes.map((porad) => ({
 		params: { poradId: porad.id.toString() },
 	}));
 
-	return { paths, fallback: false };
+	return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
-	const res = await fetch(`https://data.zaktv.cz//videos.json?programme=${params.poradId}`);
+	const res = await fetch(`${rcast}/videos.json?programme=${params.poradId}`);
 	const data = await res.json();
 
-	const poradRes = await fetch(`https://data.zaktv.cz/programmes/${params.poradId}.json`);
+	const poradRes = await fetch(`${rcast}/programmes/${params.poradId}.json`);
 	const poradData = await poradRes.json();
 
 	return {
@@ -124,7 +124,7 @@ export async function getStaticProps({ params }) {
 			epizody: data,
 			porad: poradData.programme,
 		}, // will be passed to the page component as props
-		revalidate: 3600,
+		revalidate: 86400,
 	};
 }
 

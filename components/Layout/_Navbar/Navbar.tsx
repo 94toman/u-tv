@@ -41,7 +41,7 @@ const Navbar = () => {
 					>
 						{/* Rest of the menu is the same for PC and mobile*/}
 						<NavLink exact href="/" onClick={() => closeMenu()}>
-							Home
+							Domů
 						</NavLink>
 						<NavLink exact={false} href="/porady" onClick={() => closeMenu()}>
 							Pořady

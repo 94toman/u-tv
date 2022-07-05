@@ -5,6 +5,9 @@
 	.tabulka {
 		display: inline-block;
 		width: 60%;
+		@include on-mobile {
+			width: 100%;
+		}
 
 		.table {
 			border: 2px solid $greyish;
@@ -14,7 +17,6 @@
 			font-size: 2em;
 			font-weight: bold;
 			text-align: left;
-
 			.cislo {
 				margin: 0;
 				margin-bottom: -20px;
@@ -29,7 +31,7 @@
 		display: inline-block;
 		width: 40%;
 		text-align: left;
-		padding-left: 10px;
+		padding: 20px 0 20px 10px;
 	}
 }
 

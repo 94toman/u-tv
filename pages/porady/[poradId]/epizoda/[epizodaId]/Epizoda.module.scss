@@ -4,6 +4,9 @@
 	display: inline-block;
 	width: 80%;
 	padding-top: 70px;
+	@include on-content-width {
+		width: 100%;
+	}
 
 	.player {
 		margin: 0 auto;
@@ -72,10 +75,18 @@
 	display: inline-block;
 	width: 20%;
 
+	@include on-content-width {
+		width: 100%;
+	}
+
 	div {
 		height: 200px;
 		margin: 40px 20px;
 		background-color: $greyish;
+		@include on-content-width {
+			width: 100px;
+			display: inline-block;
+		}
 	}
 	.sideReklama {
 		height: 340px;

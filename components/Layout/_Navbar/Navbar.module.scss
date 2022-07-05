@@ -60,7 +60,7 @@ $navContainerWidth: 800px;
 	display: none;
 }
 
-@media screen and (max-width: 800px) {
+@include on-mobile {
 	.mobileNav {
 		display: block;
 		margin-left: auto;

@@ -9,3 +9,5 @@ export const getDate = (timestamp) => {
 		timestamp * 1000
 	); // 01/11/2021
 };
+
+export const rcast = 'https://data.zaktv.cz/';

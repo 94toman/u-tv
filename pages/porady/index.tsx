@@ -10,6 +10,7 @@ import styles from './Porady.module.scss';
 import htmlToFormattedText from 'html-to-formatted-text';
 import SearchBox from '../../components/_SearchBox/SearchBox';
 import GoBack from '../../components/_GoBack/GoBack';
+import { rcast } from '../../components/functions';
 
 const Porady = ({ porady }) => {
 	const [search, setSearch] = useState('');
@@ -50,14 +51,14 @@ const Porady = ({ porady }) => {
 };
 
 export async function getStaticProps() {
-	const res = await fetch(`https://data.zaktv.cz/programmes.json`);
+	const res = await fetch(`${rcast}/programmes.json`);
 	const data = await res.json();
 
 	return {
 		props: {
 			porady: data.programmes,
 		}, // will be passed to the page component as props
-		revalidate: 3600,
+		revalidate: 86400,
 	};
 }
 

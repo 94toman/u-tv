@@ -3,6 +3,7 @@
 .heading {
 	margin: 0 -5px;
 	position: relative;
+	overflow: hidden;
 	.image {
 		display: block;
 		height: $main-heading-height;
