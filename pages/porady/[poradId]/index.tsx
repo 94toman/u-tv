@@ -4,7 +4,7 @@ import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Epizoda from '../../../components/Cards/Epizoda';
+import Epizoda from '../../../components/Cards/_Epizoda/Epizoda';
 import { fetcher } from '../../../components/functions';
 import GoBack from '../../../components/Navigation/_GoBack/GoBack';
 import Heading from '../../../components/_Epizody/Heading';

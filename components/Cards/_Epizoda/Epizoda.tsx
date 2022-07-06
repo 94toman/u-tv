@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { getDate, truncateString } from '../functions';
-import styles from './card.module.scss';
+import { getDate, truncateString } from '../../functions';
+import styles from './Epizoda.module.scss';
 
 export interface IEpizoda {
 	epizoda: {
@@ -33,7 +33,7 @@ const Epizoda: React.FC<IEpizoda> = ({ epizoda }) => {
 						<div className={styles.card_img}>
 							<Image src={`${epizoda.postermini}`} layout="intrinsic" width={450} height={253} />
 						</div>
-						<div className={styles.card_text}>
+						<div className={styles.card_content}>
 							<h3>{epizoda.title}</h3>
 							<p>{getDate(epizoda.datetime)}</p>
 							<p>{truncateString(epizoda.description, 250)}</p>

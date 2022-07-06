@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Nejnovejsi from '../components/Cards/_Nejnovejsi/Nejnovejsi';
 import Nejsledovanejsi from '../components/Cards/_Nejsledovanejsi/Nejsledovanejsi';
 import { fetcher } from '../components/functions';
+import Tip from '../components/Home/_Tip/Tip';
 import pravcickaBrana from '../images/pravcickaBrana.png';
 import logo from '../images/utv_logo-white.png';
+
 import styles from './index.module.scss';
 
 const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
@@ -37,7 +39,7 @@ const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
 			<div className={styles.content}>
 				<div className={styles.nejnovejsi}>
 					<h3>Nejnovější epizody</h3>
-					{nejnovejsi.map((epizoda) => {
+					{nejnovejsi.videos.map((epizoda) => {
 						return (
 							<Nejnovejsi
 								postermini={epizoda.postermini}
@@ -51,9 +53,12 @@ const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
 					})}
 				</div>
 
-				<div className={styles.tip}>
-					<h3>Tip týdne</h3>
-				</div>
+				<Tip
+					title={nejsledovanejsi[2].title}
+					description={nejsledovanejsi[2].description}
+					logo={nejsledovanejsi[2].logo}
+					id={nejsledovanejsi[2].id}
+				/>
 
 				<div className={styles.nejsledovanejsi}>
 					<h3>Nejsledovanější pořady</h3>
@@ -67,9 +72,8 @@ const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
 };
 
 export async function getServerSideProps() {
-	const data = await fetcher(`videos.json`);
+	const nejnovejsi = await fetcher(`videos.json?limit=3`);
 	// Get first 3 episodes
-	const nejnovejsi = await data.videos.slice(0, 3);
 
 	const porady = await fetcher(`programmes.json`);
 	const nejsledovanejsi = await porady.programmes.slice(2, 5);

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { truncateString } from '../functions';
-import styles from './card.module.scss';
+import { truncateString } from '../../functions';
+import styles from './Porad.module.scss';
 
 export interface IPorad {
 	porad: {
@@ -24,7 +24,7 @@ const Porad: React.FC<IPorad> = ({ porad }) => {
 						<div className={styles.card_img}>
 							<Image src={`${porad.logo}`} layout="intrinsic" width={450} height={253} />
 						</div>
-						<div className={styles.card_text}>
+						<div className={styles.card_content}>
 							<h3>{porad.title}</h3>
 							<p>{truncateString(porad.lead, 220)}</p>
 						</div>

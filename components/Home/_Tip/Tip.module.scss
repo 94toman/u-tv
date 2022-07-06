@@ -1,0 +1,44 @@
+@use '../../../styles/abstracts/' as *;
+
+.tip {
+	background-color: black;
+	background-image: url('./Yellow-Rectangle.png');
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: contain;
+
+	cursor: pointer;
+
+	min-height: 300px;
+	padding: 20px 0;
+
+	.content {
+		max-width: calc($container * (5 / 6));
+		margin: 0 auto;
+		display: flex;
+		.text {
+			display: inline;
+			width: 40%;
+			color: white;
+			padding-right: 30px;
+			* {
+				text-align: left;
+			}
+			h3 {
+				font-size: 1.5em;
+			}
+			p {
+				//font-size: 0.9em;
+			}
+
+			h4 {
+				color: #f25d44;
+			}
+		}
+		.image {
+			display: inline;
+			width: 60%;
+			padding: 20px;
+		}
+	}
+}

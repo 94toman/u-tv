@@ -4,7 +4,7 @@ import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
-import Porad from '../../components/Cards/Porad';
+import Porad from '../../components/Cards/_Porad/Porad';
 import { fetcher } from '../../components/functions';
 import SearchBox from '../../components/Navigation/_SearchBox/SearchBox';
 import styles from './Porady.module.scss';

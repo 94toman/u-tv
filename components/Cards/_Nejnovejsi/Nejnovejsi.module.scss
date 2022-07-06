@@ -1,12 +1,13 @@
 @use '../../../styles/abstracts/' as *;
+@use '../card.module.scss' as *;
 
 $width: 322px;
 
+@include card($width);
+
 .card {
-	max-width: $width;
-	height: calc(360 / 640 * $width);
 	@include on-content-width {
-		$width: 200px;
+		$width: 26.833vw;
 		max-width: $width;
 		height: calc(360 / 640 * $width);
 		font-size: 0.8em;
@@ -17,24 +18,8 @@ $width: 322px;
 		height: calc(360 / 640 * $width);
 		font-size: 1rem;
 	}
-	color: white;
-	background: $darkgrey;
-	cursor: pointer;
-	box-shadow: 4px 4px 8px 0 rgb(0 0 0 / 20%);
 	margin: 0.4rem 1rem;
-	//border-radius: 1rem;
-	overflow: hidden;
-	display: inline-block;
-	backface-visibility: hidden;
-	transform: translateZ(0);
 
-	.card_img {
-		position: relative;
-		img {
-			height: 100%;
-			margin-bottom: -3px;
-		}
-	}
 	.card_content {
 		width: 100%;
 		position: absolute;
@@ -46,8 +31,6 @@ $width: 322px;
 
 			h3 {
 				text-align: left;
-				margin: 10px;
-				padding: 0;
 				color: $primary;
 			}
 
@@ -59,7 +42,8 @@ $width: 322px;
 				//text-transform: uppercase;
 			}
 
-			.date {
+			p {
+				display: block;
 				position: absolute;
 				bottom: -20px;
 				right: 10px;

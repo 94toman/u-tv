@@ -1,10 +1,9 @@
 @use '../../../styles/abstracts/' as *;
+@use '../card.module.scss' as *;
 
 $width: 322px;
 
 .card {
-	max-width: $width;
-	height: calc(360 / 640 * $width);
 	@include on-content-width {
 		$width: 26.833vw;
 		max-width: $width;
@@ -17,35 +16,13 @@ $width: 322px;
 		height: calc(360 / 640 * $width);
 		font-size: 1rem;
 	}
-	color: white;
-	background: $darkgrey;
-	cursor: pointer;
-	box-shadow: 4px 4px 8px 0 rgb(0 0 0 / 20%);
-	margin: 0.4rem 1rem;
-	//border-radius: 1rem;
-	overflow: hidden;
-	display: inline-block;
-	backface-visibility: hidden;
-	transform: translateZ(0);
 
-	.card_img {
-		position: relative;
-		img {
-			height: 100%;
-			margin-bottom: -3px;
-		}
-	}
-	.card_content {
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		background-color: rgba(0, 0, 0, 0.6);
-
-		h3 {
-			text-align: left;
-			margin: 10px;
-			padding: 0;
-			color: $primary;
-		}
+	h3 {
+		text-align: left;
+		margin: 10px;
+		padding: 0;
+		color: $primary;
 	}
 }
+
+@include card($width);
