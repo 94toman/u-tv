@@ -1,0 +1,85 @@
+@use '../../styles/abstracts/' as *;
+
+@mixin card($width) {
+	$margin: 0.8rem;
+
+	.cardWrapper {
+		max-width: $width;
+		display: inline-block;
+		cursor: pointer;
+		padding-bottom: 10px;
+
+		.card {
+			height: calc(3 / 4.3 * $width);
+			color: white;
+			background: $darkgrey;
+			overflow: hidden;
+
+			box-shadow: 4px 4px 8px 4px rgb(0 0 0 / 20%);
+			margin: $margin;
+			margin-bottom: 0;
+			//border-radius: 1rem;
+
+			display: inline-block;
+			backface-visibility: hidden;
+			transform: translateZ(0);
+
+			.card_img {
+				height: 100%;
+				position: relative;
+				img {
+					object-fit: cover;
+					height: 100%;
+					margin-bottom: -3px;
+				}
+			}
+			.card_content {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.8);
+
+				h3 {
+					text-align: center;
+					margin: 10px;
+					padding: 0;
+					font-size: 1.2rem;
+				}
+				p {
+					display: none;
+					padding: 15px 10px 0;
+					max-height: calc(3 / 4.1 * $width);
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
+			&:hover * + .card_content p {
+				display: block;
+				animation: fade_in_show 0.3s;
+			}
+		}
+		.belowImage {
+			padding-left: $margin;
+			h3 {
+				padding: 0;
+				font-size: 0.8em;
+			}
+			.date {
+				text-align: left;
+				color: $darkgrey;
+				font-size: 11px;
+			}
+		}
+
+		@keyframes fade_in_show {
+			0% {
+				opacity: 0;
+				transform: scale(0);
+			}
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+	}
+}

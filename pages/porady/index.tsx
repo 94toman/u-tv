@@ -2,7 +2,6 @@
 
 import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useState } from 'react';
 import Porad from '../../components/Cards/_Porad/Porad';
 import { fetcher } from '../../components/functions';
@@ -38,11 +37,6 @@ const Porady = ({ porady }) => {
 					return <Porad key={i} porad={porad} />;
 				}
 			})}
-			<p>
-				<Link href="/">
-					<a>Go home</a>
-				</Link>
-			</p>
 		</div>
 	);
 };

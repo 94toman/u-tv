@@ -4,6 +4,8 @@
 
 $navContainerWidth: 800px;
 
+$blackBarHeight: 67px;
+
 .header {
 	background-color: white;
 	border-bottom: 1px solid black;
@@ -18,7 +20,7 @@ $navContainerWidth: 800px;
 		width: calc(50vw - $navContainerWidth/2 + 100px);
 		min-width: 110px;
 		background-color: black;
-		height: 65px;
+		height: $blackBarHeight;
 
 		.navBarLogoWrapper {
 			float: right;
@@ -41,7 +43,7 @@ $navContainerWidth: 800px;
 				position: relative;
 				display: inline-block;
 				color: black;
-				padding: 20px 40px;
+				padding: 21px 40px;
 				margin: 0;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -79,7 +81,7 @@ $navContainerWidth: 800px;
 		overflow-y: scroll;
 		list-style: none;
 		position: fixed;
-		top: 66px;
+		top: calc($blackBarHeight + 1px);
 		background: white;
 		border-left: solid black 1px;
 		right: -1px;

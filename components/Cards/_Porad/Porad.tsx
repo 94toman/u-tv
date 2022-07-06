@@ -19,15 +19,17 @@ const Porad: React.FC<IPorad> = ({ porad }) => {
 	return (
 		<>
 			<Link href={`porady/${porad.id}`}>
-				<div className={styles.card}>
-					<div>
+				<div className={styles.cardWrapper}>
+					<div className={styles.card}>
 						<div className={styles.card_img}>
-							<Image src={`${porad.logo}`} layout="intrinsic" width={450} height={253} />
+							<Image src={`${porad.logo}`} layout="intrinsic" width={450} height={350} />
 						</div>
 						<div className={styles.card_content}>
-							<h3>{porad.title}</h3>
-							<p>{truncateString(porad.lead, 220)}</p>
+							{porad.lead.length > 0 ? <p>{truncateString(porad.lead, 240)}</p> : <></>}
 						</div>
+					</div>
+					<div className={styles.belowImage}>
+						<h3>{truncateString(porad.title, 33)}</h3>
 					</div>
 				</div>
 			</Link>

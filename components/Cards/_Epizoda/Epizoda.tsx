@@ -28,16 +28,18 @@ const Epizoda: React.FC<IEpizoda> = ({ epizoda }) => {
 	return (
 		<>
 			<Link href={`${poradId}/epizoda/${epizoda.id}`}>
-				<div className={styles.card}>
-					<div>
+				<div className={styles.cardWrapper}>
+					<div className={styles.card}>
 						<div className={styles.card_img}>
-							<Image src={`${epizoda.postermini}`} layout="intrinsic" width={450} height={253} />
+							<Image src={`${epizoda.postermini}`} layout="intrinsic" width={450} height={350} />
 						</div>
 						<div className={styles.card_content}>
-							<h3>{epizoda.title}</h3>
-							<p>{getDate(epizoda.datetime)}</p>
-							<p>{truncateString(epizoda.description, 250)}</p>
+							{epizoda.description.length > 0 ? <p>{truncateString(epizoda.description, 160)}</p> : <></>}
 						</div>
+					</div>
+					<div className={styles.belowImage}>
+						<h3>{truncateString(epizoda.title, 25)}</h3>
+						<p className={styles.date}>{getDate(epizoda.datetime)}</p>
 					</div>
 				</div>
 			</Link>
