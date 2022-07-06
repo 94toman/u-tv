@@ -1,5 +1,5 @@
 @use '../../../styles/abstracts/' as *;
 
-@use '../_card.module.scss' as *;
+@use '../_SingleCard.module.scss' as *;
 
 @include card(235px);
