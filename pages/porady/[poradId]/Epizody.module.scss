@@ -1,7 +1,29 @@
 @use '../../../styles/abstracts/' as *;
 
-.error h3 {
-	text-align: center;
+.error {
+	padding-top: 2vh;
+	h2 {
+		text-align: center;
+		color: black;
+	}
+	.button {
+		display: inline-block;
+		padding: 0.35em 1.2em;
+		border: 0.1em solid $blackish;
+		background-color: white;
+		margin: 2vh 0.3em 0.3em 0;
+		border-radius: 0.12em;
+		box-sizing: border-box;
+		color: $blackish;
+		text-align: center;
+		transition: all 0.2s;
+		font-weight: bold;
+
+		&:hover {
+			color: white;
+			background-color: $blackish;
+		}
+	}
 }
 
 .autori {

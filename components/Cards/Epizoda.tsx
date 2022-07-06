@@ -8,15 +8,15 @@ import styles from './card.module.scss';
 export interface IEpizoda {
 	epizoda: {
 		datetime: number;
-		description: string;
-		duration: number;
+		description?: string;
+		duration?: number;
 		id: number;
-		lastchange: number;
-		poster: string; // "https://www.zaktv.cz/epizody/6724.jpg"
+		lastchange?: number;
+		poster?: string; // "https://www.zaktv.cz/epizody/6724.jpg"
 		postermini: string; // "https://www.zaktv.cz/epizody/6724-640.jpg"
 		programme: number; //"88"
 		programmetitle: string; // "30 let Městské policie Plzeň"
-		status: string; // "visible"
+		status?: string; // "visible"
 		title: string; // "4. díl"
 		url: string; // "https://vysilani.zaktv.cz/zak/6702/video.m3u8"
 	};

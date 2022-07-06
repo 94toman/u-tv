@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { getDate, rcast } from '../../../../../components/functions';
+import { fetcher, getDate } from '../../../../../components/functions';
 import GoBack from '../../../../../components/Navigation/_GoBack/GoBack';
 import styles from './Epizoda.module.scss';
 
@@ -118,8 +118,7 @@ const Epizoda = ({ epizoda, porad }) => {
 };
 
 export async function getStaticPaths() {
-	const res = await fetch(`${rcast}/videos.json?limit=999999`);
-	const data = await res.json();
+	const data = await fetcher(`/videos.json?limit=999999`);
 
 	const paths = data.videos.map((video) => ({
 		params: {
@@ -132,11 +131,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const res = await fetch(`${rcast}/videos/${params.epizodaId}.json`);
-	const data = await res.json();
-
-	const poradRes = await fetch(`${rcast}/programmes/${params.poradId}.json`);
-	const poradData = await poradRes.json();
+	const data = await fetcher(`videos/${params.epizodaId}.json`);
+	const poradData = await fetcher(`/programmes/${params.poradId}.json`);
 
 	return {
 		props: {

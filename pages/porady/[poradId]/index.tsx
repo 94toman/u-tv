@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Epizoda from '../../../components/Cards/Epizoda';
-import { rcast } from '../../../components/functions';
+import { fetcher } from '../../../components/functions';
 import GoBack from '../../../components/Navigation/_GoBack/GoBack';
 import Heading from '../../../components/_Epizody/Heading';
 import styles from './Epizody.module.scss';
@@ -63,7 +63,10 @@ const Epizody = ({ epizody, porad }) => {
 			{/* In case epizodes are not returned */}
 			{filteredEpizody === 'Error' ? (
 				<div className={styles.error}>
-					<h3>Epizody nenalezeny</h3>
+					<h2>Epizody nenalezeny</h2>
+					<button className={styles.button} onClick={() => router.push(`/porady`)}>
+						Zpět na pořady
+					</button>
 				</div>
 			) : (
 				<>
@@ -98,8 +101,7 @@ const Epizody = ({ epizody, porad }) => {
 };
 
 export async function getStaticPaths() {
-	const res = await fetch(`${rcast}/programmes.json`);
-	const data = await res.json();
+	const data = await fetcher(`programmes.json`);
 
 	const paths = data.programmes.map((porad) => ({
 		params: { poradId: porad.id.toString() },
@@ -109,11 +111,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const res = await fetch(`${rcast}/videos.json?programme=${params.poradId}`);
-	const data = await res.json();
-
-	const poradRes = await fetch(`${rcast}/programmes/${params.poradId}.json`);
-	const poradData = await poradRes.json();
+	const data = await fetcher(`videos.json?programme=${params.poradId}`);
+	const poradData = await fetcher(`programmes/${params.poradId}.json`);
 
 	return {
 		props: {

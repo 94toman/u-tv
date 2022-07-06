@@ -41,15 +41,14 @@
 	}
 
 	.nejnovejsi {
-		height: 300px;
 	}
 	.nejsledovanejsi {
-		height: 300px;
+		min-height: 300px;
 	}
 
 	.tip {
 		background-color: $blackish;
 		color: red;
-		height: 300px;
+		min-height: 300px;
 	}
 }

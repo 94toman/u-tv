@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import Porad from '../../components/Cards/Porad';
-import { rcast } from '../../components/functions';
+import { fetcher } from '../../components/functions';
 import SearchBox from '../../components/Navigation/_SearchBox/SearchBox';
 import styles from './Porady.module.scss';
 
@@ -48,8 +48,7 @@ const Porady = ({ porady }) => {
 };
 
 export async function getStaticProps() {
-	const res = await fetch(`${rcast}/programmes.json`);
-	const data = await res.json();
+	const data = await fetcher(`programmes.json`);
 
 	return {
 		props: {
