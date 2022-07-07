@@ -9,13 +9,17 @@ $width: 380px;
 		color: white;
 		background: $darkgrey;
 		cursor: pointer;
-		box-shadow: 4px 4px 8px 0 rgb(0 0 0 / 20%);
+		box-shadow: 4px 4px 4px 0 rgb(0 0 0 / 20%);
 		margin: 0.4rem;
 		//border-radius: 1rem;
 		overflow: hidden;
 		display: inline-block;
 		backface-visibility: hidden;
 		transform: translateZ(0);
+
+		&:hover {
+			box-shadow: 4px 4px 8px 4px rgb(0 0 0 / 20%);
+		}
 
 		.card_img {
 			position: relative;
@@ -37,16 +41,12 @@ $width: 380px;
 				font-size: 1.2rem;
 			}
 			p {
-				display: none;
+				display: block;
 				padding: 0 10px;
 				max-height: 160px;
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
-		}
-		:hover * + .card_content p {
-			display: block;
-			animation: fade_in_show 0.3s;
 		}
 	}
 
