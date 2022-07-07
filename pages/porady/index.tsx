@@ -13,6 +13,7 @@ const Porady = ({ porady }) => {
 	const [serazenePorady, setSerazenePorady] = useState(porady);
 	const [search, setSearch] = useState('');
 
+	//Obsluhuje dropdown a mění pořadí epizod.
 	const razeniChange = (event) => {
 		setRazeni(event.target.value);
 		switch (event.target.value) {
@@ -36,6 +37,7 @@ const Porady = ({ porady }) => {
 		}
 	};
 
+	// filtruje podle Search baru, obsah v názvu a v popisku
 	let filteredPorady = serazenePorady.filter((porad) => {
 		return (
 			porad.title.toLowerCase().includes(search.toLowerCase()) ||

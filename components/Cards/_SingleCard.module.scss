@@ -21,7 +21,7 @@
 			//border-radius: 1rem;
 
 			display: inline-block;
-			backface-visibility: hidden;
+			//backface-visibility: hidden;
 			transform: translateZ(0);
 
 			.card_img {
@@ -53,6 +53,7 @@
 					text-overflow: ellipsis;
 				}
 			}
+
 			&:hover * + .card_content p {
 				display: block;
 				animation: fade_in_show 0.3s;
