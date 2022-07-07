@@ -2,5 +2,16 @@
 
 .search {
 	margin: -50px 0 10px 0;
-	text-align: right;
+	//text-align: right;
+	display: flex;
+	justify-content: right;
+	text-align: center;
+
+	.razeni {
+		margin-right: 20px;
+		padding-top: 5px;
+		select {
+			margin: 0 0 0 10px;
+		}
+	}
 }

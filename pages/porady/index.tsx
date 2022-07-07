@@ -9,8 +9,34 @@ import SearchBox from '../../components/Navigation/_SearchBox/SearchBox';
 import styles from './Porady.module.scss';
 
 const Porady = ({ porady }) => {
+	const [razeni, setRazeni] = useState('vzestupne');
+	const [serazenePorady, setSerazenePorady] = useState(porady);
 	const [search, setSearch] = useState('');
-	const filteredPorady = porady.filter((porad) => {
+
+	const razeniChange = (event) => {
+		setRazeni(event.target.value);
+		switch (event.target.value) {
+			case 'vzestupne':
+				setSerazenePorady(porady.slice(0));
+				break;
+			case 'sestupne':
+				setSerazenePorady(porady.slice(0).reverse());
+				break;
+			case 'nahodne':
+				setSerazenePorady(
+					porady
+						.slice(0)
+						.map((value) => ({ value, sort: Math.random() }))
+						.sort((a, b) => a.sort - b.sort)
+						.map(({ value }) => value)
+				);
+				break;
+			default:
+				setSerazenePorady(porady.slice(0));
+		}
+	};
+
+	let filteredPorady = serazenePorady.filter((porad) => {
 		return (
 			porad.title.toLowerCase().includes(search.toLowerCase()) ||
 			htmlToFormattedText(porad.lead).toLowerCase().includes(search.toLowerCase())
@@ -19,6 +45,7 @@ const Porady = ({ porady }) => {
 
 	const searchChange = (event) => {
 		setSearch(event.target.value);
+		console.log(razeni);
 	};
 
 	return (
@@ -29,6 +56,14 @@ const Porady = ({ porady }) => {
 
 			<h2>Pořady</h2>
 			<div className={styles.search}>
+				<div className={styles.razeni}>
+					Řazení:
+					<select value={razeni} onChange={razeniChange}>
+						<option value="vzestupne">Od A do Z</option>
+						<option value="sestupne">Od Z do A</option>
+						<option value="nahodne">Náhodně</option>
+					</select>
+				</div>
 				<SearchBox searchChange={searchChange} placeholder="pořad" />
 			</div>
 
