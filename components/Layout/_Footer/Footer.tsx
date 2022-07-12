@@ -1,12 +1,12 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { resetCookieConsentValue } from 'react-cookie-consent';
 import logo from '../../../images/utv_logo-white.png';
+import styles from './Footer.module.scss';
 import socialFb from './socialIcons/fb.png';
 import socialIg from './socialIcons/ig.png';
 import socialMail from './socialIcons/mail.png';
-import styles from './Footer.module.scss';
-import Image from 'next/image';
 
 const Footer = () => {
 	const router = useRouter();
@@ -53,6 +53,7 @@ const Footer = () => {
 							<Image alt="Email" src={socialMail} layout="intrinsic" width={39} height={39} />
 						</a>
 					</div>
+					<button onClick={() => resetCookieConsentValue('myAwesomeCookieName2')} />
 				</div>
 			</div>
 		</footer>

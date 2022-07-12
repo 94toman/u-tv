@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+
 import { fetcher, getDate } from '../../../../../components/functions';
 import GoBack from '../../../../../components/Navigation/_GoBack/GoBack';
 import styles from './Epizoda.module.scss';

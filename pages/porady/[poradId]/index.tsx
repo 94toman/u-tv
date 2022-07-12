@@ -4,11 +4,14 @@ import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import Epizoda from '../../../components/Cards/_Epizoda/Epizoda';
 import { fetcher } from '../../../components/functions';
 import GoBack from '../../../components/Navigation/_GoBack/GoBack';
 import Heading from '../../../components/_Epizody/Heading';
 import styles from './Epizody.module.scss';
+
+//  import ReactPaginate from 'react-paginate';  https://vpilip.com/how-build-simple-pagination-in-nextjs/
 
 type IEpizoda = {
 	datetime: number;
@@ -36,7 +39,16 @@ type IPorad = {
 	hosts?: any;
 };
 
-const Epizody = ({ epizody, porad }) => {
+type IPaginate = {
+	perPage: number;
+	page: number;
+	pages: number;
+};
+
+const Epizody = ({ epizody, porad, paginateProps }) => {
+	const router = useRouter();
+
+	// SEARCH BAR
 	const [search, setSearch] = useState('');
 	const filteredEpizody = epizody.videos
 		? epizody.videos.filter((epizoda) => {
@@ -49,9 +61,19 @@ const Epizody = ({ epizody, porad }) => {
 
 	const searchChange = (event) => {
 		setSearch(event.target.value);
+		setPaginate({ ...paginate, page: 0 });
 	};
 
-	const router = useRouter();
+	// PAGINATION
+	const [paginate, setPaginate] = useState(paginateProps);
+	const { perPage, page, pages }: IPaginate = paginate;
+
+	let slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
+
+	const handlePageClick = (event) => {
+		setPaginate({ ...paginate, page: event.selected });
+		slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
+	};
 
 	return (
 		<div>
@@ -72,13 +94,23 @@ const Epizody = ({ epizody, porad }) => {
 				<>
 					<Heading porad={porad} searchChange={searchChange} />
 
-					<h3>Všechny epizody</h3>
+					<h3>Epizody:</h3>
 
-					{filteredEpizody.map((epizoda: IEpizoda, i: number) => {
+					{slicedEpizody.map((epizoda: IEpizoda, i: number) => {
 						if (epizoda.postermini) {
 							return <Epizoda key={i} epizoda={epizoda} />;
 						}
 					})}
+
+					<ReactPaginate
+						previousLabel={'<<'}
+						nextLabel={'>>'}
+						pageCount={pages}
+						onPageChange={handlePageClick}
+						forcePage={paginate.page}
+						containerClassName={'pagination'}
+						activeClassName={'active'}
+					/>
 
 					{/* Displays Autoři only if it is returned from server */}
 					{porad.hosts ? (
@@ -118,6 +150,11 @@ export async function getStaticProps({ params }) {
 		props: {
 			epizody: data,
 			porad: poradData.programme,
+			paginateProps: {
+				perPage: 15,
+				page: 0,
+				pages: Math.floor(data.videos.length / 15 + 1),
+			},
 		}, // will be passed to the page component as props
 		revalidate: 86400,
 	};
