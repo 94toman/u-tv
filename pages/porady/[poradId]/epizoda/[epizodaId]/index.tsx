@@ -39,7 +39,7 @@ type IPorad = {
 	logo: string;
 };
 
-const Epizoda = ({ epizoda, porad }) => {
+const Epizoda = ({ epizoda, porad, epizody }) => {
 	const router = useRouter();
 
 	const video: IEpizoda = epizoda.video;
@@ -106,11 +106,20 @@ const Epizoda = ({ epizoda, porad }) => {
 					</div>
 
 					<div className={styles.sideBar}>
-						<div>Epizoda 1</div>
-						<div>Epizoda 2</div>
-						<div>Epizoda 3</div>
-						<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
-						<div>Epizoda 4</div>
+						<div className={styles.sideContent}>
+							{epizody.slice(0, 3).map((single, i) => {
+								return (
+									<div>
+										Epizoda {i + 1}
+										<br />
+										{single.title}
+										<br />
+										<Image src={single.postermini} layout="intrinsic" width={200} height={120} />
+									</div>
+								);
+							})}
+							<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
+						</div>
 					</div>
 				</>
 			)}
@@ -134,11 +143,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	const data = await fetcher(`videos/${params.epizodaId}.json`);
 	const poradData = await fetcher(`/programmes/${params.poradId}.json`);
+	const epizody = await fetcher(`/videos.json?programme=${params.poradId}`);
 
 	return {
 		props: {
 			epizoda: data,
 			porad: poradData,
+			epizody: epizody.videos,
 		}, // will be passed to the page component as props
 		revalidate: 86400,
 	};

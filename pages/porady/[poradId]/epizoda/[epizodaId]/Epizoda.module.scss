@@ -79,16 +79,18 @@
 		width: 100%;
 	}
 
-	div {
-		height: 200px;
-		margin: 40px 20px;
-		background-color: $greyish;
-		@include on-content-width {
-			width: 100px;
-			display: inline-block;
+	.sideContent {
+		div {
+			height: 200px;
+			margin: 40px 20px;
+			background-color: $greyish;
+			@include on-content-width {
+				width: 100px;
+				display: inline-block;
+			}
 		}
-	}
-	.sideReklama {
-		height: 340px;
+		.sideReklama {
+			height: 340px;
+		}
 	}
 }

@@ -79,12 +79,12 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 	// PAGINATION
 	const [paginate, setPaginate] = useState(paginateProps);
 	const { perPage, page, pages }: IPaginate = paginate;
-
-	let slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
+	const [slicedEpizody, setSlicedEpizody] = useState(filteredEpizody.slice(page * perPage, (page + 1) * perPage));
 
 	const handlePageClick = (event) => {
 		setPaginate({ ...paginate, page: event.selected });
-		slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
+		setSlicedEpizody(filteredEpizody.slice(event.selected * perPage, (event.selected + 1) * perPage));
+		//history.pushState();
 	};
 
 	return (
