@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import Epizoda from '../../../components/Cards/_Epizoda/Epizoda';
 import { fetcher } from '../../../components/functions';
 import GoBack from '../../../components/Navigation/_GoBack/GoBack';
-import Heading from '../../../components/_Epizody/Heading';
+import HeadingPorady from '../../../components/_Epizody/HeadingPorady';
 import styles from './Epizody.module.scss';
 
 //  import ReactPaginate from 'react-paginate';  https://vpilip.com/how-build-simple-pagination-in-nextjs/
@@ -47,9 +47,27 @@ type IPaginate = {
 
 const Epizody = ({ epizody, porad, paginateProps }) => {
 	const router = useRouter();
+	const { strana } = router.query;
+
+	const [paginate, setPaginate] = useState(paginateProps);
+	const { perPage, page, pages }: IPaginate = paginate;
+
+	const [slicedEpizody, setSlicedEPizody] = useState(epizody.videos.slice(page * 15, (page + 1) * 15));
+	const [search, setSearch] = useState('');
+
+	// funkce, která mění konec URL
+	const setQuery = (strana: number) => {
+		router.replace(
+			{
+				query: { ...router.query, strana: strana + 1 },
+			},
+			undefined,
+			{ shallow: true }
+		); // shallow: aby stránka zůstala kde je
+	};
 
 	// SEARCH BAR
-	const [search, setSearch] = useState('');
+
 	const filteredEpizody = epizody.videos
 		? epizody.videos.filter((epizoda) => {
 				return (
@@ -65,14 +83,11 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 	};
 
 	// PAGINATION
-	const [paginate, setPaginate] = useState(paginateProps);
-	const { perPage, page, pages }: IPaginate = paginate;
-
-	let slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
 
 	const handlePageClick = (event) => {
 		setPaginate({ ...paginate, page: event.selected });
-		slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
+		setSlicedEPizody(filteredEpizody.slice(event.selected * perPage, (event.selected + 1) * perPage));
+		//setQuery(event.selected);
 	};
 
 	return (
@@ -92,7 +107,17 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 				</div>
 			) : (
 				<>
-					<Heading porad={porad} searchChange={searchChange} />
+					<HeadingPorady porad={porad} searchChange={searchChange} />
+
+					<button
+						onClick={() => {
+							setQuery(1);
+							console.log(strana);
+						}}
+					>
+						Click me
+					</button>
+					<p>{strana}</p>
 
 					<h3>Epizody:</h3>
 
