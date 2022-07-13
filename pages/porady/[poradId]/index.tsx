@@ -49,17 +49,11 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 	const router = useRouter();
 	const { strana } = router.query;
 
-	const [paginate, setPaginate] = useState(paginateProps);
-	const { perPage, page, pages }: IPaginate = paginate;
-
-	const [slicedEpizody, setSlicedEPizody] = useState(epizody.videos.slice(page * 15, (page + 1) * 15));
-	const [search, setSearch] = useState('');
-
 	// funkce, která mění konec URL
-	const setQuery = (strana: number) => {
+	const stranaQuery = (strana) => {
 		router.replace(
 			{
-				query: { ...router.query, strana: strana + 1 },
+				query: { ...router.query, strana: strana },
 			},
 			undefined,
 			{ shallow: true }
@@ -67,7 +61,7 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 	};
 
 	// SEARCH BAR
-
+	const [search, setSearch] = useState('');
 	const filteredEpizody = epizody.videos
 		? epizody.videos.filter((epizoda) => {
 				return (
@@ -83,11 +77,14 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 	};
 
 	// PAGINATION
+	const [paginate, setPaginate] = useState(paginateProps);
+	const { perPage, page, pages }: IPaginate = paginate;
+
+	let slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
 
 	const handlePageClick = (event) => {
 		setPaginate({ ...paginate, page: event.selected });
-		setSlicedEPizody(filteredEpizody.slice(event.selected * perPage, (event.selected + 1) * perPage));
-		//setQuery(event.selected);
+		slicedEpizody = filteredEpizody.slice(page * perPage, (page + 1) * perPage);
 	};
 
 	return (
@@ -108,16 +105,6 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 			) : (
 				<>
 					<HeadingPorady porad={porad} searchChange={searchChange} />
-
-					<button
-						onClick={() => {
-							setQuery(1);
-							console.log(strana);
-						}}
-					>
-						Click me
-					</button>
-					<p>{strana}</p>
 
 					<h3>Epizody:</h3>
 
