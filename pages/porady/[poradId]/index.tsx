@@ -114,15 +114,20 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 						}
 					})}
 
-					<ReactPaginate
-						previousLabel={'<<'}
-						nextLabel={'>>'}
-						pageCount={pages}
-						onPageChange={handlePageClick}
-						forcePage={paginate.page}
-						containerClassName={'pagination'}
-						activeClassName={'active'}
-					/>
+					{/*Display Pagination only if there is more than one page */}
+					{pages > 1 ? (
+						<ReactPaginate
+							previousLabel={'<<'}
+							nextLabel={'>>'}
+							pageCount={pages}
+							onPageChange={handlePageClick}
+							forcePage={paginate.page}
+							containerClassName={'pagination'}
+							activeClassName={'active'}
+						/>
+					) : (
+						<></>
+					)}
 
 					{/* Displays Autoři only if it is returned from server */}
 					{porad.hosts ? (

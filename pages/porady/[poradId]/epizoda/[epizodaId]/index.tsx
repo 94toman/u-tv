@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import DalsiEpizoda from '../../../../../components/Cards/_DalsiEpizoda/DalsiEpizoda';
 
 import { fetcher, getDate } from '../../../../../components/functions';
 import GoBack from '../../../../../components/Navigation/_GoBack/GoBack';
@@ -45,6 +46,9 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 	const video: IEpizoda = epizoda.video;
 	const programme: IPorad = porad.programme;
 
+	const dalsiEpizody: IEpizoda[] = epizody.slice(0, 5).filter((single) => {
+		return single.id !== epizoda.video.id;
+	});
 	return (
 		<div>
 			<Head>
@@ -106,19 +110,15 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 					</div>
 
 					<div className={styles.sideBar}>
+						<h3>Další epizody</h3>
 						<div className={styles.sideContent}>
-							{epizody.slice(0, 3).map((single, i) => {
-								return (
-									<div>
-										Epizoda {i + 1}
-										<br />
-										{single.title}
-										<br />
-										<Image src={single.postermini} layout="intrinsic" width={200} height={120} />
-									</div>
-								);
+							{dalsiEpizody.slice(0, 3).map((single, i) => {
+								return <DalsiEpizoda single={single} />;
 							})}
 							<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
+							{dalsiEpizody.slice(3, 4).map((single, i) => {
+								return <DalsiEpizoda single={single} />;
+							})}
 						</div>
 					</div>
 				</div>
