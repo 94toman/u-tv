@@ -31,8 +31,8 @@ const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
 				</div>
 				<div className={styles.overlay}>
 					<Image alt="UTV_logo" src={logo} layout="intrinsic" width={117} height={102} />
-					<h3>Moderátor Jonáš Novotný</h3>
-					<p className={styles.lead}>Každých 14 dní</p>
+					<h3>Regionální televize</h3>
+					<h1 className={styles.lead}>UTV</h1>
 				</div>
 			</div>
 
