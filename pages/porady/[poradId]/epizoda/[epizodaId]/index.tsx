@@ -61,7 +61,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 				</>
 			) : (
 				// Displaying content
-				<>
+				<div className={styles.wrapper}>
 					<div className={styles.mainBar}>
 						<div className={styles.player}>
 							<Player video={video} />
@@ -121,7 +121,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 							<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
 						</div>
 					</div>
-				</>
+				</div>
 			)}
 		</div>
 	);
