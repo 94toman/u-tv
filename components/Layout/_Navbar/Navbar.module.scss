@@ -15,7 +15,7 @@ $navBarHeight: 67px;
 
 	position: sticky;
 	top: 0;
-	z-index: 9;
+	z-index: 100;
 
 	.blackBar {
 		width: calc(50vw - $navContainerWidth/2 + 100px);

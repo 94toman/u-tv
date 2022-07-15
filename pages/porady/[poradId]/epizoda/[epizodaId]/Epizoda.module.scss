@@ -61,7 +61,6 @@
 				}
 				.nazev {
 					display: inline-block;
-
 					padding: 40px 0 0 30px;
 				}
 			}
@@ -69,6 +68,9 @@
 			.prostorReklama {
 				background-color: $darkgrey;
 				width: 500px;
+				@include on-mobile {
+					width: 60vw;
+				}
 
 				margin: 0 auto;
 				text-align: center;
