@@ -83,7 +83,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 									<div className={styles.centerImage}>
 										<Link href={`/porady/${video.programme}`}>
 											<Image
-												src={programme.logo}
+												src={`https://www.zaktv.cz/epizody/${video.id}.jpg`}
 												objectFit="cover"
 												layout="fixed"
 												width={355.55}

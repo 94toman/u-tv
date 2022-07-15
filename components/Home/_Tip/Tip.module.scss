@@ -4,23 +4,28 @@
 	background-color: black;
 	background-image: url('./Yellow-Rectangle.png');
 	background-repeat: no-repeat;
-	background-position: right;
+	background-position: right bottom;
 	background-size: contain;
 
 	cursor: pointer;
 
 	min-height: 300px;
-	padding: 20px 0;
+	padding: 20px 50px;
+	@include on-mobile {
+		padding: 10px 2vw;
+	}
 
 	.content {
 		max-width: calc($container * (5 / 6));
-		margin: 0 auto;
+		margin: 10px auto;
 		display: flex;
+
 		.text {
 			display: inline;
 			width: 40%;
 			color: white;
 			padding-right: 30px;
+
 			* {
 				text-align: left;
 			}
@@ -29,16 +34,34 @@
 			}
 			p {
 				//font-size: 0.9em;
+				text-align: justify;
 			}
 
 			h4 {
 				color: #f25d44;
+				margin-bottom: 10px;
 			}
 		}
 		.image {
 			display: inline;
 			width: 60%;
-			padding: 20px;
+			margin: auto 20px;
+			@include on-mobile {
+				margin: 0;
+			}
+			span {
+				@include box-shadow;
+			}
+		}
+		@include on-mobile {
+			flex-direction: column;
+			.text {
+				width: 100%;
+				padding: 0 20px;
+			}
+			.image {
+				width: 100%;
+			}
 		}
 	}
 }

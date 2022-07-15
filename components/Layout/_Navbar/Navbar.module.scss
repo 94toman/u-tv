@@ -4,13 +4,14 @@
 
 $navContainerWidth: 800px;
 
-$blackBarHeight: 67px;
+$navBarHeight: 67px;
 
 .header {
 	background-color: white;
 	border-bottom: 1px solid black;
 	display: flex;
 	align-items: center;
+	height: $navBarHeight + 1px;
 
 	position: sticky;
 	top: 0;
@@ -20,7 +21,7 @@ $blackBarHeight: 67px;
 		width: calc(50vw - $navContainerWidth/2 + 100px);
 		min-width: 110px;
 		background-color: black;
-		height: $blackBarHeight;
+		height: $navBarHeight;
 
 		.navBarLogoWrapper {
 			float: right;
@@ -39,10 +40,12 @@ $blackBarHeight: 67px;
 
 		nav {
 			// active - set in globals.scss
+			height: $navBarHeight;
 			a {
 				position: relative;
 				display: inline-block;
 				color: black;
+				height: 100%;
 				padding: 21px 40px;
 				margin: 0;
 				text-decoration: none;
@@ -81,7 +84,7 @@ $blackBarHeight: 67px;
 		overflow-y: scroll;
 		list-style: none;
 		position: fixed;
-		top: calc($blackBarHeight + 1px);
+		top: calc($navBarHeight + 1px);
 		background: white;
 		border-left: solid black 1px;
 		right: -1px;

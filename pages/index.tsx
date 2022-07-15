@@ -15,7 +15,7 @@ const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
 	return (
 		<>
 			<Head>
-				<title>Home | UTV</title>
+				<title>Domů | UTV</title>
 			</Head>
 
 			<div className={styles.heading}>
@@ -31,8 +31,11 @@ const IndexPage = ({ nejnovejsi, nejsledovanejsi }) => {
 				</div>
 				<div className={styles.overlay}>
 					<Image alt="UTV_logo" src={logo} layout="intrinsic" width={117} height={102} />
-					<h3>Regionální televize</h3>
 					<h1 className={styles.lead}>UTV</h1>
+					<h2>
+						Regionální televize <br />
+						ústeckého kraje
+					</h2>
 				</div>
 			</div>
 

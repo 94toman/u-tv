@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { truncateString } from '../../functions';
 import styles from './Porad.module.scss';
 
@@ -15,7 +16,7 @@ export interface IPorad {
 	};
 }
 
-const Porad: React.FC<IPorad> = ({ porad }) => {
+const Porad: React.FC<IPorad> = React.forwardRef(({ porad }) => {
 	return (
 		<>
 			<Link href={`porady/${porad.id}`}>
@@ -35,6 +36,6 @@ const Porad: React.FC<IPorad> = ({ porad }) => {
 			</Link>
 		</>
 	);
-};
+});
 
 export default Porad;

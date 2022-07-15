@@ -1,15 +1,5 @@
-import {
-	Player as VimePlayer,
-	Hls,
-	DefaultUi,
-	Scrim,
-	Icon,
-	DefaultControls,
-	PlaybackControl,
-	Controls,
-} from '@vime/react';
 import '@vime/core/themes/default.css';
-import styles from './Player.module.scss';
+import { DefaultControls, DefaultUi, Hls, Player as VimePlayer } from '@vime/react';
 
 const Player = ({ video }) => {
 	return (

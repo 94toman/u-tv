@@ -14,7 +14,8 @@
 			color: white;
 			background: $darkgrey;
 			overflow: hidden;
-			box-shadow: 2px 4px 4px 2px rgb(0 0 0 / 20%);
+			@include box-shadow;
+
 			margin: $margin;
 			margin-bottom: 0;
 			//border-radius: 1rem;
@@ -22,10 +23,6 @@
 			display: inline-block;
 			//backface-visibility: hidden;
 			transform: translateZ(0);
-
-			&:hover {
-				box-shadow: 4px 4px 8px 4px rgb(0 0 0 / 20%);
-			}
 
 			.card_img {
 				height: 100%;
@@ -41,13 +38,6 @@
 				position: absolute;
 				bottom: 0;
 				background-color: rgba(0, 0, 0, 0.8);
-
-				h3 {
-					text-align: center;
-					margin: 10px;
-					padding: 0;
-					font-size: 1.2rem;
-				}
 				p {
 					display: none;
 					padding: 15px 10px 0;

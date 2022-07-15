@@ -2,23 +2,35 @@
 
 $width: 380px;
 
-@mixin card($width) {
+@mixin mainCard($width) {
 	.card {
 		max-width: $width;
 		height: calc(360 / 640 * $width);
 		color: white;
 		background: $darkgrey;
 		cursor: pointer;
-		box-shadow: 4px 4px 4px 0 rgb(0 0 0 / 20%);
-		margin: 0.4rem;
+		@include box-shadow;
+		margin: 0.4rem 1rem;
 		//border-radius: 1rem;
 		overflow: hidden;
 		display: inline-block;
 		backface-visibility: hidden;
 		transform: translateZ(0);
 
-		&:hover {
-			box-shadow: 4px 4px 8px 4px rgb(0 0 0 / 20%);
+		@include on-content-width {
+			$width: 26.833vw;
+			max-width: $width;
+			height: calc(360 / 640 * $width);
+			font-size: 0.9em;
+			h4 {
+				max-width: calc($width - 110px);
+			}
+		}
+		@include on-mobile {
+			$width: 380px;
+			max-width: $width;
+			height: calc(360 / 640 * $width);
+			font-size: 1rem;
 		}
 
 		.card_img {
@@ -33,19 +45,22 @@ $width: 380px;
 			position: absolute;
 			bottom: 0;
 			background-color: rgba(0, 0, 0, 0.6);
-
-			h3 {
-				text-align: center;
-				margin: 10px;
-				padding: 0;
-				font-size: 1.2rem;
-			}
-			p {
-				display: block;
-				padding: 0 10px;
-				max-height: 160px;
-				overflow: hidden;
-				text-overflow: ellipsis;
+			.card_text {
+				position: relative;
+				h3 {
+					text-align: left;
+					color: $primary;
+					margin: 10px;
+					padding: 0;
+					font-size: 1.2rem;
+				}
+				h4 {
+					text-align: left;
+					margin: 10px;
+					padding: 0;
+					color: $primary;
+					//text-transform: uppercase;
+				}
 			}
 		}
 	}

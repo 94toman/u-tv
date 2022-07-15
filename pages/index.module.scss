@@ -22,15 +22,15 @@
 		text-align: right;
 		padding: 20px 50px 0 0;
 
-		h3 {
+		h2 {
 			font-size: 35px;
 			text-align: right;
 			font-weight: normal;
+			color: white;
 		}
-
-		.lead {
-			font-size: 79px;
+		h1 {
 			font-weight: bold;
+			display: none;
 		}
 	}
 }

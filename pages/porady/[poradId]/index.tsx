@@ -136,7 +136,7 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 							<div className={styles.autori}>
 								<h3>Autoři</h3>
 								{porad.hosts.map((autor, i) => {
-									return <p>{autor.fullname}</p>;
+									return <p key={i}>{autor.fullname}</p>;
 								})}
 							</div>
 						</>
@@ -159,9 +159,11 @@ export async function getStaticPaths() {
 	return { paths, fallback: 'blocking' };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, query }) {
 	const data = await fetcher(`videos.json?programme=${params.poradId}`);
 	const poradData = await fetcher(`programmes/${params.poradId}.json`);
+
+	console.log(query);
 
 	return {
 		props: {
