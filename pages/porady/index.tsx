@@ -51,7 +51,7 @@ const Porady = ({ porady }) => {
 	};
 
 	return (
-		<div>
+		<div className={styles.porady}>
 			<Head>
 				<title>Pořady | UTV</title>
 			</Head>
@@ -69,11 +69,13 @@ const Porady = ({ porady }) => {
 				<SearchBox searchChange={searchChange} placeholder="pořad" />
 			</div>
 
-			{filteredPorady.map((porad, i) => {
-				if (porad.logo) {
-					return <Porad key={i} porad={porad} />;
-				}
-			})}
+			<div className={styles.cardsList}>
+				{filteredPorady.map((porad, i) => {
+					if (porad.logo) {
+						return <Porad key={i} porad={porad} />;
+					}
+				})}
+			</div>
 		</div>
 	);
 };

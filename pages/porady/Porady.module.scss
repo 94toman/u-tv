@@ -6,6 +6,9 @@
 	display: flex;
 	justify-content: right;
 	text-align: center;
+	@include on-tiny {
+		margin: 0px 10px 10px 0;
+	}
 
 	.razeni {
 		margin-right: 20px;
@@ -14,4 +17,10 @@
 			margin: 0 0 0 10px;
 		}
 	}
+}
+
+.cardsList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 }

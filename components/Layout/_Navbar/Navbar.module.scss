@@ -40,12 +40,12 @@ $navBarHeight: 67px;
 
 		nav {
 			// active - set in globals.scss
-			height: $navBarHeight;
+			//height: $navBarHeight; -- broke mobile nav
 			a {
 				position: relative;
 				display: inline-block;
 				color: black;
-				height: 100%;
+				//height: 100%;  -- broke mobile nav
 				padding: 21px 40px;
 				margin: 0;
 				text-decoration: none;

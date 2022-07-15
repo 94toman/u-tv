@@ -13,13 +13,14 @@ $container: 1200px;
 $porady-heading-height: 400px;
 $main-heading-height: 400px;
 
-@mixin bla {
-	height: 300px;
-	width: 600px;
-}
-
 @mixin on-mobile {
 	@media (max-width: $phone) {
+		@content;
+	}
+}
+
+@mixin on-tiny {
+	@media (max-width: 520px) {
 		@content;
 	}
 }
@@ -41,5 +42,29 @@ $main-heading-height: 400px;
 	transition: box-shadow 0.2s ease-in-out;
 	&:hover {
 		box-shadow: 1px 1px 8px 4px rgb(0 0 0 / 30%);
+	}
+}
+
+@mixin heading($heading-height, $img-height, $img-width) {
+	margin: 0 -5px;
+	position: relative;
+	overflow: hidden;
+	.image {
+		display: block;
+		height: $heading-height;
+		width: calc(($heading-height / $img-height) * $img-width);
+		overflow: hidden;
+		z-index: 2;
+	}
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: $heading-height;
+		margin-top: -$heading-height;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0), 35%, $blackish 60%);
+		z-index: 8;
+		color: white;
+		text-align: right;
+		padding: 20px 50px 0 0;
 	}
 }

@@ -108,11 +108,13 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 
 					<h3>Epizody:</h3>
 
-					{slicedEpizody.map((epizoda: IEpizoda, i: number) => {
-						if (epizoda.postermini) {
-							return <Epizoda key={i} epizoda={epizoda} />;
-						}
-					})}
+					<div className={styles.cardsList}>
+						{slicedEpizody.map((epizoda: IEpizoda, i: number) => {
+							if (epizoda.postermini) {
+								return <Epizoda key={i} epizoda={epizoda} />;
+							}
+						})}
+					</div>
 
 					{/*Display Pagination only if there is more than one page */}
 					{pages > 1 ? (

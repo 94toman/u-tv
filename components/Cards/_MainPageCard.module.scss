@@ -22,15 +22,15 @@ $width: 380px;
 			max-width: $width;
 			height: calc(360 / 640 * $width);
 			font-size: 0.9em;
-			h4 {
-				max-width: calc($width - 110px);
-			}
 		}
 		@include on-mobile {
 			$width: 380px;
 			max-width: $width;
 			height: calc(360 / 640 * $width);
 			font-size: 1rem;
+			h4 {
+				max-width: calc(100vw - 150px);
+			}
 		}
 
 		.card_img {
