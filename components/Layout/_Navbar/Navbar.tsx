@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 //import logo from '../../../images/utv_logo.png';
 import logo from '../../../images/utv_logo-white.png';
 import styles from './Navbar.module.scss';
 import { NavLink } from './_NavLink/NavLink';
 
-import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
+import { MdClose } from 'react-icons/md';
 
 const Navbar = () => {
 	// Functions to control mobile menu
@@ -26,7 +26,7 @@ const Navbar = () => {
 			<header className={styles.header}>
 				{/* Black space left from menu */}
 				<div className={styles.blackBar}>
-					<div className={styles.navBarLogoWrapper}>
+					<div className={styles.logoWrapper}>
 						<Link href="/">
 							<Image alt="UTV_logo" src={logo} layout="intrinsic" width={64} height={56} />
 						</Link>

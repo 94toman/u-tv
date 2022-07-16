@@ -22,10 +22,14 @@ $navBarHeight: 67px;
 		min-width: 110px;
 		background-color: black;
 		height: $navBarHeight;
+		// display: flex;
+		// align-items: center;
+		// justify-content: end;
 
-		.navBarLogoWrapper {
+		.logoWrapper {
 			float: right;
-			padding: 4px 20px 0 0;
+			padding: 5px 20px 0 0;
+
 			width: 89px;
 			cursor: pointer;
 		}

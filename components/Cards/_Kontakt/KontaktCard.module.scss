@@ -1,0 +1,9 @@
+@use '../../../styles/abstracts' as *;
+
+.card {
+	text-align: left;
+
+	.jmeno {
+		font-weight: bold;
+	}
+}

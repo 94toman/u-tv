@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import KontaktCard from '../components/Cards/_Kontakt/KontaktCard';
 import styles from './kontakt.module.scss';
 
 const KontaktPage = () => {
@@ -31,6 +32,14 @@ const KontaktPage = () => {
 			default:
 				return 'obchodni';
 		}
+	};
+
+	const testOsoba = {
+		foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
+		jmeno: 'Klára Tipanová',
+		pozice: 'mediální konzultant pro Karlovarský kraj',
+		tel: '+420 603 123 123',
+		email: 'klara.tipanova@utv.cz',
 	};
 
 	return (
@@ -93,7 +102,10 @@ const KontaktPage = () => {
 				</div>
 			</div>
 			<div className={styles.contentWrapper}>
-				<div className={styles.content}>Oddělení: {oddeleniContent()}</div>
+				<div className={styles.content}>
+					Oddělení: {oddeleniContent()}
+					<KontaktCard osoba={testOsoba} />
+				</div>
 			</div>
 			<div className={styles.detaily}>
 				<hr className={styles.solidDivider} />

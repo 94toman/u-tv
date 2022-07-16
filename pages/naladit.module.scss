@@ -19,12 +19,23 @@
 		.tabText {
 			text-transform: uppercase;
 			padding-left: 6px;
+			@include on-content-width {
+				padding-left: 0;
+				display: block;
+			}
 		}
 
 		span {
 			display: inline-block;
 			vertical-align: middle;
 			line-height: normal;
+		}
+
+		.mobile_break {
+			display: none;
+			@include on-mobile {
+				display: block;
+			}
 		}
 	}
 	.active {
