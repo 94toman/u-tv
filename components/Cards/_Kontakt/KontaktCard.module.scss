@@ -2,8 +2,22 @@
 
 .card {
 	text-align: left;
+	width: 260px;
+	margin: 12px;
+	p {
+		margin: 0;
+	}
+	a {
+		display: block;
+	}
 
 	.jmeno {
 		font-weight: bold;
+		font-size: 1.1em;
+	}
+	.pozice {
+		margin-bottom: 5px;
+	}
+	.email {
 	}
 }

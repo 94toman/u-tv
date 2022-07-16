@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { truncateString } from '../../functions';
 import styles from './KontaktCard.module.scss';
 
 const KontaktCard = ({ osoba }) => {
@@ -6,10 +7,14 @@ const KontaktCard = ({ osoba }) => {
 		<>
 			<div className={styles.card}>
 				<Image src={osoba.foto} layout="intrinsic" width={280} height={280} />
-				<div className={styles.jmeno}>{osoba.jmeno}</div>
-				<div className={styles.pozice}>{osoba.pozice}</div>
-				<div className={styles.tel}>{osoba.tel}</div>
-				<div className={styles.email}>{osoba.email}</div>
+				<p className={styles.jmeno}>{osoba.jmeno}</p>
+				<p className={styles.pozice}>{truncateString(osoba.pozice, 39)}</p>
+				<a className={styles.tel} href={`tel:${osoba.tel}`}>
+					{osoba.tel}
+				</a>
+				<a className={styles.email} href={`mailto:${osoba.email}`}>
+					{osoba.email}
+				</a>
 			</div>
 		</>
 	);

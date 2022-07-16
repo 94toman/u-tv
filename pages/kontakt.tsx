@@ -34,13 +34,80 @@ const KontaktPage = () => {
 		}
 	};
 
-	const testOsoba = {
-		foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
-		jmeno: 'Klára Tipanová',
-		pozice: 'mediální konzultant pro Karlovarský kraj',
-		tel: '+420 603 123 123',
-		email: 'klara.tipanova@utv.cz',
-	};
+	const testDb = [
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
+			jmeno: 'Klára Tipanová',
+			pozice: 'mediální konzultant pro Ústecký kraj',
+			tel: '+420 603 123 123',
+			email: 'klara.tipanova@utv.cz',
+			oddeleni: 'obchodni',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/29.jpg',
+			jmeno: 'Taťána Krchovová',
+			pozice: 'reportérka a moderátorka',
+			tel: '+420 603 123 321',
+			email: 'tatanakrchovova@utv.cz',
+			oddeleni: 'obchodni',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
+			jmeno: 'Klára Tipanová',
+			pozice: 'mediální konzultant pro Ústecký kraj lorem',
+			tel: '+420 603 123 123',
+			email: 'klara.tipanova@utv.cz',
+			oddeleni: 'obchodni',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/29.jpg',
+			jmeno: 'Taťána Krchovová',
+			pozice: 'reportérka a moderátorka',
+			tel: '+420 603 123 321',
+			email: 'tatanakrchovova@utv.cz',
+			oddeleni: 'obchodni',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
+			jmeno: 'Klára Tipanová',
+			pozice: 'mediální konzultant pro Ústecký kraj',
+			tel: '+420 603 123 123',
+			email: 'klara.tipanova@utv.cz',
+			oddeleni: 'obchodni',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/29.jpg',
+			jmeno: 'Taťána Krchovová',
+			pozice: 'reportérka a moderátorka',
+			tel: '+420 603 123 321',
+			email: 'tatanakrchovova@utv.cz',
+			oddeleni: 'obchodni',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/64.jpg',
+			jmeno: 'Jonáš Novotný',
+			pozice: 'redaktor',
+			tel: '+420 603 123 123',
+			email: 'redakce.redakce@utv.cz',
+			oddeleni: 'redakce',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/41.jpg',
+			jmeno: 'Taťána Produkce',
+			pozice: 'produkce',
+			tel: '+420 603 123 321',
+			email: 'tatanakrchovova@utv.cz',
+			oddeleni: 'produkce',
+		},
+		{
+			foto: 'https://www.zaktv.cz/orez-280-280/lide/86.jpg',
+			jmeno: 'Klára Vedení',
+			pozice: 'vedoucí',
+			tel: '+420 603 123 321',
+			email: 'tatanakrchovova@utv.cz',
+			oddeleni: 'vedeni',
+		},
+	];
 
 	return (
 		<>
@@ -103,8 +170,13 @@ const KontaktPage = () => {
 			</div>
 			<div className={styles.contentWrapper}>
 				<div className={styles.content}>
-					Oddělení: {oddeleniContent()}
-					<KontaktCard osoba={testOsoba} />
+					{testDb
+						.filter((osoby) => {
+							return osoby.oddeleni === oddeleniContent();
+						})
+						.map((osoba) => {
+							return <KontaktCard osoba={osoba} />;
+						})}
 				</div>
 			</div>
 			<div className={styles.detaily}>

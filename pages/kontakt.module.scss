@@ -84,11 +84,9 @@
 		//background-color: rgb(243, 243, 243);
 		padding: 20px;
 		min-height: 300px;
-
-		p,
-		li {
-			text-align: left;
-		}
+		display: inline-flex;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 }
 
