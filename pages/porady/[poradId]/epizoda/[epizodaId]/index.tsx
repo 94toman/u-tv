@@ -112,12 +112,12 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 					<div className={styles.sideBar}>
 						<h3>Další epizody</h3>
 						<div className={styles.sideContent}>
-							{dalsiEpizody.slice(0, 3).map((single, i) => {
-								return <DalsiEpizoda single={single} />;
+							{dalsiEpizody.slice(0, 3).map((single, i: number) => {
+								return <DalsiEpizoda key={i} single={single} />;
 							})}
 							<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
-							{dalsiEpizody.slice(3, 4).map((single, i) => {
-								return <DalsiEpizoda single={single} />;
+							{dalsiEpizody.slice(3, 4).map((single, i: number) => {
+								return <DalsiEpizoda key={i} single={single} />;
 							})}
 						</div>
 					</div>

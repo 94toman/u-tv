@@ -13,6 +13,7 @@
 		"html-to-formatted-text": "^2.7.0",
 		"next": "latest",
 		"nextjs-cors": "^2.1.1",
+		"parse": "^3.4.3",
 		"prop-types": "^15.8.1",
 		"react": "^17.0.2",
 		"react-cookie-consent": "^7.5.0",

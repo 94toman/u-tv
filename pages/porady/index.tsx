@@ -70,7 +70,7 @@ const Porady = ({ porady }) => {
 			</div>
 
 			<div className={styles.cardsList}>
-				{filteredPorady.map((porad, i) => {
+				{filteredPorady.map((porad, i: number) => {
 					if (porad.logo) {
 						return <Porad key={i} porad={porad} />;
 					}
