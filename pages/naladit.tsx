@@ -1,50 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { Internetove, Kabelove, Pozemni, Satelitni } from '../components/Cards/NaladitCards';
+import ReactMarkdown from 'react-markdown';
 import styles from './naladit.module.scss';
 
-// Import Parse minified version
-import Parse from 'parse/dist/parse.min.js';
-
-const NaladitPage = () => {
+const NaladitPage = ({ naladitData }) => {
 	const router = useRouter();
 	const { prijem } = router.query;
-
-	////////////////////////////////////////////////////////
-	// BACKEND //
-
-	// https://parse-dashboard.back4app.com/apps/96364f3f-4a37-483b-9bb4-9c4829102408/browser/naladit
-	/////////////
-	const [data, setData] = useState([{}]);
-
-	// Your Parse initialization configuration goes here
-	const PARSE_APPLICATION_ID = 'OQkorHAruiEbKfVdYVLvIDzYHcNjrqvcrAz1r0KW';
-	const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
-	const PARSE_JAVASCRIPT_KEY = 'trc9VN6FLaBVIM5t4W86tAy0ZFttHJ2Xyms3iF8T';
-	Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
-	Parse.serverURL = PARSE_HOST_URL;
-
-	async function fetchData() {
-		// create your Parse Query using the Person Class you've created
-		const query = new Parse.Query('naladit');
-		// use the equalTo filter to look for user which the name is John. this filter can be used in any data type
-		//query.equalTo('druh', 'kabelove');
-		// run the query
-		const Pozemni = await query.find();
-		//const pozemniText = await Pozemni.get('text');
-		// access the Parse Object attributes
-		console.log('query: ', query);
-		console.log('Pozemni: ', Pozemni);
-		console.log('0 text: ', Pozemni[0].get('text'));
-		//console.log('person json: ', json);
-		//console.log('Pozemni id: ', Pozemni.id);
-		//console.log('Pozemni text: ', Pozemni.get('text'));
-		setData(Pozemni);
-	}
-
-	/////////////////////////////////////////////////////
 
 	// funkce, která mění konec URL
 	const tabClick = (druh) => {
@@ -57,22 +19,6 @@ const NaladitPage = () => {
 		); // shallow: aby stránka zůstala kde je
 	};
 
-	const prijemContent = () => {
-		switch (prijem) {
-			case 'pozemni':
-				return <Pozemni />;
-			case 'kabelove':
-				return <Kabelove />;
-			case 'satelitni':
-				return <Satelitni />;
-			case 'internetove':
-				return <Internetove />;
-
-			default:
-				return <Pozemni />;
-		}
-	};
-
 	return (
 		<>
 			<Head>
@@ -80,21 +26,6 @@ const NaladitPage = () => {
 			</Head>
 			<h2>Jak nás naladit</h2>
 
-			{
-				// Backend testing
-			}
-			<button onClick={fetchData}>Add Person</button>
-
-			{/* ZOBRAZENI BACKEND DAT -> ALE FUNGUJE AZ PO STISKNUTI TLACITKA
-			data.map((radek) => {
-				return (
-					<>
-						<h3>{radek.get('druh')}</h3>
-						<p>{htmlToFormattedText(radek.get('text'))}</p>
-					</>
-				);
-			})
-		}
 			{/* Přepínání karet */}
 			<div className={styles.wrapper}>
 				<div
@@ -141,11 +72,77 @@ const NaladitPage = () => {
 					</span>
 				</div>
 			</div>
+
+			{/* Popis jednotlivých připojení */}
+
 			<div className={styles.contentWrapper}>
-				<div className={styles.content}>{prijemContent()}</div>
+				<div className={styles.content}>
+					<ReactMarkdown className={styles.markdown}>
+						{prijem
+							? naladitData.find((naladit) => {
+									return naladit.druh === prijem;
+							  }).popis
+							: naladitData.find((naladit) => {
+									return naladit.druh === 'pozemni';
+							  }).popis}
+					</ReactMarkdown>
+				</div>
 			</div>
 		</>
 	);
 };
 
 export default NaladitPage;
+
+export async function getStaticProps() {
+	const fallback = {
+		data: [
+			{
+				druh: 'kabelove',
+				popis: 'UTV je dostupné u vybraných poskytovatelů kabelového signálu nejen v západních Čechách, ale v celé ČR.\n\nVysíláme např. u poskytovatelů:\n\n- Sledovani.tv\n- Starnet TV\n- Lepsi.tv\n- 4NET.TV\n- Pilsfree TV\n- ZKTV\n- Kabel Ostrov\n- Nika TV\n- Rio Media a další.',
+			},
+			{
+				druh: 'satelitni',
+				popis: 'TV ZAK v současné době není dostupná v satelitním vysílání. Diváci, kteří využívají satelitní vysílání, si mohou vysílání pustit přes online vysílání nebo v archivu.',
+			},
+			{
+				druh: 'internetove',
+				popis: 'UTV má propracovaný video archiv, ve kterém je možné si pustit všechny naše pořady zpětně. Stačí zadat hledaný pořad, uvést ve vyhledávači hosta či jiné klíčové slovo a systém vám nabídne nalezené pořady.\n\nCelé naše aktuální vysílání je možné si zpětně pustit v odkazu Online vysílání.',
+			},
+			{
+				druh: 'pozemni',
+				popis: 'Naše vysílání mohou sledovat všichni obyvatelé Ústeckého kraje, kteří přijímají signál z běžné televizní antény. Terestrické pokrytí nám zajišťuje společnost Digital Broadcasting. V roce 2020 v ČR změna vysílacího standardu na DVB-T2.\n\nV případě, že jste obyvatelem domu, kde je společná anténa, je potřeba zjistit, zdali vám již byl naladěn multiplex 24. To zjistíte tak, že přijímáte např. kanály NOVA, NOVA FUN, NOVA GOLD, RELAX, apod. V případě že ano, můžete si na vašem přijímači naladit vysílání i TV ZAK (viz návod níže). V případě, že výše uvedené kanály nechytáte přes společnou anténu, je potřeba vyhledat pomoc správce vaší antény a požádat ho o naladění multiplexu 24.\n\nStručný návod, jak naladit TV ZAK na set-top boxu:\n\n- Zapněte si televizi, popř. i externí set-top box.\n- Na ovladači zmáčkněte tlačítko menu.\n- V menu pomoci šipek na ovladači najeďte na automatické ladění (nebo také vyhledávání či skenování).\n- Zmáčkněte OK nebo potvrdit.\n- Projeďte všechny naladěné kanály.\n- Nyní byste měli mít přidaný kanál TV ZAK.',
+			},
+		],
+	};
+
+	try {
+		const res = await fetch('https://utv-backend.herokuapp.com/api/naladits');
+		let obj = await res.json();
+		if (obj.data === null) {
+			obj = fallback;
+		}
+		const flat = obj.data.map((druh) => {
+			return Object.assign(
+				{},
+				...(function _flatten(o) {
+					return [].concat(
+						...Object.keys(o).map((k) => (typeof o[k] === 'object' ? _flatten(o[k]) : { [k]: o[k] }))
+					);
+				})(druh)
+			);
+		});
+
+		return {
+			props: {
+				naladitData: flat,
+			}, // will be passed to the page component as props
+		};
+	} catch (e) {
+		return {
+			props: {
+				naladitData: fallback.data, //error handling in case of Fetch error
+			},
+		};
+	}
+}
