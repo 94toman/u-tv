@@ -10,7 +10,7 @@ const Heading = ({ porad, searchChange }) => {
 				<Image
 					src={`${porad.logo}`}
 					layout="responsive"
-					objectFit="contain"
+					objectFit="cover"
 					width={800}
 					height={450}
 					alt="porad-logo"

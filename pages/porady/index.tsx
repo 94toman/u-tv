@@ -82,11 +82,14 @@ const Porady = ({ porady }) => {
 export default Porady;
 
 export async function getStaticProps() {
-	const data = await fetcher(`programmes.json`);
+	const res = await fetcher(`programmes.json`);
+	const data = res.programmes.filter((porad) => {
+		return porad.status === 'current';
+	});
 
 	return {
 		props: {
-			porady: data.programmes,
+			porady: data,
 		}, // will be passed to the page component as props
 		revalidate: 86400,
 	};

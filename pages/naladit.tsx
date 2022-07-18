@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Internetove, Kabelove, Pozemni, Satelitni } from '../components/Cards/NaladitCards';
 import styles from './naladit.module.scss';
-import { truncateString } from '../components/functions';
-import htmlToFormattedText from 'html-to-formatted-text';
 
 // Import Parse minified version
 import Parse from 'parse/dist/parse.min.js';
