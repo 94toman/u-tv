@@ -74,16 +74,17 @@ const NaladitPage = ({ naladitData }) => {
 			</div>
 
 			{/* Popis jednotlivých připojení */}
-
 			<div className={styles.contentWrapper}>
 				<div className={styles.content}>
 					<ReactMarkdown className={styles.markdown}>
-						{prijem
-							? naladitData.find((naladit) => {
-									return naladit.druh === prijem;
-							  }).popis
-							: naladitData.find((naladit) => {
+						{!prijem
+							? // defaultní druh připojení
+							  naladitData.find((naladit) => {
 									return naladit.druh === 'pozemni';
+							  }).popis
+							: // když je nastavené query v URL
+							  naladitData.find((naladit) => {
+									return naladit.druh === prijem;
 							  }).popis}
 					</ReactMarkdown>
 				</div>
