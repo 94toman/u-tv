@@ -1,18 +1,38 @@
 import Image from 'next/image';
+import silueta from '../../../images/silueta.webp';
 import { truncateString } from '../../functions';
 import styles from './KontaktCard.module.scss';
 
 const KontaktCard = ({ osoba }) => {
+	if (!osoba.fullname) {
+		osoba.fullname = '';
+	}
+	if (!osoba.department) {
+		osoba.department = 'Obchodní oddělení';
+	}
+	if (!osoba.jobtitle) {
+		osoba.jobtitle = '';
+	}
+	if (!osoba.phone) {
+		osoba.phone = '';
+	}
+	if (!osoba.email) {
+		osoba.email = '';
+	}
+	if (!osoba.photo) {
+		osoba.photo = silueta;
+	}
+
 	return (
 		<>
 			<div className={styles.card}>
-				<Image src={osoba.foto} layout="intrinsic" width={280} height={280} />
-				<p className={styles.jmeno}>{osoba.jmeno}</p>
-				<p className={styles.pozice}>{truncateString(osoba.pozice, 39)}</p>
-				<a className={styles.tel} href={`tel:${osoba.tel}`}>
-					{osoba.tel}
+				<Image src={osoba.photo} layout="intrinsic" width={260} height={260} />
+				<p className={styles.jmeno}>{osoba.fullname}</p>
+				<p className={styles.pozice}>{truncateString(osoba.jobtitle, 39)}</p>
+				<a className={styles.tel} href={`tel:${osoba.phone}`}>
+					{osoba.phone}
 				</a>
-				<a className={styles.email} href={`mailto:${osoba.email}`}>
+				<a className={styles.mail} href={`mailto:${osoba.email}`}>
 					{osoba.email}
 				</a>
 			</div>

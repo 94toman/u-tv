@@ -161,11 +161,9 @@ export async function getStaticPaths() {
 	return { paths, fallback: 'blocking' };
 }
 
-export async function getStaticProps({ params, query }) {
+export async function getStaticProps({ params }) {
 	const data = await fetcher(`videos.json?programme=${params.poradId}`);
 	const poradData = await fetcher(`programmes/${params.poradId}.json`);
-
-	console.log(query);
 
 	return {
 		props: {

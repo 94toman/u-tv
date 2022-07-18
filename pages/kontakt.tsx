@@ -1,9 +1,25 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import KontaktCard from '../components/Cards/_Kontakt/KontaktCard';
+import { fetcher } from '../components/functions';
 import styles from './kontakt.module.scss';
 
-const KontaktPage = () => {
+type IKontakty = {
+	kontakty: {
+		id: number; //"85",
+		lastchange: number; //"1633527191","
+		status: string; //"visible",
+		fullname: string; //"Mgr. Bohumil Koča",
+		department: string; //"Obchodní oddělení",
+		jobtitle: string; //"obchodní ředitel"
+		phone: string; //"+420371650138",
+		email: string; //"obchod@zaktv.cz",
+		description: string; //"",
+		photo: string; //"https://www.zaktv.cz/lide/85.jpg?1633527191"
+	}[];
+};
+
+const KontaktPage = ({ kontakty }: IKontakty) => {
 	const router = useRouter();
 	const { oddeleni } = router.query;
 
@@ -20,94 +36,19 @@ const KontaktPage = () => {
 
 	const oddeleniContent = () => {
 		switch (oddeleni) {
-			case 'obchodni':
-				return 'obchodni';
-			case 'redakce':
-				return 'redakce';
-			case 'produkce':
-				return 'produkce';
-			case 'vedeni':
-				return 'vedeni';
+			case 'Obchodní oddělení':
+				return 'Obchodní oddělení';
+			case 'Redakce':
+				return 'Redakce';
+			case 'Produkce':
+				return 'Produkce';
+			case 'Vedení společnosti':
+				return 'Vedení společnosti';
 
 			default:
-				return 'obchodni';
+				return 'Obchodní oddělení';
 		}
 	};
-
-	const testDb = [
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
-			jmeno: 'Klára Tipanová',
-			pozice: 'mediální konzultant pro Ústecký kraj',
-			tel: '+420 603 123 123',
-			email: 'klara.tipanova@utv.cz',
-			oddeleni: 'obchodni',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/29.jpg',
-			jmeno: 'Taťána Krchovová',
-			pozice: 'reportérka a moderátorka',
-			tel: '+420 603 123 321',
-			email: 'tatanakrchovova@utv.cz',
-			oddeleni: 'obchodni',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
-			jmeno: 'Klára Tipanová',
-			pozice: 'mediální konzultant pro Ústecký kraj lorem',
-			tel: '+420 603 123 123',
-			email: 'klara.tipanova@utv.cz',
-			oddeleni: 'obchodni',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/29.jpg',
-			jmeno: 'Taťána Krchovová',
-			pozice: 'reportérka a moderátorka',
-			tel: '+420 603 123 321',
-			email: 'tatanakrchovova@utv.cz',
-			oddeleni: 'obchodni',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/24.jpg',
-			jmeno: 'Klára Tipanová',
-			pozice: 'mediální konzultant pro Ústecký kraj',
-			tel: '+420 603 123 123',
-			email: 'klara.tipanova@utv.cz',
-			oddeleni: 'obchodni',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/29.jpg',
-			jmeno: 'Taťána Krchovová',
-			pozice: 'reportérka a moderátorka',
-			tel: '+420 603 123 321',
-			email: 'tatanakrchovova@utv.cz',
-			oddeleni: 'obchodni',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/64.jpg',
-			jmeno: 'Jonáš Novotný',
-			pozice: 'redaktor',
-			tel: '+420 603 123 123',
-			email: 'redakce.redakce@utv.cz',
-			oddeleni: 'redakce',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/41.jpg',
-			jmeno: 'Taťána Produkce',
-			pozice: 'produkce',
-			tel: '+420 603 123 321',
-			email: 'tatanakrchovova@utv.cz',
-			oddeleni: 'produkce',
-		},
-		{
-			foto: 'https://www.zaktv.cz/orez-280-280/lide/86.jpg',
-			jmeno: 'Klára Vedení',
-			pozice: 'vedoucí',
-			tel: '+420 603 123 321',
-			email: 'tatanakrchovova@utv.cz',
-			oddeleni: 'vedeni',
-		},
-	];
 
 	return (
 		<>
@@ -143,42 +84,43 @@ const KontaktPage = () => {
 			<div className={styles.wrapper}>
 				<div
 					className={`${styles.tab} ${
-						oddeleni === 'obchodni' || oddeleni === undefined ? styles.active : ''
+						oddeleni === 'Obchodní oddělení' || oddeleni === undefined ? styles.active : ''
 					}`}
-					onClick={() => tabClick('obchodni')}
+					onClick={() => tabClick('Obchodní oddělení')}
 				>
 					<span className={styles.tabText}>Obchodní oddělení</span>
 				</div>
 				<div
-					className={`${styles.tab} ${oddeleni === 'redakce' ? styles.active : ''}`}
-					onClick={() => tabClick('redakce')}
+					className={`${styles.tab} ${oddeleni === 'Redakce' ? styles.active : ''}`}
+					onClick={() => tabClick('Redakce')}
 				>
 					<span className={styles.tabText}>Redakce</span>
 				</div>
 				<div
-					className={`${styles.tab} ${oddeleni === 'produkce' ? styles.active : ''}`}
-					onClick={() => tabClick('produkce')}
+					className={`${styles.tab} ${oddeleni === 'Produkce' ? styles.active : ''}`}
+					onClick={() => tabClick('Produkce')}
 				>
 					<span className={styles.tabText}>Produkce</span>
 				</div>
 				<div
-					className={`${styles.tab} ${oddeleni === 'vedeni' ? styles.active : ''}`}
-					onClick={() => tabClick('vedeni')}
+					className={`${styles.tab} ${oddeleni === 'Vedení společnosti' ? styles.active : ''}`}
+					onClick={() => tabClick('Vedení společnosti')}
 				>
 					<span className={styles.tabText}>Vedení společnosti</span>
 				</div>
 			</div>
 			<div className={styles.contentWrapper}>
 				<div className={styles.content}>
-					{testDb
+					{kontakty
 						.filter((osoby) => {
-							return osoby.oddeleni === oddeleniContent();
+							return osoby.department === oddeleniContent();
 						})
 						.map((osoba) => {
 							return <KontaktCard osoba={osoba} />;
 						})}
 				</div>
 			</div>
+
 			<div className={styles.detaily}>
 				<hr className={styles.solidDivider} />
 				<div className={styles.text}>
@@ -202,9 +144,21 @@ const KontaktPage = () => {
 
 export default KontaktPage;
 
-/*
-				<table>
-					<tr>info@utv.cz</tr>
-					<tr>+420 371 650 138</tr>
-				</table>
-*/
+export async function getStaticProps() {
+	let data = {
+		contacts: {},
+	};
+
+	try {
+		data = await fetcher(`contacts.json`);
+	} catch (e) {
+		console.log(e);
+	}
+
+	return {
+		props: {
+			kontakty: data.contacts,
+		}, // will be passed to the page component as props
+		revalidate: 86400,
+	};
+}

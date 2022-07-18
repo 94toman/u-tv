@@ -79,6 +79,7 @@ const Porady = ({ porady }) => {
 		</div>
 	);
 };
+export default Porady;
 
 export async function getStaticProps() {
 	const data = await fetcher(`programmes.json`);
@@ -90,5 +91,3 @@ export async function getStaticProps() {
 		revalidate: 86400,
 	};
 }
-
-export default Porady;
