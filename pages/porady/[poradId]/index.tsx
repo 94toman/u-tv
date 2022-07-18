@@ -152,9 +152,12 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 };
 
 export async function getStaticPaths() {
-	const data = await fetcher(`programmes.json`);
+	const res = await fetcher(`programmes.json`);
+	const data = res.programmes.filter((porad) => {
+		return porad.status === 'current';
+	});
 
-	const paths = data.programmes.map((porad) => ({
+	const paths = data.map((porad) => ({
 		params: { poradId: porad.id.toString() },
 	}));
 
