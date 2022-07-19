@@ -156,17 +156,17 @@ export async function getStaticPaths() {
 	const data = res.programmes.filter((porad) => {
 		return porad.status === 'current';
 	});
-	const slicedData = data.slice(0, 1);
 
-	const paths = slicedData.map((porad) => ({
-		params: { poradId: porad.id.toString() }, //try to slice
+	//slice didn't reduce the build time
+	const paths = data.map((porad) => ({
+		params: { poradId: porad.id.toString() },
 	}));
 
 	return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
-	const data = await fetcher(`videos.json?programme=${params.poradId}`);
+	const data = await fetcher(`videos.json?programme=1`); //${params.poradId}
 	const poradData = await fetcher(`programmes/${params.poradId}.json`);
 
 	return {
