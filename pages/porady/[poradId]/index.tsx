@@ -166,7 +166,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const data = await fetcher(`videos.json?programme=1`); //${params.poradId}
+	const data = await fetcher(`videos.json?programme=${params.poradId}`);
 	const poradData = await fetcher(`programmes/${params.poradId}.json`);
 
 	return {

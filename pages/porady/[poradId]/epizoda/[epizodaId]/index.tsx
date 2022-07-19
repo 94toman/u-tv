@@ -128,7 +128,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 };
 
 export async function getStaticPaths() {
-	const data = await fetcher(`/videos.json?limit=999999`);
+	const data = await fetcher(`/videos.json?limit=1`);
 
 	const paths = data.videos.map((video) => ({
 		params: {
