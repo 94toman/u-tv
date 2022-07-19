@@ -78,25 +78,23 @@
 			.prostorReklama {
 				background-color: $darkgrey;
 				width: 500px;
-				@include on-mobile {
-					width: 60vw;
-				}
-
 				margin: 0 auto;
 				text-align: center;
 				padding: 100px 0;
+				@include on-mobile {
+					width: 60vw;
+				}
 			}
 		}
 	}
 
 	.sideBar {
 		display: block;
-
 		margin: 10px 5px 5px;
-
 		width: 20%;
 		@include on-mobile {
 			width: 100%;
+			margin: 30px 0 20px;
 		}
 
 		h3 {
@@ -107,6 +105,7 @@
 		.sideContent {
 			padding: 50px 0 0 30px;
 			@include on-mobile {
+				padding: 0;
 				display: flex;
 			}
 			> div {
@@ -120,6 +119,9 @@
 			}
 			.sideReklama {
 				height: 240px;
+				@include on-mobile {
+					height: auto;
+				}
 				background-color: #eeeeee;
 			}
 		}
