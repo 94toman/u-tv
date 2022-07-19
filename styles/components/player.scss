@@ -14,7 +14,7 @@ vm-player {
 	--vm-ui-z-index: 2;
 	--vm-loading-screen-z-index: 1;
 	--vm-poster-z-index: 1;
-	--vm-scrim-z-index: 0;
+	--vm-scrim-z-index: -10;
 	--vm-click-to-play-z-index: 2;
 	--vm-dbl-click-fullscreen-z-index: 2;
 	--vm-captions-z-index: 3;

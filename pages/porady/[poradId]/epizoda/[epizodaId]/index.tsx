@@ -93,11 +93,8 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 									</div>
 								</div>
 								<div className={styles.nazev}>
-									<h3>
-										Název pořadu:
-										<br />
-										{programme.title}
-									</h3>
+									<span className={styles.nadpis}>Název pořadu:</span>
+									<h3>{programme.title}</h3>
 								</div>
 							</div>
 
@@ -110,7 +107,6 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 					</div>
 
 					<div className={styles.sideBar}>
-						<h3>Další epizody</h3>
 						<div className={styles.sideContent}>
 							{dalsiEpizody.slice(0, 3).map((single, i: number) => {
 								return <DalsiEpizoda key={i} single={single} />;
@@ -128,7 +124,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 };
 
 export async function getStaticPaths() {
-	const data = await fetcher(`/videos.json?limit=1`);
+	const data = await fetcher(`/videos.json?limit=1`); // 999999 increased the build time to 30 minutes
 
 	const paths = data.videos.map((video) => ({
 		params: {

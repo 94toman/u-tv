@@ -41,6 +41,10 @@
 
 			.nazevPoradu {
 				display: flex;
+				flex-wrap: wrap;
+				@include on-mobile {
+					justify-content: center;
+				}
 				margin-bottom: 80px;
 				.roundImage {
 					display: inline-block;
@@ -61,7 +65,13 @@
 				}
 				.nazev {
 					display: inline-block;
-					padding: 40px 0 0 30px;
+					padding: 70px 0 0 30px;
+					.nadpis {
+						text-transform: uppercase;
+					}
+					h3 {
+						padding-top: 0;
+					}
 				}
 			}
 
@@ -81,7 +91,7 @@
 
 	.sideBar {
 		display: block;
-		background-color: rgb(250, 250, 250);
+
 		margin: 10px 5px 5px;
 
 		width: 20%;
@@ -95,19 +105,22 @@
 		}
 
 		.sideContent {
+			padding: 50px 0 0 30px;
 			@include on-mobile {
 				display: flex;
 			}
-			div {
-				margin: 20px 10px;
-				padding: 10px 5px;
-				background-color: $greyish;
+			> div {
+				margin: 20px 0px;
+				//padding: 10px 5px;
+				//background-color: #eeeeee;
 				@include on-mobile {
 					margin: 5px;
 				}
+				cursor: pointer;
 			}
 			.sideReklama {
 				height: 240px;
+				background-color: #eeeeee;
 			}
 		}
 	}

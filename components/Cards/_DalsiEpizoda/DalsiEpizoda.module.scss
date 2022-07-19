@@ -1,3 +1,20 @@
+@use '../../../styles/abstracts/' as *;
+
 .card {
-	cursor: pointer;
+	@include box-shadow;
+
+	.textBelow {
+		padding: 0 5px 1px;
+		text-align: left;
+		.title {
+			font-size: 14px;
+			line-height: 16px;
+			font-weight: bold;
+			margin: 0;
+		}
+		.date {
+			color: $darkgrey;
+			text-align: right;
+		}
+	}
 }
