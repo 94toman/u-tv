@@ -27,6 +27,7 @@ $navBarHeight: 67px;
 		// justify-content: end;
 
 		.logoWrapper {
+			background-color: black;
 			float: right;
 			padding: 5px 20px 0 0;
 
@@ -70,6 +71,9 @@ $navBarHeight: 67px;
 }
 
 @include on-mobile {
+	.blackBar .logoWrapper {
+	}
+
 	.mobileNav {
 		display: block;
 		margin-left: auto;

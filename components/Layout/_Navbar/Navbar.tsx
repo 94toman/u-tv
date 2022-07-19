@@ -27,7 +27,7 @@ const Navbar = () => {
 				<div className={styles.blackBar}>
 					<div className={styles.logoWrapper}>
 						<Link href="/">
-							<Image alt="UTV_logo" src={logo} layout="intrinsic" width={64} height={56} />
+							<Image alt="UTV_logo" src={logo} layout="intrinsic" width={69} height={56} />
 						</Link>
 					</div>
 				</div>
