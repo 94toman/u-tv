@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { getDate, truncateString } from '../../functions';
+import ImageWithFallback from '../ImageWithFallback';
 import styles from './Epizoda.module.scss';
 
 export interface IEpizoda {
@@ -31,7 +31,7 @@ const Epizoda: React.FC<IEpizoda> = ({ epizoda }) => {
 				<div className={styles.cardWrapper}>
 					<div className={styles.card}>
 						<div className={styles.card_img}>
-							<Image src={`${epizoda.postermini}`} layout="intrinsic" width={450} height={350} />
+							<ImageWithFallback src={epizoda.postermini} layout="intrinsic" width={450} height={350} />
 						</div>
 						<div className={styles.card_content}>
 							{epizoda.description.length > 0 ? <p>{truncateString(epizoda.description, 160)}</p> : <></>}

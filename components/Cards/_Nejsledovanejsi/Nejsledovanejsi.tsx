@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import ImageWithFallback from '../ImageWithFallback';
 import styles from './Nejsledovanejsi.module.scss';
 
 export interface IPorad {
@@ -16,7 +16,7 @@ const Nejsledovanejsi: React.FC<IPorad> = ({ id, title, logo }) => {
 				<div className={styles.card}>
 					<div>
 						<div className={styles.card_img}>
-							<Image src={`${logo}`} layout="intrinsic" width={450} height={253} />
+							<ImageWithFallback src={`${logo}`} layout="intrinsic" width={450} height={253} />
 						</div>
 						<div className={styles.card_content}>
 							<div className={styles.card_text}>

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-//import logo from '../../../images/utv_logo.png';
 import logo from '../../../images/utv_logo-white.png';
 import styles from './Navbar.module.scss';
 import { NavLink } from './_NavLink/NavLink';

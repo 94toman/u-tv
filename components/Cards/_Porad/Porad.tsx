@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import { truncateString } from '../../functions';
+import ImageWithFallback from '../ImageWithFallback';
 import styles from './Porad.module.scss';
 
 export interface IPorad {
@@ -17,23 +17,13 @@ export interface IPorad {
 }
 
 const Porad: React.FC<IPorad> = React.forwardRef(({ porad }) => {
-	const [src, setSrc] = useState(porad.logo); //image loading error handling
-
 	return (
 		<>
 			<Link href={`porady/${porad.id}`}>
 				<div className={styles.cardWrapper}>
 					<div className={styles.card}>
 						<div className={styles.card_img}>
-							<Image
-								src={src}
-								layout="intrinsic"
-								width={450}
-								height={350}
-								onError={() => setSrc('/public/placeholder.jpg')}
-								placeholder="blur"
-								blurDataURL="/public/placeholder.jpg"
-							/>
+							<ImageWithFallback src={porad.logo} layout="intrinsic" width={450} height={350} />
 						</div>
 						<div className={styles.card_content}>
 							{porad.lead.length > 0 ? <p>{truncateString(porad.lead, 240)}</p> : <></>}

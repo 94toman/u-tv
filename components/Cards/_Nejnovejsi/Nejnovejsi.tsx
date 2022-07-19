@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { getDate } from '../../functions';
+import ImageWithFallback from '../ImageWithFallback';
 import styles from './Nejnovejsi.module.scss';
 
 export interface IEpizoda {
@@ -26,7 +26,7 @@ const Nejnovejsi: React.FC<IEpizoda> = ({ postermini, programme, programmetitle,
 				<div className={styles.card}>
 					<div>
 						<div className={styles.card_img}>
-							<Image src={`${postermini}`} layout="intrinsic" width={450} height={253} />
+							<ImageWithFallback src={`${postermini}`} layout="intrinsic" width={450} height={253} />
 						</div>
 						<div className={styles.card_content}>
 							<div className={styles.card_text}>
