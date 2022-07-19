@@ -153,12 +153,14 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 
 export async function getStaticPaths() {
 	const res = await fetcher(`programmes.json`);
-	const data = res.programmes.filter((porad) => {
-		return porad.status === 'current';
-	});
+	const data = res.programmes
+		.filter((porad) => {
+			return porad.status === 'current';
+		})
+		.slice(0, 10);
 
 	const paths = data.map((porad) => ({
-		params: { poradId: porad.id.toString() },
+		params: { poradId: porad.id.toString() }, //try to slice
 	}));
 
 	return { paths, fallback: 'blocking' };
