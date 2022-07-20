@@ -138,7 +138,7 @@ export async function getStaticProps() {
 			props: {
 				naladitData: flat,
 			}, // will be passed to the page component as props
-			revalidate: 100,
+			revalidate: 60,
 		};
 	} catch (e) {
 		return {

@@ -179,7 +179,7 @@ export async function getStaticProps({ params }) {
 				pages: data.videos ? Math.floor(data.videos.length / 15 + 1) : 0,
 			},
 		}, // will be passed to the page component as props
-		revalidate: 86400,
+		revalidate: 60,
 	};
 }
 

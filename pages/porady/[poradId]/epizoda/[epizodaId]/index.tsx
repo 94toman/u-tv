@@ -147,7 +147,7 @@ export async function getStaticProps({ params }) {
 			porad: poradData,
 			epizody: epizody.videos,
 		}, // will be passed to the page component as props
-		revalidate: 86400,
+		revalidate: 60,
 	};
 }
 

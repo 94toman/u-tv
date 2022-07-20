@@ -91,6 +91,6 @@ export async function getStaticProps() {
 		props: {
 			porady: data,
 		}, // will be passed to the page component as props
-		revalidate: 86400,
+		revalidate: 60,
 	};
 }
