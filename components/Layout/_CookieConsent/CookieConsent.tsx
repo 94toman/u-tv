@@ -1,15 +1,29 @@
 import { CookieBanner } from '@keepist/react-gdpr-cookie-banner';
-//import { useCookies } from 'react-cookie';
+import Router from 'next/router';
+import React from 'react';
 import TagManager from 'react-gtm-module';
 
 const CookieConsent = () => {
-	//const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
-
 	const tagManagerArgs = {
 		gtmId: 'GTM-000000',
 		dataLayer: {
 			cookie: 'Statistic initialized',
 		},
+	};
+
+	const FacebookPixel = () => {
+		React.useEffect(() => {
+			import('react-facebook-pixel')
+				.then((x) => x.default)
+				.then((ReactPixel) => {
+					ReactPixel.init('pixel ID here');
+					ReactPixel.pageView();
+					Router.events.on('routeChangeComplete', () => {
+						ReactPixel.pageView();
+					});
+				});
+		});
+		return null;
 	};
 
 	return (
@@ -28,15 +42,16 @@ const CookieConsent = () => {
 				showAcceptSelectionButton={true}
 				onAccept={() => {
 					// load your preferences when consent is given
-					console.log('1');
+					console.log('Necessary Consent granted');
 				}}
 				onAcceptStatistics={() => {
-					console.log('statis');
+					console.log('GTM initialized');
 					TagManager.initialize(tagManagerArgs);
 					// load your statistics trackers here
 				}}
 				onAcceptMarketing={() => {
-					console.log('mark');
+					console.log('FB pixel initialized');
+					FacebookPixel();
 					// load your marketing trackers here
 				}}
 				className="banner"

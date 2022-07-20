@@ -45,6 +45,9 @@ const Navbar = () => {
 						<NavLink exact={false} href="/porady" onClick={() => closeMenu()}>
 							Pořady
 						</NavLink>
+						<NavLink exact href="/media" onClick={() => closeMenu()}>
+							Pro média
+						</NavLink>
 						<NavLink exact href="/naladit" onClick={() => closeMenu()}>
 							Jak naladit
 						</NavLink>

@@ -18,7 +18,7 @@ $navBarHeight: 67px;
 	z-index: 100;
 
 	.blackBar {
-		width: calc(50vw - $navContainerWidth/2 + 100px);
+		width: calc(50vw - $navContainerWidth/2 + 80px);
 		min-width: 110px;
 		background-color: black;
 		height: $navBarHeight;
@@ -51,7 +51,10 @@ $navBarHeight: 67px;
 				display: inline-block;
 				color: black;
 				//height: 100%;  -- broke mobile nav
-				padding: 21px 40px;
+				padding: 21px 35px;
+				@include on-content-width {
+					padding: 21px 27px;
+				}
 				margin: 0;
 				text-decoration: none;
 				text-transform: uppercase;
