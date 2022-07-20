@@ -108,21 +108,19 @@
 				padding: 0;
 				display: flex;
 			}
-			> div {
+
+			.sideReklama {
 				margin: 20px 0px;
 				//padding: 10px 5px;
 				//background-color: #eeeeee;
+
+				cursor: pointer;
+				height: 240px;
+				background-color: #eeeeee;
 				@include on-mobile {
 					margin: 5px;
-				}
-				cursor: pointer;
-			}
-			.sideReklama {
-				height: 240px;
-				@include on-mobile {
 					height: auto;
 				}
-				background-color: #eeeeee;
 			}
 		}
 	}

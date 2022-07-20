@@ -168,7 +168,7 @@ const Zasady = () => {
 						</li>
 					</ul>
 					<p>&nbsp;</p>
-					<ol start="3">
+					<ol>
 						<li>Proč jsou osobn&iacute; &uacute;daje zpracov&aacute;v&aacute;ny?</li>
 					</ol>
 					<p>
@@ -255,7 +255,7 @@ const Zasady = () => {
 						</li>
 					</ul>
 
-					<ol start="4">
+					<ol>
 						<li>Jak&yacute;m způsobem jsou osobn&iacute; &uacute;daje zpracov&aacute;v&aacute;ny?</li>
 					</ol>
 					<p>
@@ -280,7 +280,7 @@ const Zasady = () => {
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
-					<ol start="5">
+					<ol>
 						<li>Jak&aacute; jsou pr&aacute;va subjektů &uacute;dajů?</li>
 					</ol>
 					<p>

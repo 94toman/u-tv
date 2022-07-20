@@ -1,6 +1,13 @@
 @use '../../../styles/abstracts/' as *;
 
 .card {
+	margin: 20px 0px;
+	//padding: 10px 5px;
+	//background-color: #eeeeee;
+	@include on-mobile {
+		margin: 5px;
+	}
+	cursor: pointer;
 	@include box-shadow;
 
 	.textBelow {

@@ -1,6 +1,4 @@
 import { CookieBanner } from '@keepist/react-gdpr-cookie-banner';
-import Router from 'next/router';
-import React from 'react';
 import TagManager from 'react-gtm-module';
 
 const CookieConsent = () => {
@@ -11,20 +9,20 @@ const CookieConsent = () => {
 		},
 	};
 
-	const FacebookPixel = () => {
-		React.useEffect(() => {
-			import('react-facebook-pixel')
-				.then((x) => x.default)
-				.then((ReactPixel) => {
-					ReactPixel.init('pixel ID here');
-					ReactPixel.pageView();
-					Router.events.on('routeChangeComplete', () => {
-						ReactPixel.pageView();
-					});
-				});
-		});
-		return null;
-	};
+	// const FacebookPixel = () => {
+	// 	React.useEffect(() => {
+	// 		import('react-facebook-pixel')
+	// 			.then((x) => x.default)
+	// 			.then((ReactPixel) => {
+	// 				ReactPixel.init('pixel ID here');
+	// 				ReactPixel.pageView();
+	// 				Router.events.on('routeChangeComplete', () => {
+	// 					ReactPixel.pageView();
+	// 				});
+	// 			});
+	// 	});
+	// 	return null;
+	// };
 
 	return (
 		<>
@@ -51,7 +49,7 @@ const CookieConsent = () => {
 				}}
 				onAcceptMarketing={() => {
 					console.log('FB pixel initialized');
-					FacebookPixel();
+					//FacebookPixel();
 					// load your marketing trackers here
 				}}
 				className="banner"

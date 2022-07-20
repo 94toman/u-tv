@@ -111,10 +111,12 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 							{dalsiEpizody.slice(0, 3).map((single, i: number) => {
 								return <DalsiEpizoda key={i} single={single} />;
 							})}
-							<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
-							{dalsiEpizody.slice(3, 4).map((single, i: number) => {
-								return <DalsiEpizoda key={i} single={single} />;
-							})}
+							<div className={'hide-on-mobile'}>
+								<div className={styles.sideReklama}>PROSTOR PRO REKLAMU</div>
+								{dalsiEpizody.slice(3, 4).map((single, i: number) => {
+									return <DalsiEpizoda key={i} single={single} />;
+								})}
+							</div>
 						</div>
 					</div>
 				</div>

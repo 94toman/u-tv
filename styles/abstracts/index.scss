@@ -37,6 +37,12 @@ $main-heading-height: 400px;
 	}
 }
 
+.hide-on-mobile {
+	@include on-mobile {
+		display: none;
+	}
+}
+
 @mixin box-shadow {
 	box-shadow: 1px 1px 4px 2px rgb(0 0 0 / 20%);
 	transition: box-shadow 0.1s ease-in-out;
