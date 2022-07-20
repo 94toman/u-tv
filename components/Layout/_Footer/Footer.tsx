@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { resetCookieConsentValue } from 'react-cookie-consent';
+import { destroyCookie } from 'nookies';
 import logo from '../../../images/utv_logo-white.png';
 import styles from './Footer.module.scss';
 import socialFb from './socialIcons/fb.png';
@@ -10,6 +10,15 @@ import socialMail from './socialIcons/mail.png';
 
 const Footer = () => {
 	const router = useRouter();
+
+	const deleteCookie = () => {
+		destroyCookie(undefined, 'rcl_consent_given');
+		destroyCookie(undefined, 'rcl_marketing_consent');
+		destroyCookie(undefined, 'rcl_preferences_consent');
+		destroyCookie(undefined, 'rcl_statistics_consent');
+		router.reload();
+		//document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	};
 
 	return (
 		<footer className={styles.footer}>
@@ -53,7 +62,9 @@ const Footer = () => {
 							<Image alt="Email" src={socialMail} layout="intrinsic" width={39} height={39} />
 						</a>
 					</div>
-					<button onClick={() => resetCookieConsentValue('myAwesomeCookieName2')} />
+					<div className={styles.nastaveniCookies}>
+						<p onClick={() => deleteCookie()}>Upravit nastavení cookies</p>
+					</div>
 				</div>
 			</div>
 		</footer>

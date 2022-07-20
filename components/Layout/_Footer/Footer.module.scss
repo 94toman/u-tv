@@ -23,6 +23,9 @@
 		p {
 			margin: 8px 0;
 			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 
 		h3 {
@@ -30,7 +33,7 @@
 			font-weight: bold;
 		}
 
-		div {
+		> div {
 			padding: 0 4vw 10px 1vw;
 		}
 
@@ -61,6 +64,11 @@
 			.image {
 				display: inline;
 				padding: 0 15px 0 0;
+			}
+			.nastaveniCookies {
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}

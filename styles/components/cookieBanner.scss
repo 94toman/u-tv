@@ -1,0 +1,26 @@
+@use '../abstracts' as *;
+
+.banner {
+	display: block !important;
+	.react-cookie-law-button-wrapper {
+		.react-cookie-law-accept-selection-btn {
+			background-color: $darkgrey;
+			border-color: $darkgrey;
+			color: $greyish;
+			&:hover {
+				@include box-shadow;
+			}
+		}
+		.react-cookie-law-accept-all-btn {
+			background-color: black;
+
+			&:hover {
+				@include box-shadow;
+			}
+			span {
+				font-weight: bold;
+				font-size: 1.1em;
+			}
+		}
+	}
+}

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
-import CookieConsent from 'react-cookie-consent';
 import styles from './Layout.module.scss';
+import CookieConsent from './_CookieConsent/CookieConsent';
 import Footer from './_Footer/Footer';
 import Navbar from './_Navbar/Navbar';
 
@@ -22,7 +22,22 @@ const Layout = ({ children, title = 'UTV - regionální televize Ústeckého kra
 				<Navbar />
 				<div className={styles.container}>{children}</div>
 			</div>
-			<CookieConsent
+			<div>
+				<CookieConsent />
+			</div>
+
+			<Footer />
+		</div>
+	);
+};
+
+export default Layout;
+
+/* 
+import CookieConsent from 'react-cookie-consent';
+import { CookieBanner } from '@keepist/react-gdpr-cookie-banner';
+
+<CookieConsent
 				location="bottom"
 				buttonText="Přijmout"
 				declineButtonText="X"
@@ -43,9 +58,4 @@ const Layout = ({ children, title = 'UTV - regionální televize Ústeckého kra
 				Tento web využívá Cookies pro Váš lepší zážitek.
 				<span style={{ fontSize: '10px' }}> Lorem ipsum</span>
 			</CookieConsent>
-			<Footer />
-		</div>
-	);
-};
-
-export default Layout;
+*/
