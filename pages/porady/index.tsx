@@ -47,7 +47,6 @@ const Porady = ({ porady }) => {
 
 	const searchChange = (event) => {
 		setSearch(event.target.value);
-		console.log(razeni);
 	};
 
 	return (
