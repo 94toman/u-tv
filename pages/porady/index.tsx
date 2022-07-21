@@ -5,7 +5,9 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Porad from '../../components/Cards/_Porad/Porad';
 import { fetcher } from '../../components/functions';
+import { NavLink } from '../../components/Layout/_Navbar/_NavLink/NavLink';
 import SearchBox from '../../components/Navigation/_SearchBox/SearchBox';
+
 import styles from './Porady.module.scss';
 
 const Porady = ({ porady }) => {
@@ -49,35 +51,75 @@ const Porady = ({ porady }) => {
 		setSearch(event.target.value);
 	};
 
+	// Functions to control mobile menu
+	const [navbarOpen, setNavbarOpen] = useState(false);
+
+	const handleToggle = () => {
+		setNavbarOpen((prev) => !prev);
+	};
+
+	const closeMenu = () => {
+		setNavbarOpen(false);
+	};
+
 	return (
 		<div className={styles.porady}>
 			<Head>
 				<title>Pořady | UTV</title>
 			</Head>
 
-			<h2>Pořady</h2>
-			<div className={styles.search}>
-				<div className={styles.razeni}>
-					Řazení:
-					<select value={razeni} onChange={razeniChange}>
-						<option value="vzestupne">Od A do Z</option>
-						<option value="sestupne">Od Z do A</option>
-						<option value="nahodne">Náhodně</option>
-					</select>
+			<div className={styles.submenu}>
+				{/* Black space left from menu */}
+				<div className={styles.spacer}></div>
+
+				<div className={styles.navContainer}>
+					{/* Displaying and hiding mobile menu */}
+					<nav className={`${styles.menuNav}`} onClick={() => closeMenu()}>
+						{/* Rest of the menu is the same for PC and mobile*/}
+						<NavLink exact href="/" onClick={() => closeMenu()}>
+							VŠE
+						</NavLink>
+						<NavLink exact={false} href="/porady" onClick={() => closeMenu()}>
+							AKTUÁLNĚ VYSÍLANÉ
+						</NavLink>
+						<NavLink exact href="/media" onClick={() => closeMenu()}>
+							ARCHIV
+						</NavLink>
+						<NavLink exact href="/naladit" onClick={() => closeMenu()}>
+							KRIMI
+						</NavLink>
+						<NavLink exact href="/kontakt" onClick={() => closeMenu()}>
+							DOKUMENTY
+						</NavLink>
+					</nav>
 				</div>
-				<SearchBox searchChange={searchChange} placeholder="pořad" />
 			</div>
 
-			<div className={styles.cardsList}>
-				{filteredPorady[0] ? (
-					filteredPorady.map((porad, i: number) => {
-						if (porad.logo) {
-							return <Porad key={i} porad={porad} />;
-						}
-					})
-				) : (
-					<div>Nenalezeny žádné pořady</div>
-				)}
+			<div className={styles.content}>
+				<h2>Pořady</h2>
+				<div className={styles.search}>
+					<div className={styles.razeni}>
+						Řazení:
+						<select value={razeni} onChange={razeniChange}>
+							<option value="vzestupne">Od A do Z</option>
+							<option value="sestupne">Od Z do A</option>
+							<option value="nahodne">Náhodně</option>
+						</select>
+					</div>
+					<SearchBox searchChange={searchChange} placeholder="pořad" />
+				</div>
+
+				<div className={styles.cardsList}>
+					{filteredPorady[0] ? (
+						filteredPorady.map((porad, i: number) => {
+							if (porad.logo) {
+								return <Porad key={i} porad={porad} />;
+							}
+						})
+					) : (
+						<div>Nenalezeny žádné pořady</div>
+					)}
+				</div>
 			</div>
 		</div>
 	);

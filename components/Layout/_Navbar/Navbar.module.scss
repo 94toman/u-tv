@@ -2,10 +2,6 @@
 
 @use '../../../styles/abstracts' as *;
 
-$navContainerWidth: 800px;
-
-$navBarHeight: 67px;
-
 .header {
 	background-color: white;
 	border-bottom: 1px solid black;
@@ -18,7 +14,7 @@ $navBarHeight: 67px;
 	z-index: 100;
 
 	.blackBar {
-		width: calc(50vw - $navContainerWidth/2 + 80px);
+		width: calc(50vw - $navContainerWidth/2 + 125px);
 		min-width: 110px;
 		background-color: black;
 		height: $navBarHeight;
@@ -64,6 +60,11 @@ $navBarHeight: 67px;
 				color: white;
 				background-color: #ffd333;
 			}
+		}
+		.kategorieWrapper {
+			position: absolute;
+			background-color: $primary;
+			width: $navContainerWidth;
 		}
 	}
 }
