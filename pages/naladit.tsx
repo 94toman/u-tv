@@ -145,6 +145,7 @@ export async function getStaticProps() {
 			props: {
 				naladitData: fallback.data, //error handling in case of Fetch error
 			},
+			revalidate: 60,
 		};
 	}
 }
