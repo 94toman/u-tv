@@ -135,11 +135,15 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 						<h3>Epizody:</h3>
 
 						<div className={styles.cardsList}>
-							{slicedEpizody.map((epizoda: IEpizoda, i: number) => {
-								if (epizoda.postermini) {
-									return <Epizoda key={i} epizoda={epizoda} />;
-								}
-							})}
+							{slicedEpizody[0] ? (
+								slicedEpizody.map((epizoda: IEpizoda, i: number) => {
+									if (epizoda.postermini) {
+										return <Epizoda key={i} epizoda={epizoda} />;
+									}
+								})
+							) : (
+								<div>Nenalezeny žádné epizody</div>
+							)}
 						</div>
 
 						{

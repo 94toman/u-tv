@@ -69,11 +69,15 @@ const Porady = ({ porady }) => {
 			</div>
 
 			<div className={styles.cardsList}>
-				{filteredPorady.map((porad, i: number) => {
-					if (porad.logo) {
-						return <Porad key={i} porad={porad} />;
-					}
-				})}
+				{filteredPorady[0] ? (
+					filteredPorady.map((porad, i: number) => {
+						if (porad.logo) {
+							return <Porad key={i} porad={porad} />;
+						}
+					})
+				) : (
+					<div>Nenalezeny žádné pořady</div>
+				)}
 			</div>
 		</div>
 	);
