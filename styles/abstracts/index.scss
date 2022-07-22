@@ -15,7 +15,6 @@ $main-heading-height: 400px;
 
 $navContainerWidth: 900px;
 $navBarHeight: 67px;
-$subNavHeight: 40px;
 
 @mixin on-mobile {
 	@media (max-width: $phone) {
