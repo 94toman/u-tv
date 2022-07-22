@@ -2,6 +2,7 @@
 
 import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Porad from '../../components/Cards/_Porad/Porad';
 import { fetcher } from '../../components/functions';
@@ -61,6 +62,19 @@ const Porady = ({ porady }) => {
 	const closeMenu = () => {
 		setNavbarOpen(false);
 	};
+
+	// funkce, která mění konec URL
+	const router = useRouter();
+	const tabClick = (druh) => {
+		router.replace(
+			{
+				query: { ...router.query, prijem: druh },
+			},
+			undefined,
+			{ shallow: true }
+		); // shallow: aby stránka zůstala kde je
+	};
+	// NASTAVIT, ABY SE PŘIDÁVALO QUERY PŘI KATEGORIÍCH
 
 	return (
 		<div className={styles.porady}>
