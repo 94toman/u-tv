@@ -2,13 +2,14 @@
 
 import htmlToFormattedText from 'html-to-formatted-text';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import Epizoda from '../../../components/Cards/_Epizoda/Epizoda';
-import { fetcher } from '../../../components/functions';
+import { fetcher, truncateString } from '../../../components/functions';
 import GoBack from '../../../components/Navigation/_GoBack/GoBack';
-import HeadingPorady from '../../../components/_Epizody/HeadingPorady';
+import SearchBox from '../../../components/Navigation/_SearchBox/SearchBox';
 import styles from './Epizody.module.scss';
 
 //  import ReactPaginate from 'react-paginate';  https://vpilip.com/how-build-simple-pagination-in-nextjs/
@@ -41,50 +42,75 @@ type IPorad = {
 
 type IPaginate = {
 	perPage: number;
-	page: number;
+	page?: number;
 	pages: number;
 };
 
+type IPage = {
+	page: number;
+};
+
+//Heading of the page with Pořad details
+export const Heading = ({ porad, searchChange }) => {
+	return (
+		<div className={styles.heading}>
+			<div className={styles.image}>
+				<Image
+					src={`${porad.logo}`}
+					layout="responsive"
+					objectFit="cover"
+					width={800}
+					height={450}
+					alt="porad-logo"
+				/>
+			</div>
+			<div className={styles.overlay}>
+				<h3>{porad.title}</h3>
+				<div className={styles.leadWrapper}>
+					<p className={styles.lead}>{truncateString(porad.lead, 420)}</p>
+				</div>
+				<div className={styles.search}>
+					<SearchBox searchChange={searchChange} placeholder="epizodu" />
+				</div>
+			</div>
+		</div>
+	);
+};
+
+// Main content
 const Epizody = ({ epizody, porad, paginateProps }) => {
 	const router = useRouter();
-	const { strana } = router.query;
+	const strana = router.query.strana ? parseInt(router.query.strana as string) : 1;
+
+	let filteredEpizody = epizody.videos ? epizody.videos : 'Error'; // Error probably in fetching data
+
+	// PAGINATION
+	const [paginate, setPaginate] = useState(paginateProps);
+	const { perPage, pages }: IPaginate = { ...paginate, page: strana - 1 };
+	const [page, setPage] = useState(strana - 1);
+	const [slicedEpizody, setSlicedEpizody] = useState(filteredEpizody.slice(page * perPage, (page + 1) * perPage));
+
+	// SEARCH BAR
+	const searchChange = (event) => {
+		setPage(0);
+		filteredEpizody = epizody.videos.filter((epizoda) => {
+			return (
+				epizoda.title.toLowerCase().includes(event.target.value.toLowerCase()) ||
+				htmlToFormattedText(epizoda.description).toLowerCase().includes(event.target.value.toLowerCase())
+			);
+		});
+		setSlicedEpizody(filteredEpizody.slice(0 * perPage, (0 + 1) * perPage));
+	};
 
 	// funkce, která mění konec URL
-	const stranaQuery = (strana) => {
+	const tabClick = (str) => {
 		router.replace(
 			{
-				query: { ...router.query, strana: strana },
+				query: { ...router.query, strana: str },
 			},
 			undefined,
 			{ shallow: true }
 		); // shallow: aby stránka zůstala kde je
-	};
-
-	// SEARCH BAR
-	const [search, setSearch] = useState('');
-	const filteredEpizody = epizody.videos
-		? epizody.videos.filter((epizoda) => {
-				return (
-					epizoda.title.toLowerCase().includes(search.toLowerCase()) ||
-					htmlToFormattedText(epizoda.description).toLowerCase().includes(search.toLowerCase())
-				);
-		  })
-		: 'Error'; // Error probably in fetching data
-
-	const searchChange = (event) => {
-		setSearch(event.target.value);
-		setPaginate({ ...paginate, page: 0 });
-	};
-
-	// PAGINATION
-	const [paginate, setPaginate] = useState(paginateProps);
-	const { perPage, page, pages }: IPaginate = paginate;
-	const [slicedEpizody, setSlicedEpizody] = useState(filteredEpizody.slice(page * perPage, (page + 1) * perPage));
-
-	const handlePageClick = (event) => {
-		setPaginate({ ...paginate, page: event.selected });
-		setSlicedEpizody(filteredEpizody.slice(event.selected * perPage, (event.selected + 1) * perPage));
-		//history.pushState();
 	};
 
 	return (
@@ -94,59 +120,70 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 			</Head>
 			<GoBack path="/porady" />
 
-			{/* In case epizodes are not returned */}
-			{filteredEpizody === 'Error' ? (
-				<div className={styles.error}>
-					<h2>Epizody nenalezeny</h2>
-					<button className={styles.button} onClick={() => router.push(`/porady`)}>
-						Zpět na pořady
-					</button>
-				</div>
-			) : (
-				<>
-					<HeadingPorady porad={porad} searchChange={searchChange} />
-
-					<h3>Epizody:</h3>
-
-					<div className={styles.cardsList}>
-						{slicedEpizody.map((epizoda: IEpizoda, i: number) => {
-							if (epizoda.postermini) {
-								return <Epizoda key={i} epizoda={epizoda} />;
-							}
-						})}
+			{
+				// Error handling If epizodes are not returned
+				filteredEpizody === 'Error' ? (
+					<div className={styles.error}>
+						<h2>Epizody nenalezeny</h2>
+						<button className={styles.button} onClick={() => router.push(`/porady`)}>
+							Zpět na pořady
+						</button>
 					</div>
+				) : (
+					// If everything is OK
+					<>
+						<Heading porad={porad} searchChange={searchChange} />
 
-					{/*Display Pagination only if there is more than one page */}
-					{pages > 1 ? (
-						<ReactPaginate
-							previousLabel={'<<'}
-							nextLabel={'>>'}
-							pageCount={pages}
-							onPageChange={handlePageClick}
-							forcePage={paginate.page}
-							containerClassName={'pagination'}
-							activeClassName={'active'}
-						/>
-					) : (
-						<></>
-					)}
+						<h3>Epizody:</h3>
 
-					{/* Displays Autoři only if it is returned from server */}
-					{porad.hosts ? (
-						<>
-							<hr className="yellowDivider" />
-							<div className={styles.autori}>
-								<h3>Autoři</h3>
-								{porad.hosts.map((autor, i) => {
-									return <p key={i}>{autor.fullname}</p>;
-								})}
-							</div>
-						</>
-					) : (
-						<></>
-					)}
-				</>
-			)}
+						<div className={styles.cardsList}>
+							{slicedEpizody[0] ? (
+								slicedEpizody.map((epizoda: IEpizoda, i: number) => {
+									if (epizoda.postermini) {
+										return <Epizoda key={i} epizoda={epizoda} />;
+									}
+								})
+							) : (
+								<div>Nenalezeny žádné epizody</div>
+							)}
+						</div>
+
+						{
+							//Display Pagination only if there is more than one page
+							pages > 1 ? (
+								<ReactPaginate
+									previousLabel={'<<'}
+									nextLabel={'>>'}
+									pageCount={pages}
+									onPageChange={(event) => tabClick(event.selected + 1)}
+									forcePage={page}
+									containerClassName={'pagination'}
+									activeClassName={'active'}
+								/>
+							) : (
+								<></>
+							)
+						}
+
+						{
+							//Displays Autoři only if it is returned from server
+							porad.hosts ? (
+								<>
+									<hr className="yellowDivider" />
+									<div className={styles.autori}>
+										<h3>Autoři</h3>
+										{porad.hosts.map((autor, i) => {
+											return <p key={i}>{autor.fullname}</p>;
+										})}
+									</div>
+								</>
+							) : (
+								<></>
+							)
+						}
+					</>
+				)
+			}
 		</div>
 	);
 };

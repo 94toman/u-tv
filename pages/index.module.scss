@@ -2,15 +2,30 @@
 
 .heading {
 	@include heading($porady-heading-height, 476, 992);
-	h2 {
-		font-size: 35px;
-		text-align: right;
-		font-weight: normal;
-		color: white;
-	}
-	h1 {
-		font-weight: bold;
-		display: none;
+	.overlay {
+		.lead {
+			padding-top: 5px;
+
+			h2 {
+				font-size: 35px;
+				text-align: right;
+				font-weight: normal;
+				color: white;
+				@include on-mobile {
+					font-size: 28px;
+				}
+			}
+			h1 {
+				font-size: 80px;
+				font-weight: bold;
+				@include on-mobile {
+					font-size: 50px;
+				}
+			}
+			* {
+				padding: 0;
+			}
+		}
 	}
 }
 

@@ -1,8 +1,9 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { truncateString } from '../../functions';
-import ImageWithFallback from '../ImageWithFallback';
 import styles from './Porad.module.scss';
+// import ImageWithFallback from '../ImageWithFallback';
 
 export interface IPorad {
 	porad: {
@@ -23,7 +24,7 @@ const Porad: React.FC<IPorad> = React.forwardRef(({ porad }) => {
 				<div className={styles.cardWrapper}>
 					<div className={styles.card}>
 						<div className={styles.card_img}>
-							<ImageWithFallback src={porad.logo} layout="intrinsic" width={450} height={350} />
+							<Image src={porad.logo} layout="intrinsic" width={450} height={350} />
 						</div>
 						<div className={styles.card_content}>
 							{porad.lead.length > 0 ? <p>{truncateString(porad.lead, 240)}</p> : <></>}

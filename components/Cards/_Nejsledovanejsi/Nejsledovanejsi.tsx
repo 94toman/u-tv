@@ -4,23 +4,25 @@ import ImageWithFallback from '../ImageWithFallback';
 import styles from './Nejsledovanejsi.module.scss';
 
 export interface IPorad {
-	id: number;
-	title: string;
-	logo: string;
+	porad: {
+		id: number;
+		title: string;
+		logo: string;
+	};
 }
 
-const Nejsledovanejsi: React.FC<IPorad> = ({ id, title, logo }) => {
+const Nejsledovanejsi: React.FC<IPorad> = ({ porad }) => {
 	return (
 		<>
-			<Link href={`/porady/${id}`}>
+			<Link href={`/porady/${porad.id}`}>
 				<div className={styles.card}>
 					<div>
 						<div className={styles.card_img}>
-							<ImageWithFallback src={`${logo}`} layout="intrinsic" width={450} height={253} />
+							<ImageWithFallback src={`${porad.logo}`} layout="intrinsic" width={450} height={253} />
 						</div>
 						<div className={styles.card_content}>
 							<div className={styles.card_text}>
-								<h3>{title}</h3>
+								<h3>{porad.title}</h3>
 							</div>
 						</div>
 					</div>

@@ -2,10 +2,6 @@
 
 @use '../../../styles/abstracts' as *;
 
-$navContainerWidth: 800px;
-
-$navBarHeight: 67px;
-
 .header {
 	background-color: white;
 	border-bottom: 1px solid black;
@@ -16,12 +12,13 @@ $navBarHeight: 67px;
 	position: sticky;
 	top: 0;
 	z-index: 100;
+	overflow: hidden;
 
 	.blackBar {
-		width: calc(50vw - $navContainerWidth/2 + 80px);
+		width: calc(50vw - $navContainerWidth/2 + 125px);
 		min-width: 110px;
 		background-color: black;
-		height: $navBarHeight;
+		//height: $navBarHeight;
 		// display: flex;
 		// align-items: center;
 		// justify-content: end;
@@ -38,19 +35,21 @@ $navBarHeight: 67px;
 
 	.navContainer {
 		max-width: $navContainerWidth;
+		height: $navBarHeight;
 		// margin: auto;
 		// display: flex;
 		// align-items: center;
-		padding: 0;
+		// padding: 0;
 
 		nav {
 			// active - set in globals.scss
 			//height: $navBarHeight; -- broke mobile nav
 			a {
-				position: relative;
-				display: inline-block;
+				//position: relative;
+				display: inline-flex;
 				color: black;
 				//height: 100%;  -- broke mobile nav
+
 				padding: 21px 35px;
 				@include on-content-width {
 					padding: 21px 27px;
