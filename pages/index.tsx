@@ -57,16 +57,7 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 				<div className={styles.nejnovejsi}>
 					<h3>Nejnovější epizody</h3>
 					{nejnovejsi.videos.map((epizoda) => {
-						return (
-							<Nejnovejsi
-								postermini={epizoda.postermini}
-								programme={epizoda.programme}
-								programmetitle={epizoda.programmetitle}
-								title={epizoda.title}
-								datetime={epizoda.datetime}
-								id={epizoda.id}
-							/>
-						);
+						return <Nejnovejsi epizoda={epizoda} />;
 					})}
 				</div>
 
@@ -80,7 +71,7 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 				<div className={styles.nejsledovanejsi}>
 					<h3>Nejsledovanější pořady</h3>
 					{nejsledovanejsi.map((porad) => {
-						return <Nejsledovanejsi id={porad.id} title={porad.title} logo={porad.logo} />;
+						return <Nejsledovanejsi porad={porad} />;
 					})}
 				</div>
 			</div>

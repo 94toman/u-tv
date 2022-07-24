@@ -42,8 +42,12 @@ type IPorad = {
 
 type IPaginate = {
 	perPage: number;
-	page: number;
+	page?: number;
 	pages: number;
+};
+
+type IPage = {
+	page: number;
 };
 
 //Heading of the page with Pořad details
@@ -76,20 +80,19 @@ export const Heading = ({ porad, searchChange }) => {
 // Main content
 const Epizody = ({ epizody, porad, paginateProps }) => {
 	const router = useRouter();
+	const strana = router.query.strana ? parseInt(router.query.strana as string) : 1;
+
+	let filteredEpizody = epizody.videos ? epizody.videos : 'Error'; // Error probably in fetching data
+
+	// PAGINATION
+	const [paginate, setPaginate] = useState(paginateProps);
+	const { perPage, pages }: IPaginate = { ...paginate, page: strana - 1 };
+	const [page, setPage] = useState(strana - 1);
+	const [slicedEpizody, setSlicedEpizody] = useState(filteredEpizody.slice(page * perPage, (page + 1) * perPage));
 
 	// SEARCH BAR
-	const [search, setSearch] = useState('');
-	let filteredEpizody = epizody.videos
-		? epizody.videos.filter((epizoda) => {
-				return (
-					epizoda.title.toLowerCase().includes(search.toLowerCase()) ||
-					htmlToFormattedText(epizoda.description).toLowerCase().includes(search.toLowerCase())
-				);
-		  })
-		: 'Error'; // Error probably in fetching data
-
 	const searchChange = (event) => {
-		setSearch(event.target.value);
+		setPage(0);
 		filteredEpizody = epizody.videos.filter((epizoda) => {
 			return (
 				epizoda.title.toLowerCase().includes(event.target.value.toLowerCase()) ||
@@ -97,18 +100,17 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 			);
 		});
 		setSlicedEpizody(filteredEpizody.slice(0 * perPage, (0 + 1) * perPage));
-		setPaginate({ ...paginate, page: 0 });
 	};
 
-	// PAGINATION
-	const [paginate, setPaginate] = useState(paginateProps);
-	const { perPage, page, pages }: IPaginate = paginate;
-	const [slicedEpizody, setSlicedEpizody] = useState(filteredEpizody.slice(page * perPage, (page + 1) * perPage));
-
-	const handlePageClick = (event) => {
-		setPaginate({ ...paginate, page: event.selected });
-		setSlicedEpizody(filteredEpizody.slice(event.selected * perPage, (event.selected + 1) * perPage));
-		//history.pushState();
+	// funkce, která mění konec URL
+	const tabClick = (str) => {
+		router.replace(
+			{
+				query: { ...router.query, strana: str },
+			},
+			undefined,
+			{ shallow: true }
+		); // shallow: aby stránka zůstala kde je
 	};
 
 	return (
@@ -153,8 +155,8 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 									previousLabel={'<<'}
 									nextLabel={'>>'}
 									pageCount={pages}
-									onPageChange={handlePageClick}
-									forcePage={paginate.page}
+									onPageChange={(event) => tabClick(event.selected + 1)}
+									forcePage={page}
 									containerClassName={'pagination'}
 									activeClassName={'active'}
 								/>

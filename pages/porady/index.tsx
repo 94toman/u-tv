@@ -79,7 +79,6 @@ const Porady = ({ porady }) => {
 			{ shallow: true }
 		); // shallow: aby stránka zůstala kde je
 	};
-	// NASTAVIT, ABY SE PŘIDÁVALO QUERY PŘI KATEGORIÍCH
 
 	return (
 		<div className={styles.porady}>
