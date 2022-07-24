@@ -27,6 +27,11 @@ $navBarHeight: 67px;
 		@content;
 	}
 }
+@mixin on-super-tiny {
+	@media (max-width: 338px) {
+		@content;
+	}
+}
 
 @mixin on-content-width {
 	@media (max-width: $container) {

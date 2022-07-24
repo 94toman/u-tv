@@ -12,29 +12,43 @@
 
 		.spacer {
 			width: calc(50vw - $navContainerWidth/2 + 125px);
+
 			min-width: 110px;
+			@include on-mobile {
+				width: 0;
+				min-width: 0;
+			}
 		}
 
 		.navContainer {
-			max-width: $navContainerWidth;
 			padding: 0;
 			background-color: $primary;
-			width: 100%;
+			width: $navContainerWidth;
 			text-align: left;
 			padding-left: 10px;
-			font-size: 14px;
 
 			nav {
 				// active - set in globals.scss
 				//height: $navBarHeight; -- broke mobile nav
+				display: inline-flex;
+				border-right: solid 1.5px black;
+				@include on-mobile {
+					border-right: unset;
+				}
+
 				a {
 					position: relative;
 					display: inline-block;
 					color: black;
 					//height: 100%;  -- broke mobile nav
 					padding: 15px 10px;
-					@include on-content-width {
-						padding: 10px 10px;
+					font-size: 12px;
+					@include on-mobile {
+						padding: 10px 7px;
+					}
+					@include on-tiny {
+						padding: 8px 5px;
+						font-size: 10px;
 					}
 					margin: 0;
 					text-decoration: none;
@@ -46,29 +60,47 @@
 					background-color: #ffd333;
 				}
 			}
+			.search {
+				margin: 0 0 10px 0;
+				//text-align: right;
+				display: inline-flex;
+				//justify-content: right;
+				text-align: center;
+
+				* {
+					font-size: 12px;
+				}
+
+				.razeni {
+					margin-right: 20px;
+					padding-left: 7px;
+					@include on-tiny {
+						margin-right: 5px;
+					}
+				}
+
+				input,
+				select {
+					margin: 0 0 0 10px;
+					border-color: black;
+				}
+				input {
+					@include on-tiny {
+						margin: 0 0 0 0px;
+						width: 70%;
+					}
+				}
+			}
 		}
 	}
 
 	.content {
 		padding-top: 30px;
-	}
-
-	.search {
-		margin: -50px 0 10px 0;
-		//text-align: right;
-		display: flex;
-		justify-content: right;
-		text-align: center;
-		@include on-tiny {
-			margin: 0px 10px 10px 0;
+		@media (max-width: 960px) {
+			padding-top: 85px;
 		}
-
-		.razeni {
-			margin-right: 20px;
-
-			select {
-				margin: 0 0 0 10px;
-			}
+		@include on-super-tiny {
+			padding-top: 120px;
 		}
 	}
 

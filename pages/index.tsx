@@ -101,21 +101,18 @@ export async function getStaticProps() {
 		data: [
 			{
 				nazev: 'first-line',
-				text: 'REGIONÁLNÍ TELEVIZE\nÚSTECKÉHO KRAJE',
+				text: '## REGIONÁLNÍ TELEVIZE\n ## ÚSTECKÉHO KRAJE',
 			},
 			{
 				nazev: 'second-line',
-				text: '#test',
+				text: '',
 			},
 		],
 	};
 
 	try {
 		const res = await fetch('https://utv-backend.herokuapp.com/api/mainpages');
-		let obj = await res.json();
-		if (obj.data === null) {
-			obj = fallback;
-		}
+		const obj = await res.json();
 		const flat = obj.data.map((druh) => {
 			return Object.assign(
 				{},
@@ -136,10 +133,9 @@ export async function getStaticProps() {
 			revalidate: 60,
 		};
 	} catch (e) {
-		console.log('error', e);
 		return {
 			props: {
-				naladitData: fallback.data, //error handling in case of Fetch error
+				mainPageData: fallback.data, //error handling in case of Fetch error
 				nejnovejsi: nejnovejsi,
 				nejsledovanejsi: nejsledovanejsi,
 			},

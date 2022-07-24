@@ -6,14 +6,31 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Porad from '../../components/Cards/_Porad/Porad';
 import { fetcher } from '../../components/functions';
-import { NavLink } from '../../components/Layout/_Navbar/_NavLink/NavLink';
 import SearchBox from '../../components/Navigation/_SearchBox/SearchBox';
 
 import styles from './Porady.module.scss';
 
 const Porady = ({ porady }) => {
+	const router = useRouter();
+	const { kategorie } = router.query;
+	const [filtrovanePorady, setFilrovanePorady] = useState(
+		porady.filter((porad) => {
+			switch (kategorie) {
+				case 'current':
+				case 'obsolete':
+					return porad.status === kategorie;
+				case 'zpravy':
+					return porad.category.nazev === 'zpravy';
+				case undefined:
+				case 'all':
+					return porad;
+				default:
+					porad.category.nazev === kategorie;
+			}
+		})
+	);
 	const [razeni, setRazeni] = useState('vzestupne');
-	const [serazenePorady, setSerazenePorady] = useState(porady);
+	const [serazenePorady, setSerazenePorady] = useState(filtrovanePorady);
 	const [search, setSearch] = useState('');
 
 	//Obsluhuje dropdown a mění pořadí epizod.
@@ -21,14 +38,14 @@ const Porady = ({ porady }) => {
 		setRazeni(event.target.value);
 		switch (event.target.value) {
 			case 'vzestupne':
-				setSerazenePorady(porady.slice(0));
+				setSerazenePorady(filtrovanePorady.slice(0));
 				break;
 			case 'sestupne':
-				setSerazenePorady(porady.slice(0).reverse());
+				setSerazenePorady(filtrovanePorady.slice(0).reverse());
 				break;
 			case 'nahodne':
 				setSerazenePorady(
-					porady
+					filtrovanePorady
 						.slice(0)
 						.map((value) => ({ value, sort: Math.random() }))
 						.sort((a, b) => a.sort - b.sort)
@@ -36,7 +53,7 @@ const Porady = ({ porady }) => {
 				);
 				break;
 			default:
-				setSerazenePorady(porady.slice(0));
+				setSerazenePorady(filtrovanePorady.slice(0));
 		}
 	};
 
@@ -52,23 +69,11 @@ const Porady = ({ porady }) => {
 		setSearch(event.target.value);
 	};
 
-	// Functions to control mobile menu
-	const [navbarOpen, setNavbarOpen] = useState(false);
-
-	const handleToggle = () => {
-		setNavbarOpen((prev) => !prev);
-	};
-
-	const closeMenu = () => {
-		setNavbarOpen(false);
-	};
-
 	// funkce, která mění konec URL
-	const router = useRouter();
-	const tabClick = (druh) => {
+	const tabClick = (cat) => {
 		router.replace(
 			{
-				query: { ...router.query, prijem: druh },
+				query: { ...router.query, kategorie: cat },
 			},
 			undefined,
 			{ shallow: true }
@@ -88,40 +93,31 @@ const Porady = ({ porady }) => {
 
 				<div className={styles.navContainer}>
 					{/* Displaying and hiding mobile menu */}
-					<nav className={`${styles.menuNav}`} onClick={() => closeMenu()}>
+					<nav>
 						{/* Rest of the menu is the same for PC and mobile*/}
-						<NavLink exact href="/" onClick={() => closeMenu()}>
-							VŠE
-						</NavLink>
-						<NavLink exact={false} href="/porady" onClick={() => closeMenu()}>
-							AKTUÁLNĚ VYSÍLANÉ
-						</NavLink>
-						<NavLink exact href="/media" onClick={() => closeMenu()}>
-							ARCHIV
-						</NavLink>
-						<NavLink exact href="/naladit" onClick={() => closeMenu()}>
-							KRIMI
-						</NavLink>
-						<NavLink exact href="/kontakt" onClick={() => closeMenu()}>
-							DOKUMENTY
-						</NavLink>
+						<a onClick={() => tabClick('all')}>VŠE</a>
+						<a onClick={() => tabClick('current')}>AKTUÁLNĚ VYSÍLANÉ</a>
+						<a onClick={() => tabClick('obsolete')}>ARCHIV</a>
+						<a onClick={() => tabClick('zpravy')}>ZPRÁVY</a>
+						<a onClick={() => tabClick('dokumenty')}>DOKUMENTY</a>
+						<a onClick={() => tabClick('sport')}>SPORT</a>
 					</nav>
+					<div className={styles.search}>
+						<div className={styles.razeni}>
+							Řazení:
+							<select value={razeni} onChange={razeniChange}>
+								<option value="vzestupne">Od A do Z</option>
+								<option value="sestupne">Od Z do A</option>
+								<option value="nahodne">Náhodně</option>
+							</select>
+						</div>
+						<SearchBox searchChange={searchChange} placeholder="pořad" />
+					</div>
 				</div>
 			</div>
 
 			<div className={styles.content}>
 				<h2>Pořady</h2>
-				<div className={styles.search}>
-					<div className={styles.razeni}>
-						Řazení:
-						<select value={razeni} onChange={razeniChange}>
-							<option value="vzestupne">Od A do Z</option>
-							<option value="sestupne">Od Z do A</option>
-							<option value="nahodne">Náhodně</option>
-						</select>
-					</div>
-					<SearchBox searchChange={searchChange} placeholder="pořad" />
-				</div>
 
 				<div className={styles.cardsList}>
 					{filteredPorady[0] ? (
@@ -142,13 +138,13 @@ export default Porady;
 
 export async function getStaticProps() {
 	const res = await fetcher(`programmes.json`);
-	const data = res.programmes.filter((porad) => {
-		return porad.status === 'current';
-	});
+	// const data = res.programmes.filter((porad) => {
+	// 	return porad.status === 'current';
+	// });
 
 	return {
 		props: {
-			porady: data,
+			porady: res.programmes, //data -> zobrazit je current
 		}, // will be passed to the page component as props
 		revalidate: 60,
 	};
