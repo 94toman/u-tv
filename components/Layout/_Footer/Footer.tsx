@@ -30,21 +30,42 @@ const Footer = () => {
 				</div>
 				<div className={styles.kategorie}>
 					<h3>Kategorie</h3>
-					<p>Zprávy</p>
-					<p>Krimi</p>
-					<p>Cestování</p>
-					<p>Humor</p>
-					<p>Zprávy</p>
-					<p>Cestování</p>
+					<Link href="/porady?kategorie=all">
+						<p>Vše</p>
+					</Link>
+					<Link href="/porady?kategorie=current">
+						<p>Aktuální</p>
+					</Link>
+					<Link href="/porady?kategorie=obsolete">
+						<p>Archiv</p>
+					</Link>
+					<Link href="/porady?kategorie=zpravy">
+						<p>Zprávy</p>
+					</Link>
+					<Link href="/porady?kategorie=dokumenty">
+						<p>Dokumenty</p>
+					</Link>
+					<Link href="/porady?kategorie=sport">
+						<p>Sport</p>
+					</Link>
 				</div>
 				<div className={styles.oTelevizi}>
 					<h3>O televizi</h3>
-					<p>Aktuální vysílání</p>
-					<p>Pořady</p>
-					<p>O televizi</p>
-					<p>Jak nás naladit</p>
-					<p>Reklama</p>
-					<p>Kontakt</p>
+					<Link href="/porady">
+						<p>Pořady</p>
+					</Link>
+					<Link href="/onas">
+						<p>O televizi</p>
+					</Link>
+					<Link href="/naladit">
+						<p>Jak nás naladit</p>
+					</Link>
+					<Link href="media">
+						<p>Pro média</p>
+					</Link>
+					<Link href="kontakt">
+						<p>Kontakt</p>
+					</Link>
 				</div>
 				<div className={styles.social}>
 					<div className={styles.image}>

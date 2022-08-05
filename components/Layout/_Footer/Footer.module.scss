@@ -53,7 +53,8 @@
 		}
 		.oTelevizi {
 			// background-color: yellow;
-			p {
+			p,
+			a {
 				cursor: pointer;
 			}
 			@include hide-on-mobile;
