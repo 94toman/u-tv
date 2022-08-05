@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import DalsiEpizoda from '../../../../../components/Cards/_DalsiEpizoda/DalsiEpizoda';
 
 import { fetcher, getDate } from '../../../../../components/functions';
@@ -49,6 +50,11 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 	const dalsiEpizody: IEpizoda[] = epizody.slice(0, 5).filter((single) => {
 		return single.id !== epizoda.video.id;
 	});
+
+	useEffect(() => {
+		fetcher(`videos/${video.id}/play.json`);
+	}, []);
+
 	return (
 		<div>
 			<Head>

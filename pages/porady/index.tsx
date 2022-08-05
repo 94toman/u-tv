@@ -43,6 +43,13 @@ const Porady = ({ porady }) => {
 			case 'sestupne':
 				setSerazenePorady(filtrovanePorady.slice(0).reverse());
 				break;
+			case 'nejsledovanejsi':
+				setSerazenePorady(
+					filtrovanePorady.slice(0).sort((a, b) => {
+						return b.playcount - a.playcount;
+					})
+				);
+				break;
 			case 'nahodne':
 				setSerazenePorady(
 					filtrovanePorady
@@ -107,6 +114,7 @@ const Porady = ({ porady }) => {
 							<select value={razeni} onChange={razeniChange}>
 								<option value="vzestupne">Od A do Z</option>
 								<option value="sestupne">Od Z do A</option>
+								<option value="nejsledovanejsi">Od nejsledovanějších</option>
 								<option value="nahodne">Náhodně</option>
 							</select>
 						</div>

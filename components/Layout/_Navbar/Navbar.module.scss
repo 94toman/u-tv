@@ -18,7 +18,7 @@
 		width: calc(50vw - $navContainerWidth/2 + 125px);
 		min-width: 110px;
 		background-color: black;
-		//height: $navBarHeight;
+		height: $navBarHeight;
 		// display: flex;
 		// align-items: center;
 		// justify-content: end;
@@ -35,7 +35,7 @@
 
 	.navContainer {
 		max-width: $navContainerWidth;
-		height: $navBarHeight;
+		//height: $navBarHeight;
 		// margin: auto;
 		// display: flex;
 		// align-items: center;
@@ -50,9 +50,9 @@
 				color: black;
 				//height: 100%;  -- broke mobile nav
 
-				padding: 21px 35px;
+				padding: 28px 35px;
 				@include on-content-width {
-					padding: 21px 27px;
+					padding: 28px 27px;
 				}
 				margin: 0;
 				text-decoration: none;

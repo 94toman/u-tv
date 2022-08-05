@@ -13,7 +13,7 @@ import styles from './index.module.scss';
 const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 	// https://www.figma.com/file/Gyf7KGAHIjsoz16cQxpDBG/UTV-draft?node-id=0%3A1
 
-	console.log(mainPageData);
+	console.log(nejsledovanejsi);
 
 	return (
 		<>
@@ -86,7 +86,12 @@ export async function getStaticProps() {
 	// Get first 3 episodes
 
 	const porady = await fetcher(`programmes.json`);
-	const nejsledovanejsi = await porady.programmes.slice(2, 5);
+
+	const nejsledovanejsi = await porady.programmes
+		.sort((a, b) => {
+			return b.playcount - a.playcount;
+		})
+		.slice(0, 3);
 
 	const fallback = {
 		data: [
