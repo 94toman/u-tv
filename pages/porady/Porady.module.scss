@@ -108,5 +108,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
+		// @include on-mobile {
+		// 	display: grid;
+		// 	grid-template-columns: 1fr 1fr;
+		// 	justify-content: space-evenly; //doesn't work. Height of the cards must be unset
+		// }
 	}
 }

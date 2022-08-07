@@ -13,8 +13,6 @@ import styles from './index.module.scss';
 const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 	// https://www.figma.com/file/Gyf7KGAHIjsoz16cQxpDBG/UTV-draft?node-id=0%3A1
 
-	console.log(nejsledovanejsi);
-
 	return (
 		<>
 			<Head>
@@ -62,10 +60,10 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 				</div>
 
 				<Tip
-					title={nejsledovanejsi[2].title}
-					description={nejsledovanejsi[2].description}
-					logo={nejsledovanejsi[2].logo}
-					id={nejsledovanejsi[2].id}
+					title={nejsledovanejsi[0].title}
+					description={nejsledovanejsi[0].description}
+					logo={nejsledovanejsi[0].logo}
+					id={nejsledovanejsi[0].id}
 				/>
 
 				<div className={styles.nejsledovanejsi}>
