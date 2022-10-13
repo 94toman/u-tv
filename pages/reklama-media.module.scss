@@ -1,0 +1,32 @@
+.wrapper {
+	padding: 20px;
+}
+
+.copy {
+	p {
+		font-size: 1em;
+	}
+	h3 {
+		text-align: center;
+	}
+	a {
+		font-weight: bold;
+	}
+	.form {
+		width: 50%;
+		margin: 0 auto;
+		form {
+			display: grid;
+
+			button {
+				display: inline-block;
+				padding: 10px 25px;
+				margin-top: 10px;
+				font-weight: 700;
+				background-color: #ffca05;
+				color: white !important;
+				cursor: pointer;
+			}
+		}
+	}
+}
