@@ -1,7 +1,8 @@
 @use '../../../styles/abstracts/' as *;
 
 .heading {
-	@include heading($porady-heading-height, 450, 800);
+	// @include heading($porady-heading-height, 450, 800);  -- po zúžení černého pruhu už nevystačil obrázek pod gradient
+	@include heading($porady-heading-height, 450, 880);
 
 	h3 {
 		font-size: 39px;

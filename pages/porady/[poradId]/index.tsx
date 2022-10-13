@@ -8,7 +8,7 @@ import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import Epizoda from '../../../components/Cards/_Epizoda/Epizoda';
 import { fetcher, truncateString } from '../../../components/functions';
-import GoBack from '../../../components/Navigation/_GoBack/GoBack';
+// import GoBack from '../../../components/Navigation/_GoBack/GoBack';
 import SearchBox from '../../../components/Navigation/_SearchBox/SearchBox';
 import styles from './Epizody.module.scss';
 
@@ -118,7 +118,8 @@ const Epizody = ({ epizody, porad, paginateProps }) => {
 			<Head>
 				<title>Epizody | UTV</title>
 			</Head>
-			<GoBack path="/porady" />
+			{/* TEMP - Go back dočasně skryto, dokud jsou jen zprávy */}
+			{/* <GoBack path="/porady" /> */}
 
 			{
 				// Error handling If epizodes are not returned

@@ -42,8 +42,12 @@ const Navbar = () => {
 						<NavLink exact href="/" onClick={() => closeMenu()}>
 							Domů
 						</NavLink>
-						<NavLink exact={false} href="/porady" onClick={() => closeMenu()}>
+						{/* Pořady jsou zatím skryté, místo toho jen zprávy */}
+						{/* <NavLink exact={false} href="/porady" onClick={() => closeMenu()}>
 							Pořady
+						</NavLink> */}
+						<NavLink exact={false} href="/porady/28" onClick={() => closeMenu()}>
+							Zprávy
 						</NavLink>
 						<NavLink exact href="/media" onClick={() => closeMenu()}>
 							Pro média
