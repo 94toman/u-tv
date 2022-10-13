@@ -49,9 +49,12 @@
 
 	.reklama {
 		// temporary div pro Google reklamu. pak bude nahrazen Tipem týdne
-		max-height: 400px;
+		max-height: 396px;
 		overflow: hidden;
 		margin: 50px 0;
+		border: 1px solid $greyish;
+		cursor: pointer;
+		@include box-shadow;
 	}
 	.nejsledovanejsi {
 		padding: 20px 0;

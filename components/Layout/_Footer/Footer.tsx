@@ -6,7 +6,7 @@ import logo from '../../../images/utv_logo-white.png';
 import styles from './Footer.module.scss';
 // import socialFb from './socialIcons/fb.png';
 // import socialIg from './socialIcons/ig.png';
-import socialMail from './socialIcons/mail.png';
+import socialMail from './socialIcons/zavinac.png';
 
 const Footer = () => {
 	const router = useRouter();
@@ -54,7 +54,7 @@ const Footer = () => {
 					<Link href="/porady">
 						<p>Pořady</p>
 					</Link>
-					<Link href="/onas">
+					<Link href="/otelevizi">
 						<p>O televizi</p>
 					</Link>
 					<Link href="/naladit">

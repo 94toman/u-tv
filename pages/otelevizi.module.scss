@@ -1,0 +1,13 @@
+@use '../styles/abstracts' as *;
+
+.wrapper {
+	padding: 20px;
+}
+
+.copy {
+	text-align: left;
+
+	a {
+		font-weight: bold;
+	}
+}

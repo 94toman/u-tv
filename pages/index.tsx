@@ -7,6 +7,7 @@ import Nejnovejsi from '../components/Cards/_Nejnovejsi/Nejnovejsi';
 import { fetcher } from '../components/functions';
 import { NavLink } from '../components/Layout/_Navbar/_NavLink/NavLink';
 import pravcickaBrana from '../images/pravcickaBrana.png';
+import prostorProReklamu from '../images/prostor-pro-reklamu.png';
 import logo from '../images/utv_logo-white.png';
 import styles from './index.module.scss';
 
@@ -66,11 +67,11 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 
 				<div className={styles.reklama}>
 					<Image
-						src={pravcickaBrana}
+						src={prostorProReklamu}
 						layout="responsive"
 						objectFit="cover"
-						width={992}
-						height={476}
+						width={1190}
+						height={396}
 						alt="pravcicka-brana"
 					/>
 				</div>
