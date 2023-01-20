@@ -50,6 +50,33 @@ const KontaktPage = ({ kontakty }: IKontakty) => {
 		}
 	};
 
+	const contactsTmp = [
+		{
+			id: '1',
+			fullname: 'Karel Šimek',
+			jobtitle: 'Ředitel',
+			phone: '+420602956352',
+			email: 'simek@televizeutv.cz',
+			description: '',
+		},
+		{
+			id: '2',
+			fullname: 'Roman Coňk',
+			jobtitle: 'Mediální konzultant',
+			phone: '+420724000528',
+			email: 'conk@televizeutv.cz',
+			description: '',
+		},
+		{
+			id: '3',
+			fullname: 'Olga Hodboďová',
+			jobtitle: 'Mediální konzultant',
+			phone: '+420724000527',
+			email: 'hodbodova@televizeutv.cz',
+			description: '',
+		},
+	];
+
 	return (
 		<>
 			<Head>
@@ -59,7 +86,9 @@ const KontaktPage = ({ kontakty }: IKontakty) => {
 			<div className={styles.row}>
 				<div className={styles.tabulka}>
 					<div className={styles.table}>
-						<span className={styles.email}>info@utv.cz</span>
+						<span className={styles.email}>
+							<a href="mailto:redakce@televizeutv.cz">redakce@televizeutv.cz</a>
+						</span>
 					</div>
 					<div className={styles.table}>
 						<p className={styles.cislo}>+420 371 650 138</p>
@@ -69,19 +98,20 @@ const KontaktPage = ({ kontakty }: IKontakty) => {
 				</div>
 				<div className={styles.adresa}>
 					<b>
-						ZAK TV s.r.o. <br />
-						Prokopova 26 <br />
-						301 00 Plzeň{' '}
+						Televize Ústeckého kraje <br />
+						Ústecká média s. r. o. <br />
 					</b>
+					<a href="www.televizeutv.cz" target="_blank">
+						www.televizeutv.cz
+					</a>
 					<br />
 					<br />
-					IČ: 64835669 <br />
-					DIČ: CZ64835669
+					<br />
 				</div>
 			</div>
 
 			{/* Přepínání karet */}
-			<div className={styles.wrapper}>
+			{/* <div className={styles.wrapper}>
 				<div
 					className={`${styles.tab} ${
 						oddeleni === 'Obchodní oddělení' || oddeleni === undefined ? styles.active : ''
@@ -108,7 +138,7 @@ const KontaktPage = ({ kontakty }: IKontakty) => {
 				>
 					<span className={styles.tabText}>Vedení společnosti</span>
 				</div>
-			</div>
+			</div> 
 			<div className={styles.contentWrapper}>
 				<div className={styles.content}>
 					{kontakty
@@ -118,6 +148,14 @@ const KontaktPage = ({ kontakty }: IKontakty) => {
 						.map((osoba) => {
 							return <KontaktCard osoba={osoba} />;
 						})}
+				</div>
+			</div> */}
+
+			<div className={styles.contentWrapper}>
+				<div className={styles.content}>
+					{contactsTmp.map((osoba) => {
+						return <KontaktCard osoba={osoba} />;
+					})}
 				</div>
 			</div>
 

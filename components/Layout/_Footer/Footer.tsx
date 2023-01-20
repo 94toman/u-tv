@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { destroyCookie } from 'nookies';
 import logo from '../../../images/utv_logo-white.png';
 import styles from './Footer.module.scss';
-import socialFb from './socialIcons/fb.png';
-import socialIg from './socialIcons/ig.png';
-import socialMail from './socialIcons/mail.png';
+// import socialFb from './socialIcons/fb.png';
+// import socialIg from './socialIcons/ig.png';
+import socialMail from './socialIcons/zavinac.png';
 
 const Footer = () => {
 	const router = useRouter();
@@ -54,7 +54,7 @@ const Footer = () => {
 					<Link href="/porady">
 						<p>Pořady</p>
 					</Link>
-					<Link href="/onas">
+					<Link href="/otelevizi">
 						<p>O televizi</p>
 					</Link>
 					<Link href="/naladit">
@@ -68,7 +68,8 @@ const Footer = () => {
 					</Link>
 				</div>
 				<div className={styles.social}>
-					<div className={styles.image}>
+					{/* Facebook & Instagram hidden */}
+					{/* <div className={styles.image}>
 						<a href="https://facebook.com" target="_blank">
 							<Image alt="Facebook" src={socialFb} layout="intrinsic" width={39} height={39} />
 						</a>
@@ -77,7 +78,7 @@ const Footer = () => {
 						<a href="https://instagram.com" target="_blank">
 							<Image alt="Instagram" src={socialIg} layout="intrinsic" width={39} height={39} />
 						</a>
-					</div>
+					</div> */}
 					<div className={styles.image}>
 						<a href="mailto:test@test.com" target="_blank">
 							<Image alt="Email" src={socialMail} layout="intrinsic" width={39} height={39} />

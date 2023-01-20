@@ -2,12 +2,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import Nejnovejsi from '../components/Cards/_Nejnovejsi/Nejnovejsi';
-import Nejsledovanejsi from '../components/Cards/_Nejsledovanejsi/Nejsledovanejsi';
+// import Tip from '../components/Home/_Tip/Tip';
+// import Nejsledovanejsi from '../components/Cards/_Nejsledovanejsi/Nejsledovanejsi';
 import { fetcher } from '../components/functions';
-import Tip from '../components/Home/_Tip/Tip';
+import { NavLink } from '../components/Layout/_Navbar/_NavLink/NavLink';
 import pravcickaBrana from '../images/pravcickaBrana.png';
+import prostorProReklamu from '../images/prostor-pro-reklamu.png';
 import logo from '../images/utv_logo-white.png';
-
 import styles from './index.module.scss';
 
 const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
@@ -40,13 +41,18 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 								}).text
 							}
 						</ReactMarkdown>
-						<ReactMarkdown>
+						<NavLink exact href="https://www.televizeutv.cz" target="_blank">
+							Živé vysílání
+						</NavLink>
+
+						{/* TEMP - velký text skrytý */}
+						{/* <ReactMarkdown>
 							{
 								mainPageData.find((radek) => {
 									return radek.nazev === 'second-line';
 								}).text
 							}
-						</ReactMarkdown>
+						</ReactMarkdown> */}
 					</div>
 				</div>
 			</div>
@@ -59,7 +65,19 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 					})}
 				</div>
 
-				<Tip
+				<div className={styles.reklama}>
+					<Image
+						src={prostorProReklamu}
+						layout="responsive"
+						objectFit="cover"
+						width={1190}
+						height={396}
+						alt="pravcicka-brana"
+					/>
+				</div>
+
+				{/* TIP a Nesledovanější pořady - dočasně skryté */}
+				{/* <Tip
 					title={nejsledovanejsi[0].title}
 					description={nejsledovanejsi[0].description}
 					logo={nejsledovanejsi[0].logo}
@@ -71,7 +89,7 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 					{nejsledovanejsi.map((porad) => {
 						return <Nejsledovanejsi porad={porad} />;
 					})}
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

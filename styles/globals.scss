@@ -81,7 +81,7 @@ input,
 select {
 	padding: 0.5rem;
 	border-width: 0.125rem;
-	border-radius: 0.25rem;
+	// border-radius: 0.25rem;    - chtějí hranaté rohy
 	border-color: $primary;
 	border-style: solid;
 }
