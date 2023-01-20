@@ -1,14 +1,14 @@
 // 404
 
-import Link from 'next/link';
+import { NavLink } from '../components/Layout/_Navbar/_NavLink/NavLink';
 
 const FourOhFour = () => {
 	return (
 		<>
 			<h1>404 - Stránka nenalezena</h1>
-			<Link href="/">
+			<NavLink exact href="/">
 				<a>Zpět na úvodní stránku</a>
-			</Link>
+			</NavLink>
 		</>
 	);
 };

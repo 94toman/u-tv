@@ -67,7 +67,9 @@
 				padding: 0 15px 0 0;
 			}
 			.nastaveniCookies {
-				&:hover {
+				display: block;
+				&:hover, 
+				&:focus-within {
 					text-decoration: underline;
 				}
 			}

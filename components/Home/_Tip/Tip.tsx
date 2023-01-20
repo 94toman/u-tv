@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { truncateString } from '../../functions';
+import { NavLink } from '../../Layout/_Navbar/_NavLink/NavLink';
 import styles from './Tip.module.scss';
 
 const Tip = ({ title, description, logo, id }) => {
 	return (
 		<>
-			<Link href={`porady/${id}`}>
+			<NavLink exact href={`porady/${id}`}>
 				<div className={styles.tip}>
 					<div className={styles.content}>
 						<div className={styles.text}>
@@ -19,7 +19,7 @@ const Tip = ({ title, description, logo, id }) => {
 						</div>
 					</div>
 				</div>
-			</Link>
+			</NavLink>
 		</>
 	);
 };

@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { destroyCookie } from 'nookies';
 import logo from '../../../images/utv_logo-white.png';
+import { NavLink } from '../_Navbar/_NavLink/NavLink';
 import styles from './Footer.module.scss';
 // import socialFb from './socialIcons/fb.png';
 // import socialIg from './socialIcons/ig.png';
@@ -24,48 +24,49 @@ const Footer = () => {
 		<footer className={styles.footer}>
 			<div className={styles.grid}>
 				<div className={styles.logo}>
-					<Link href="/">
+					<NavLink exact href="/">
 						<Image alt="UTV_logo" src={logo} layout="intrinsic" width={117} height={102} />
-					</Link>
+					</NavLink>
 				</div>
-				<div className={styles.kategorie}>
+				{/* Kategorie jsou dočasně skryté, pouze SPORT */}
+				{/* <div className={styles.kategorie}>
 					<h3>Kategorie</h3>
-					<Link href="/porady?kategorie=all">
+					<NavLink exact href="/porady?kategorie=all">
 						<p>Vše</p>
-					</Link>
-					<Link href="/porady?kategorie=current">
+					</NavLink>
+					<NavLink exact href="/porady?kategorie=current">
 						<p>Aktuální</p>
-					</Link>
-					<Link href="/porady?kategorie=obsolete">
+					</NavLink>
+					<NavLink exact href="/porady?kategorie=obsolete">
 						<p>Archiv</p>
-					</Link>
-					<Link href="/porady?kategorie=zpravy">
+					</NavLink>
+					<NavLink exact href="/porady?kategorie=zpravy">
 						<p>Zprávy</p>
-					</Link>
-					<Link href="/porady?kategorie=dokumenty">
+					</NavLink>
+					<NavLink exact href="/porady?kategorie=dokumenty">
 						<p>Dokumenty</p>
-					</Link>
-					<Link href="/porady?kategorie=sport">
+					</NavLink>
+					<NavLink exact href="/porady?kategorie=sport">
 						<p>Sport</p>
-					</Link>
-				</div>
+					</NavLink>
+				</div> */}
 				<div className={styles.oTelevizi}>
 					<h3>O televizi</h3>
-					<Link href="/porady">
+					<NavLink exact href="/porady">
 						<p>Pořady</p>
-					</Link>
-					<Link href="/otelevizi">
+					</NavLink>
+					<NavLink exact href="/otelevizi">
 						<p>O televizi</p>
-					</Link>
-					<Link href="/naladit">
+					</NavLink>
+					<NavLink exact href="/naladit">
 						<p>Jak nás naladit</p>
-					</Link>
-					<Link href="media">
+					</NavLink>
+					<NavLink exact href="media">
 						<p>Pro média</p>
-					</Link>
-					<Link href="kontakt">
+					</NavLink>
+					<NavLink exact href="kontakt">
 						<p>Kontakt</p>
-					</Link>
+					</NavLink>
 				</div>
 				<div className={styles.social}>
 					{/* Facebook & Instagram hidden */}
@@ -84,9 +85,7 @@ const Footer = () => {
 							<Image alt="Email" src={socialMail} layout="intrinsic" width={39} height={39} />
 						</a>
 					</div>
-					<div className={styles.nastaveniCookies}>
-						<p onClick={() => deleteCookie()}>Upravit nastavení cookies</p>
-					</div>
+					<button className={styles.nastaveniCookies} onClick={() => deleteCookie()}>Upravit nastavení cookies</button>
 				</div>
 			</div>
 		</footer>

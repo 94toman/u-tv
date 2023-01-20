@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { getDate, truncateString } from '../../functions';
 // import ImageWithFallback from '../ImageWithFallback';
 import Image from 'next/image';
+import { NavLink } from '../../Layout/_Navbar/_NavLink/NavLink';
 import styles from './Epizoda.module.scss';
 
 export interface IEpizoda {
@@ -28,7 +28,7 @@ const Epizoda: React.FC<IEpizoda> = ({ epizoda }) => {
 	const { poradId } = router.query;
 	return (
 		<>
-			<Link href={`${poradId}/epizoda/${epizoda.id}`}>
+			<NavLink exact={false} href={`${poradId}/epizoda/${epizoda.id}`}>
 				<div className={styles.cardWrapper}>
 					<div className={styles.card}>
 						<div className={styles.card_img}>
@@ -43,7 +43,7 @@ const Epizoda: React.FC<IEpizoda> = ({ epizoda }) => {
 						<p className={styles.date}>{getDate(epizoda.datetime)}</p>
 					</div>
 				</div>
-			</Link>
+			</NavLink>
 		</>
 	);
 };

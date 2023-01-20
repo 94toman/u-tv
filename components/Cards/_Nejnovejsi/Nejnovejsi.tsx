@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import React from 'react';
 import { getDate } from '../../functions';
+import { NavLink } from '../../Layout/_Navbar/_NavLink/NavLink';
 import ImageWithFallback from '../ImageWithFallback';
 import styles from './Nejnovejsi.module.scss';
 
@@ -24,7 +24,7 @@ export interface IEpizoda {
 const Nejnovejsi: React.FC<IEpizoda> = ({ epizoda }) => {
 	return (
 		<>
-			<Link href={`/porady/${epizoda.programme}/epizoda/${epizoda.id}`}>
+			<NavLink exact={false} href={`/porady/${epizoda.programme}/epizoda/${epizoda.id}`}>
 				<div className={styles.card}>
 					<div>
 						<div className={styles.card_img}>
@@ -44,7 +44,7 @@ const Nejnovejsi: React.FC<IEpizoda> = ({ epizoda }) => {
 						</div>
 					</div>
 				</div>
-			</Link>
+			</NavLink>
 		</>
 	);
 };

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
 import logo from '../../../images/utv_logo-white.png';
 import styles from './Navbar.module.scss';
@@ -26,9 +25,9 @@ const Navbar = () => {
 				{/* Black space left from menu */}
 				<div className={styles.blackBar}>
 					<div className={styles.logoWrapper}>
-						<Link href="/">
+						<NavLink exact href="/">
 							<Image alt="UTV_logo" src={logo} layout="intrinsic" width={69} height={56} />
-						</Link>
+						</NavLink>
 					</div>
 				</div>
 

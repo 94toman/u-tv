@@ -3,12 +3,12 @@ import htmlToFormattedText from 'html-to-formatted-text';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import DalsiEpizoda from '../../../../../components/Cards/_DalsiEpizoda/DalsiEpizoda';
 
 import { fetcher, getDate } from '../../../../../components/functions';
+import { NavLink } from '../../../../../components/Layout/_Navbar/_NavLink/NavLink';
 import GoBack from '../../../../../components/Navigation/_GoBack/GoBack';
 import styles from './Epizoda.module.scss';
 
@@ -87,7 +87,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 							<div className={styles.nazevPoradu}>
 								<div className={styles.roundImage}>
 									<div className={styles.centerImage}>
-										<Link href={`/porady/${video.programme}`}>
+										<NavLink exact={false} href={`/porady/${video.programme}`}>
 											<Image
 												src={`https://www.zaktv.cz/epizody/${video.id}.jpg`}
 												objectFit="cover"
@@ -95,7 +95,7 @@ const Epizoda = ({ epizoda, porad, epizody }) => {
 												width={355.55}
 												height={200}
 											/>
-										</Link>
+										</NavLink>
 									</div>
 								</div>
 								<div className={styles.nazev}>
