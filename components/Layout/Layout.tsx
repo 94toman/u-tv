@@ -32,30 +32,3 @@ const Layout = ({ children, title = 'UTV - regionální televize Ústeckého kra
 };
 
 export default Layout;
-
-/* 
-import CookieConsent from 'react-cookie-consent';
-import { CookieBanner } from '@keepist/react-gdpr-cookie-banner';
-
-<CookieConsent
-				location="bottom"
-				buttonText="Přijmout"
-				declineButtonText="X"
-				cookieName="myAwesomeCookieName2"
-				style={{ background: '#2b373b', justifyContent: 'center' }}
-				buttonStyle={{ color: '#231f20', background: '#ffca05', fontSize: '13px' }}
-				declineButtonStyle={{ background: '#2b373b', fontSize: '8px' }}
-				flipButtons={true}
-				contentStyle={{ display: 'block', flex: '' }}
-				enableDeclineButton
-				onDecline={() => {
-					alert('NEeeeee!');
-				}}
-				onAccept={() => {
-					alert('Huráá!');
-				}}
-			>
-				Tento web využívá Cookies pro Váš lepší zážitek.
-				<span style={{ fontSize: '10px' }}> Lorem ipsum</span>
-			</CookieConsent>
-*/

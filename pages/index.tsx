@@ -65,16 +65,18 @@ const IndexPage = ({ mainPageData, nejnovejsi, nejsledovanejsi }) => {
 					})}
 				</div>
 
-				<div className={styles.reklama}>
-					<Image
-						src={prostorProReklamu}
-						layout="responsive"
-						objectFit="cover"
-						width={1190}
-						height={396}
-						alt="pravcicka-brana"
-					/>
-				</div>
+				<NavLink exact href={'/'}>
+					<div className={styles.reklama}>
+						<Image
+							src={prostorProReklamu}
+							layout="responsive"
+							objectFit="cover"
+							width={1190}
+							height={396}
+							alt="pravcicka-brana"
+						/>
+					</div>
+				</NavLink>
 
 				{/* TIP a Nesledovanější pořady - dočasně skryté */}
 				{/* <Tip

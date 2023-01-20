@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import React from 'react';
+import { NavLink } from '../../Layout/_Navbar/_NavLink/NavLink';
 import ImageWithFallback from '../ImageWithFallback';
 import styles from './Nejsledovanejsi.module.scss';
 
@@ -14,7 +14,7 @@ export interface IPorad {
 const Nejsledovanejsi: React.FC<IPorad> = ({ porad }) => {
 	return (
 		<>
-			<Link href={`/porady/${porad.id}`}>
+			<NavLink exact={false} href={`/porady/${porad.id}`}>
 				<div className={styles.card}>
 					<div>
 						<div className={styles.card_img}>
@@ -27,7 +27,7 @@ const Nejsledovanejsi: React.FC<IPorad> = ({ porad }) => {
 						</div>
 					</div>
 				</div>
-			</Link>
+			</NavLink>
 		</>
 	);
 };

@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import styles from './NavLink.module.scss';
 

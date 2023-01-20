@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { truncateString } from '../../functions';
+import { NavLink } from '../../Layout/_Navbar/_NavLink/NavLink';
 import styles from './Porad.module.scss';
 // import ImageWithFallback from '../ImageWithFallback';
 
@@ -20,7 +20,7 @@ export interface IPorad {
 const Porad: React.FC<IPorad> = React.forwardRef(({ porad }) => {
 	return (
 		<>
-			<Link href={`porady/${porad.id}`}>
+			<NavLink exact={false} href={`porady/${porad.id}`}>
 				<div className={styles.cardWrapper}>
 					<div className={styles.card}>
 						<div className={styles.card_img}>
@@ -34,7 +34,7 @@ const Porad: React.FC<IPorad> = React.forwardRef(({ porad }) => {
 						<h3>{truncateString(porad.title, 33)}</h3>
 					</div>
 				</div>
-			</Link>
+			</NavLink>
 		</>
 	);
 });
