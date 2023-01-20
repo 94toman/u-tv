@@ -10,7 +10,7 @@ export const getDate = (timestamp) => {
 	); // 01/11/2021
 };
 
-export const rcast = 'https://data.zaktv.cz/';
+export const rcast = 'https://data.utv.r-cast.cz/';
 
 export async function fetcher(slug) {
 	const res = await fetch(`${rcast}${slug}`);
